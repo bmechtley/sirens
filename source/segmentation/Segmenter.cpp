@@ -16,6 +16,8 @@
 */
 #include "Segmenter.h"
 
+
+#include <iostream>
 #include <cmath>
 using namespace std;
 
@@ -120,6 +122,7 @@ namespace Sirens {
 		for (int i = 0; i < costs.size(); i++) {
 			vector<double>::iterator minimum_iterator = min_element(costs[i].begin(), costs[i].end());
 			psi[frame][i] = distance(costs[i].begin(), minimum_iterator);
+			costHistory[frame][i] = *minimum_iterator - oldCosts[i];
 			oldCosts[i] = *minimum_iterator;
 		}
 		
@@ -200,7 +203,7 @@ namespace Sirens {
 		
 		vector<int> int_row(edges);
 		modeMatrix = vector<vector<int> >(int(features.size() + 1), int_row);
-				
+		
 		for (int i = 0; i < edges; i++) {
 			vector<int> indices = getFeatureIndices(i + 1);
 			
@@ -246,6 +249,8 @@ namespace Sirens {
 			vector<double> cost_vector = vector<double>(edges, 0);
 			costs = vector<vector<double> >(edges, cost_vector);
 			oldCosts = vector<double>(edges, 0);
+			
+			costHistory = vector<vector<double> >(frames, cost_vector);
 			
 			vector<int> psi_row = vector<int>(edges, 0);
 			psi = vector<vector<int> >(frames, psi_row);
@@ -294,8 +299,10 @@ namespace Sirens {
 			vector<double>::iterator minimum_cost = min_element(oldCosts.begin(), oldCosts.end());
 			state_sequence[frames - 1] = distance(oldCosts.begin(), minimum_cost);
 			
-			for (int i = frames - 2; i > -1; i--) 
+			for (int i = frames - 2; i > -1; i--) {
 				state_sequence[i] = psi[i][state_sequence[i + 1]];
+				costSequence[i] = costHistory[i][state_sequence[i]];
+			}
 			
 			for (int i = 0; i < frames; i++)
 				modes[i] = modeMatrix[0][state_sequence[i]];
@@ -331,6 +338,10 @@ namespace Sirens {
 		}
 		
 		return segments;
+	}
+	
+	vector<double> Segmenter::getCosts() {
+		return costSequence;
 	}
 	
 	vector<int> Segmenter::getModes() {

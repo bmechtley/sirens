@@ -61,6 +61,10 @@ namespace Sirens {
 		vector<vector<int> > psi;											// stored state sequences
 		vector<double> oldCosts;											// cost list for previous frame
 		
+		// Used for returning the costs of the optimal state sequence's state transitions.
+		vector<vector<double> > costHistory;
+		vector<double> costSequence;
+		
 		// Runtime.
 		vector<vector<ViterbiDistribution> > maxDistributions;				// most likely gaussian distributions of state vectors for each feature
 		vector<vector<vector<ViterbiDistribution> > > newDistributions;		// gaussian distribution of state vectors for each feature
@@ -101,7 +105,8 @@ namespace Sirens {
 		void segment();														// perform segmentation, create global mode trajectory
 		
 		// After segmentation.
-		vector<vector<int> > getSegments();								// get activated segments
+		vector<vector<int> > getSegments();									// get activated segments.
+		vector<double> getCosts();											// returns the costs of transitioning to the optimal states.
 		vector<int> getModes();												// get global mode trajectory
 	};
 }
