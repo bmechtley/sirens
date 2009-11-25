@@ -16,8 +16,6 @@
 */
 #include "Segmenter.h"
 
-
-#include <iostream>
 #include <cmath>
 using namespace std;
 
@@ -251,6 +249,7 @@ namespace Sirens {
 			oldCosts = vector<double>(edges, 0);
 			
 			costHistory = vector<vector<double> >(frames, cost_vector);
+			costSequence = vector<double>(frames, 0);
 			
 			vector<int> psi_row = vector<int>(edges, 0);
 			psi = vector<vector<int> >(frames, psi_row);
