@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
 	
 		for (int i = 0; i < segments.size(); i++)
 			cout << "\t\t" << i << ": " << segments[i][0] << "-" << segments[i][1] << endl;
-	
+		
 		// Clean up.
 		delete sound;
 		delete segmenter;
