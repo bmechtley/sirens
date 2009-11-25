@@ -28,7 +28,6 @@ int main(int argc, char** argv) {
 		sound->setFrameLength(0.04);
 		sound->setHopLength(0.02);
 		sound->open(argv[1]);
-		sound->setChanOption(0);
 	
 		// Output some information about the sound.
 		cout << argv[1] << endl;
