@@ -31,7 +31,7 @@ namespace Sirens {
 	class Sound {
 	protected:
 		double hopLength, frameLength;
-		int chanOption;  //index of channel in .wav file to be examined (zero takes average between all channels)
+		int channelOption;				 //index of channel in .wav file to be examined (zero takes average between all channels)
 		
 		string path;
 		SNDFILE* soundFile;
@@ -56,7 +56,8 @@ namespace Sirens {
 		double getFrameLength();
 		void setHopLength(double hop_length);
 		void setFrameLength(double frame_length);
-		void setChanOption(int chan_option);
+		void setChannelOption(int chan_option);
+		int getChannelOption();
 		string getPath();
 				
 		// Calculated sound information.

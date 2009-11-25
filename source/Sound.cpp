@@ -29,7 +29,7 @@ namespace Sirens {
 	Sound::Sound() {
 		frameLength = 0.04;
 		hopLength = 0.02;
-		chanOption = 0;
+		channelOption = 0;
 		
 		soundFile = NULL;
 		path = "";
@@ -38,7 +38,7 @@ namespace Sirens {
 	Sound::Sound(string path_in) {
 		frameLength = 0.04;
 		hopLength = 0.02;
-		chanOption = 0;
+		channelOption = 0;
 		soundFile = NULL;
 		
 		open(path_in);
@@ -77,7 +77,7 @@ namespace Sirens {
 	 */
 	
 	int Sound::getSampleCount() {
-		return soundInfo.channels*soundInfo.frames;
+		return soundInfo.frames;
 	}
 
 	int Sound::getSampleRate() {
@@ -103,12 +103,16 @@ namespace Sirens {
 	void Sound::setFrameLength(double frame_length) {
 		frameLength = frame_length;
 	}
-
-	void Sound::setChanOption(int chan_option) {
-		if (chan_option > soundInfo.channels || chan_option < 0)
-			chanOption=0;
+	
+	void Sound::setChannelOption(int channel_option) {
+		if (channel_option > soundInfo.channels || channel_option < 0)
+			channelOption = 0;
 		else
-			chanOption=chan_option;
+			channelOption = channel_option;
+	}
+	
+	int Sound::getChannelOption() {
+		return channelOption;
 	}
 	
 	string Sound::getPath() {
@@ -124,7 +128,7 @@ namespace Sirens {
 	}
 	
 	int Sound::getSamplesPerHop() {
-		return soundInfo.channels * int(hopLength * double(getSampleRate()));
+		return int(hopLength * double(getSampleRate()));
 	}
 	
 	int Sound::getFrameCount() {
@@ -169,34 +173,38 @@ namespace Sirens {
 		// Start reading in frames.
 		int readcount = 0;
  		long frame_number = 0;
-		int samples_per_hop = getSamplesPerHop();
+		int samples_per_hop = getSamplesPerHop() * getChannels();
 		double* hop_samples = new double[samples_per_hop];
 		
 		for (int i = 0; i < samples_per_hop; i++)
 			hop_samples[i] = 0;
 		
 		while (readcount = sf_read_double(soundFile, hop_samples, samples_per_hop)) {
-			// Similar to the FFT, it's necessary to copy read values element-by-eleent to allow CircularArray to be thead-safe.
+			// Similar to the FFT, it's necessary to copy read values element-by-element to allow CircularArray to be thead-safe.
 			double* sample_value = hop_samples;
-			double avg_samp = 0;
+			double average_sample = 0;
 			
-			if (chanOption){
-				for (int i = 0; i < (chanOption - 1); i++)
-					sample_value++; 
-				for (int i = (chanOption - 1); i < readcount; i+=soundInfo.channels) {
+			// if channelOption == 0, samples will be averaged. Otherwise, the channelOption'th sample will be used.
+			if (channelOption) {
+				for (int i = 0; i < (channelOption - 1); i++)
+					sample_value ++; 
+				for (int i = (channelOption - 1); i < readcount; i += soundInfo.channels) {
 					sample_array.addValue(*sample_value);
+					
 					for (int j = 0; j < soundInfo.channels; j++)
 						sample_value ++;
 				}
-			}else{
-				for (int i = 0; i < readcount; i+=soundInfo.channels) {
-					avg_samp=0;
-					for (int j = 0; j < soundInfo.channels; j++){
-						avg_samp += *sample_value;
+			} else {
+				for (int i = 0; i < readcount; i += soundInfo.channels) {
+					average_sample = 0;
+					
+					for (int j = 0; j < soundInfo.channels; j++) {
+						average_sample += *sample_value;
 						sample_value ++;
 					}
-					avg_samp /= double(soundInfo.channels);
-					sample_array.addValue(avg_samp);
+					
+					average_sample /= double(soundInfo.channels);
+					sample_array.addValue(average_sample);
 				}
 			}
 			
