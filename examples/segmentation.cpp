@@ -16,7 +16,10 @@
 */
 
 #include <iostream>
+#include <string>
 using namespace std;
+
+#include <sndfile.h>
 
 #include "../source/Sirens.h"
 #include "../source/support/string_support.h"
@@ -27,19 +30,30 @@ int main(int argc, char** argv) {
 		cerr << "Usage: segemntation file" << endl;
 		return 1;
 	} else {
-		// Open sound.
+		/*----------------*
+		 * 1. Open sound. *
+		 *----------------*/
+		
 		Sound* sound = new Sound();
 		sound->setFrameLength(0.04);
 		sound->setHopLength(0.02);
 		sound->open(argv[1]);
 	
-		cout << argv[1] << endl;
-		cout << "\tSamples: " << sound->getSampleCount() << endl;
-		cout << "\tFrames: " << sound->getFrameCount() << endl;
-		cout << "\tSpectrum size: " << sound->getSpectrumSize() << endl;
-		cout << "\tSample rate: " << sound->getSampleRate() << endl;
-	
-		// Initialize features.	
+		cout << "1: Loading sound: " << argv[1] << endl;
+		cout << "\tDuration: " << sound->getSampleCount() / sound->getChannels() << " samples/channel (" 
+			<< sound->getFrameCount() << " frames, " << 
+			sound->getSampleCount() / (sound->getSampleRate() * sound->getChannels()) << "s)" << endl;
+		cout << "\tChannels: " << sound->getChannels() << endl;
+		cout << "\tSample rate: " << sound->getSampleRate() << " Hz" << endl;
+		cout << "\tFrame size: " << sound->getSamplesPerFrame() / sound->getChannels() << " samples/channel (" << sound->getFrameLength() << "s)" << endl;
+		cout << "\tHop size: " << sound->getSamplesPerHop() / sound->getChannels() << " samples/channel (" << sound->getHopLength() << "s)" << endl;
+		cout << "\tSpectrum size: " << sound->getSpectrumSize() << " bins" << endl;
+		
+		/*--------------------------------------*
+		 * 2. Initialize segmentation features. *
+		 *--------------------------------------*/
+		cout << "2. Initializing feature parameters." << endl;
+		
 		Loudness* loudness = new Loudness(sound->getFrameCount());
 		loudness->setMin(-60);
 		loudness->setMax(0);
@@ -87,25 +101,103 @@ int main(int argc, char** argv) {
 		feature_set->addSpectralFeature(spectral_centroid);
 		feature_set->addSpectralFeature(spectral_sparsity);
 	
-		// Extract features.	
+		/*----------------------------------*
+		 * 3. Extract feature trajectories. *
+		 *----------------------------------*/
+		cout << "3. Extracting features from sound." << endl;
+		
 		sound->setFeatureSet(feature_set);
 		sound->extractFeatures();	
 		sound->close();
 		
-		// Segment sound.
+		/*--------------------------------*
+		 * 4. Get the segment boundaries. *
+		 *--------------------------------*/
+		cout << "4. Segmenting sound." << endl;
+		
 		Segmenter* segmenter = new Segmenter(0.00000000001, 0.00000000001);
 		segmenter->setFeatureSet(feature_set);
 		segmenter->segment();
-	
-		vector<vector<int> > segments = segmenter->getSegments();
-	
-		// Output segments.
-		cout << "\tSegments: " << endl;
-	
-		for (int i = 0; i < segments.size(); i++)
-			cout << "\t\t" << i << ": " << segments[i][0] << "-" << segments[i][1] << endl;
 		
-		// Clean up.
+		vector<vector<int> > segments = segmenter->getSegments();
+		
+		if (segments.size() > 0) {
+			cout << "\tSegments ([start frame]-[end frame]): " << endl;
+			
+			for (int i = 0; i < segments.size(); i++)
+				cout << "\t\t" << i << ": " << segments[i][0] << "-" << segments[i][1] << endl;
+		} else
+			cout << "\tNo segments." << endl;
+		
+		/*-----------------------------------------------------------------*
+		 * 5. Reload the sound and cut it up, saving the segments to disk. *
+		 *-----------------------------------------------------------------*/
+		cout << "5. Saving segments to disk." << endl;
+		
+		// Sound information.
+		SF_INFO sound_info;
+		SNDFILE* sound_file = sf_open(argv[1], SFM_READ, &sound_info);
+		SNDFILE* segment_file = NULL;
+		int samples_per_hop = sound->getSamplesPerHop() * sound_info.channels;
+		double* sound_data = new double[samples_per_hop];
+		
+		// Counters.
+		int segment = 0;		
+		int sound_frames = 0;
+		int readcount = 0;
+		bool new_segment = true;
+		
+		if (segments.size() < 1)
+			cout << "\tNo segments to save." << endl;
+		else {
+			cout << "\tSaving " << segments.size() << " segments ([start sample]-[end sample]): " << endl;
+			
+			// Begin reading samples in from the file, one hop at a time.
+			while((readcount = sf_read_double(sound_file, sound_data, samples_per_hop))) {
+				// Increment the segment if we are past the previous segment's endpoint.
+				if (sound_frames >= segments[segment][1] * samples_per_hop) {
+					// Make sure there are segments left. If there aren't, we're done.
+					if (segments.size() > (segment + 1)) {
+						segment ++;
+
+						if (segment_file != NULL) {
+							sf_close(segment_file);
+							segment_file = NULL;
+							new_segment = true;
+						}
+					} else
+						break;
+				}
+				
+				// Open the segment file if we need to open a new one (either we just started, or we are on a segment boundary.)
+				if (new_segment) {
+					string filename = "segment" + double_to_string(segment) + ".wav";
+					
+					cout << "\tOpening " << filename << " (" << segments[segment][0] * samples_per_hop << "-" <<
+						segments[segment][1] * samples_per_hop << ")." << endl;
+					
+					segment_file = sf_open(filename.c_str(), SFM_WRITE, &sound_info);
+					new_segment = false;
+				}
+				
+				// Only write to the file if we are past the segment's beginning point.
+				if (sound_frames >= segments[segment][0] * samples_per_hop)
+					sf_write_double(segment_file, sound_data, readcount);
+				
+				// Keep track of how many frames we've read total.
+				sound_frames += readcount;
+			}
+		}
+		
+		/*--------------*
+		 * 6. Clean up. *
+		 *--------------*/
+		
+		if (segment_file != NULL)
+			sf_close(segment_file);
+		
+		delete [] sound_data;
+		
 		delete sound;
 		delete segmenter;
 		delete feature_set;
