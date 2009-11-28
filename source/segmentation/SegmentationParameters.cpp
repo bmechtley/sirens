@@ -72,10 +72,6 @@ namespace Sirens {
 		cTurnOn = value;
 	}
 	
-	void SegmentationParameters::setCTurningOn(double value) {
-		cTurningOn = value;
-	}
-	
 	void SegmentationParameters::setCTurnOff(double value) {
 		cTurnOff = value;
 	}
@@ -98,10 +94,6 @@ namespace Sirens {
 	
 	double SegmentationParameters::getCTurnOn() {
 		return cTurnOn;
-	}
-	
-	double SegmentationParameters::getCTurningOn() {
-		return cTurningOn;
 	}
 	
 	double SegmentationParameters::getCTurnOff() {
@@ -177,16 +169,24 @@ namespace Sirens {
 		fusionLogic[2][2][2][2] = 1;
 	}
 	
+	/*
+	 * q(state[t - 1], state[t]) is the process variance for state transitions in the Kalman Filter.
+	 * Some values are irrelevant, because the prior mode transition probabilities do not allow for them
+	 * (see Segmenter::createModeLogic.)
+	 * 
+	 * In general, change (turnOn/TurnOff/newSegment) variances should be about equal and should be much larger
+	 * than those for no change (stayOff/StayOn)
+	 */
 	void SegmentationParameters::createQTable() {
-		q[0][0] = cStayOff;
-		q[0][1] = cTurnOn;
-		q[0][2] = 0;
-		q[1][0] = cTurnOn;
-		q[1][1] = cTurnOn;
-		q[1][2] = cTurningOn;
-		q[2][0] = cTurnOff;
-		q[2][1] = cNewSegment;
-		q[2][2] = cStayOn;
+		q[0][0] = cStayOff;		// off -> off
+		q[0][1] = cTurnOn;		// off -> onset
+		q[0][2] = 0;			// off -> on is impossible (irrelevant)
+		q[1][0] = 0;			// onset -> off is impossible (irrelevant)
+		q[1][1] = 0;			// onset -> onset is impossible (irrelevant)
+		q[1][2] = 0;			// onset -> on always happens. (irrelevant)
+		q[2][0] = cTurnOff;		// on -> off
+		q[2][1] = cNewSegment;	// on -> onset (overlapping segments)
+		q[2][2] = cStayOn;		// on -> on
 	}
 	
 	void SegmentationParameters::initialize() {

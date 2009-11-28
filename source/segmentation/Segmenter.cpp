@@ -178,14 +178,17 @@ namespace Sirens {
 		vector<double> row(3, 0);
 		modeTransitions = vector<vector<double> >(3, row);
 		
+		// Off.
 		modeTransitions[0][0] = 1.0 - pNew;
 		modeTransitions[0][1] = pNew;
 		modeTransitions[0][2] = 0;
 		
+		// Onset.
 		modeTransitions[1][0] = 0;
 		modeTransitions[1][1] = 0;
 		modeTransitions[1][2] = 1;
 		
+		// On.
 		modeTransitions[2][0] = pOff - pOff * pNew;
 		modeTransitions[2][1] = pNew;
 		modeTransitions[2][2] = 1.0 - pNew - pOff + pOff * pNew;
@@ -295,12 +298,18 @@ namespace Sirens {
 			
 			vector<int> state_sequence(frames, 0);
 			
+			// Find the next state with the least cost and choose it to assign the global mode.
 			vector<double>::iterator minimum_cost = min_element(oldCosts.begin(), oldCosts.end());
 			state_sequence[frames - 1] = distance(oldCosts.begin(), minimum_cost);
 			
+			// Find the next state with the least cost that has a global mode of ON to track its cost.
+			int start = (getEdges() / 3) * 2;
+			vector<double>::iterator minimum_global_on = min_element(oldCosts.begin() + start, oldCosts.end());
+			int on_state = distance(oldCosts.begin(), minimum_global_on);
+			
 			for (int i = frames - 2; i > -1; i--) {
 				state_sequence[i] = psi[i][state_sequence[i + 1]];
-				costSequence[i] = costHistory[i][state_sequence[i]];
+				costSequence[i] = costHistory[i][on_state];
 			}
 			
 			for (int i = 0; i < frames; i++)

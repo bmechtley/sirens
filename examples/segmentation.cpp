@@ -27,19 +27,19 @@ using namespace Sirens;
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
-		cerr << "Usage: segemntation file" << endl;
+		cerr << "Usage: segmentation file" << endl;
 		return 1;
 	} else {
 		/*----------------*
 		 * 1. Open sound. *
 		 *----------------*/
+		cout << "1: Loading sound: " << argv[1] << endl;
 		
 		Sound* sound = new Sound();
 		sound->setFrameLength(0.04);
 		sound->setHopLength(0.02);
 		sound->open(argv[1]);
 	
-		cout << "1: Loading sound: " << argv[1] << endl;
 		cout << "\tDuration: " << sound->getSampleCount() / sound->getChannels() << " samples/channel (" 
 			<< sound->getFrameCount() << " frames, " << 
 			sound->getSampleCount() / (sound->getSampleRate() * sound->getChannels()) << "s)" << endl;
@@ -61,7 +61,6 @@ int main(int argc, char** argv) {
 		loudness->getSegmentationParameters()->setR(0.0098);
 		loudness->getSegmentationParameters()->setCStayOff(0.0015);
 		loudness->getSegmentationParameters()->setCTurnOn(0.085);
-		loudness->getSegmentationParameters()->setCTurningOn(0.085);
 		loudness->getSegmentationParameters()->setCTurnOff(0.085);
 		loudness->getSegmentationParameters()->setCNewSegment(0.085);
 		loudness->getSegmentationParameters()->setCStayOn(0.05);
@@ -75,7 +74,6 @@ int main(int argc, char** argv) {
 		spectral_centroid->getSegmentationParameters()->setR(0.00000196);
 		spectral_centroid->getSegmentationParameters()->setCStayOff(0.0000933506);
 		spectral_centroid->getSegmentationParameters()->setCTurnOn(0.85);
-		spectral_centroid->getSegmentationParameters()->setCTurningOn(0.85);
 		spectral_centroid->getSegmentationParameters()->setCTurnOff(0.85);
 		spectral_centroid->getSegmentationParameters()->setCNewSegment(0.85);
 		spectral_centroid->getSegmentationParameters()->setCStayOn(0.0025296018);
@@ -89,7 +87,6 @@ int main(int argc, char** argv) {
 		spectral_sparsity->getSegmentationParameters()->setR(0.0196);
 		spectral_sparsity->getSegmentationParameters()->setCStayOff(0.001833506);
 		spectral_sparsity->getSegmentationParameters()->setCTurnOn(0.85);
-		spectral_sparsity->getSegmentationParameters()->setCTurningOn(0.85);
 		spectral_sparsity->getSegmentationParameters()->setCTurnOff(0.85);
 		spectral_sparsity->getSegmentationParameters()->setCNewSegment(0.85);
 		spectral_sparsity->getSegmentationParameters()->setCStayOn(.009296018);
