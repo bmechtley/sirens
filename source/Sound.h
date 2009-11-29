@@ -46,6 +46,7 @@ namespace Sirens {
 		
 		// I/O.
 		bool open(string path_in);
+		void saveSegment(string path_out, int start_frame, int end_frame);
 		void close();
 		
 		// Basic sound information.
@@ -70,7 +71,7 @@ namespace Sirens {
 		// Features.
 		FeatureSet* getFeatureSet();
 		void setFeatureSet(FeatureSet* feature_set);
-		void extractFeatures();		
+		void extractFeatures();
 	};
 }
 

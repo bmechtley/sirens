@@ -48,9 +48,9 @@ namespace Sirens {
 		close();
 	}
 	
-	/*
-	 * IO
-	 */
+	/*-----*
+	 * IO. *
+	 *-----*/
 	
 	bool Sound::open(string path_in) {
 		path = path_in;
@@ -65,6 +65,48 @@ namespace Sirens {
 		}
 	}
 	
+	void Sound::saveSegment(string path_out, int start_frame, int end_frame) {
+		if (soundFile != NULL) {
+			// Sample buffer is the size of one hop * #channels.
+			int samples_per_hop = getSamplesPerHop() * getChannels();
+			int samples_per_frame = getSamplesPerFrame() * getChannels();
+			double* hop_samples = new double[samples_per_hop];
+			
+			// Open the segment file.
+			SNDFILE* segment = sf_open(path_out.c_str(), SFM_WRITE, &soundInfo);
+			
+			if (segment) {
+				// Get the last frame in its entirety.
+				int first_sample = samples_per_hop * start_frame;
+				int last_sample = samples_per_hop * end_frame + samples_per_frame;
+			
+				int samples_read = 0;
+				int readcount = 0;
+			
+				// Reset the file pointer.
+				//sf_seek(soundFile, 0, SEEK_SET);
+			
+				// Begin reading data from the sound, one hop at a time.
+				while (readcount = sf_read_double(soundFile, hop_samples, samples_per_hop)) {
+					if (samples_read >= first_sample && samples_read < last_sample) {
+						int samples_to_write = samples_per_hop;
+						int samples_left = last_sample - samples_read;
+					
+						if (samples_left < samples_per_hop)
+							samples_to_write = samples_left;
+					
+						sf_write_double(segment, hop_samples, samples_per_hop);
+					} else if (samples_read >= last_sample)
+						break;
+				
+					samples_read += readcount;
+				}
+			
+				sf_close(segment);
+			}
+		}
+	}
+	
 	void Sound::close() {
 		if (soundFile != NULL) {
 			sf_close(soundFile);
@@ -72,9 +114,9 @@ namespace Sirens {
 		}
 	}
 	
-	/*
-	 * Basic sound information.
-	 */
+	/*--------------------------*
+	 * Basic sound information. *
+	 *--------------------------*/
 	
 	int Sound::getSampleCount() {
 		return soundInfo.frames;
@@ -119,9 +161,9 @@ namespace Sirens {
 		return path;
 	}
 	
-	/*
-	 * Calculated sound information.
-	 */
+	/*-------------------------------*
+	 * Calculated sound information. *
+	 *-------------------------------*/
 	
 	int Sound::getSamplesPerFrame() {
 		return int(frameLength * double(getSampleRate()));
@@ -148,9 +190,9 @@ namespace Sirens {
 		return getFFTSize() / 2 + 1;
 	}
 	
-	/*
-	 * Features.
-	 */
+	/*-----------*
+	 * Features. *
+	 *-----------*/
 	
 	FeatureSet* Sound::getFeatureSet() {
 		return featureSet;
@@ -161,81 +203,86 @@ namespace Sirens {
 	}
 	
 	void Sound::extractFeatures() {
-		CircularArray sample_array(getSamplesPerFrame());					// Samples of the current frame.
-		CircularArray windowed_array(getSamplesPerFrame(), getFFTSize());	// Windowed samples of the current frame, pad with 0s for STFT.
-		CircularArray spectrum_array(getSpectrumSize());					// STFT spectrum magnitudes of the current frame.
+		if (soundFile != NULL) {
+			CircularArray sample_array(getSamplesPerFrame());					// Samples of the current frame.
+			CircularArray windowed_array(getSamplesPerFrame(), getFFTSize());	// Windowed samples of the current frame, pad with 0s for STFT.
+			CircularArray spectrum_array(getSpectrumSize());					// STFT spectrum magnitudes of the current frame.
 		
-		// Hamming window for STFT.
-		double* window = create_hamming_window(getSamplesPerFrame());
+			// Hamming window for STFT.
+			double* window = create_hamming_window(getSamplesPerFrame());
 		
-		FFT fft(getFFTSize(), windowed_array.getData());
+			FFT fft(getFFTSize(), windowed_array.getData());
 		
-		// Start reading in frames.
-		int readcount = 0;
- 		long frame_number = 0;
-		int samples_per_hop = getSamplesPerHop() * getChannels();
-		double* hop_samples = new double[samples_per_hop];
+			// Start reading in frames.
+			int readcount = 0;
+	 		long frame_number = 0;
+			int samples_per_hop = getSamplesPerHop() * getChannels();
+			double* hop_samples = new double[samples_per_hop];
 		
-		for (int i = 0; i < samples_per_hop; i++)
-			hop_samples[i] = 0;
+			for (int i = 0; i < samples_per_hop; i++)
+				hop_samples[i] = 0;
 		
-		while (readcount = sf_read_double(soundFile, hop_samples, samples_per_hop)) {
-			// Similar to the FFT, it's necessary to copy read values element-by-element to allow CircularArray to be thead-safe.
-			double* sample_value = hop_samples;
-			double average_sample = 0;
+			// Reset the file pointer.
+			sf_seek(soundFile, 0, SEEK_SET);
+		
+			while (readcount = sf_read_double(soundFile, hop_samples, samples_per_hop)) {
+				// Similar to the FFT, it's necessary to copy read values element-by-element to allow CircularArray to be thead-safe.
+				double* sample_value = hop_samples;
+				double average_sample = 0;
 			
-			// if channelOption == 0, samples will be averaged. Otherwise, the channelOption'th sample will be used.
-			if (channelOption) {
-				for (int i = 0; i < (channelOption - 1); i++)
-					sample_value ++; 
-				for (int i = (channelOption - 1); i < readcount; i += soundInfo.channels) {
-					sample_array.addValue(*sample_value);
+				// if channelOption == 0, samples will be averaged. Otherwise, the channelOption'th sample will be used.
+				if (channelOption) {
+					for (int i = 0; i < (channelOption - 1); i++)
+						sample_value ++; 
+					for (int i = (channelOption - 1); i < readcount; i += soundInfo.channels) {
+						sample_array.addValue(*sample_value);
 					
-					for (int j = 0; j < soundInfo.channels; j++)
-						sample_value ++;
-				}
-			} else {
-				for (int i = 0; i < readcount; i += soundInfo.channels) {
-					average_sample = 0;
-					
-					for (int j = 0; j < soundInfo.channels; j++) {
-						average_sample += *sample_value;
-						sample_value ++;
+						for (int j = 0; j < soundInfo.channels; j++)
+							sample_value ++;
 					}
+				} else {
+					for (int i = 0; i < readcount; i += soundInfo.channels) {
+						average_sample = 0;
 					
-					average_sample /= double(soundInfo.channels);
-					sample_array.addValue(average_sample);
+						for (int j = 0; j < soundInfo.channels; j++) {
+							average_sample += *sample_value;
+							sample_value ++;
+						}
+					
+						average_sample /= double(soundInfo.channels);
+						sample_array.addValue(average_sample);
+					}
 				}
-			}
 			
-			// The first hop or two will not necessarily be a full frame's worth of data.
-			if (sample_array.getSize() == sample_array.getMaxSize() && readcount == samples_per_hop) {
-				// Calculate sample features.
-				featureSet->calculateSampleFeatures(&sample_array);
+				// The first hop or two will not necessarily be a full frame's worth of data.
+				if (sample_array.getSize() == sample_array.getMaxSize() && readcount == samples_per_hop) {
+					// Calculate sample features.
+					featureSet->calculateSampleFeatures(&sample_array);
 				
-				// Window the time-domain signal for STFT.
-				for (int i = 0; i < getSamplesPerFrame(); i++)
-					windowed_array.addValue(sample_array.getValue(i) * window[i]);
+					// Window the time-domain signal for STFT.
+					for (int i = 0; i < getSamplesPerFrame(); i++)
+						windowed_array.addValue(sample_array.getValue(i) * window[i]);
 				
-				// Perform STFT.
-				fft.calculate();
+					// Perform STFT.
+					fft.calculate();
 				
-				for (int i = 0; i < fft.getOutputSize(); i++) {		
-					double first = fft.getOutput()[i][0];
-					double second = fft.getOutput()[i][1];
+					for (int i = 0; i < fft.getOutputSize(); i++) {		
+						double first = fft.getOutput()[i][0];
+						double second = fft.getOutput()[i][1];
 					
-					spectrum_array.addValue(sqrt(first * first + second * second));
+						spectrum_array.addValue(sqrt(first * first + second * second));
+					}
+				
+					// Calculate spectral features.
+					featureSet->calculateSpectralFeatures(&spectrum_array);
+				
+					frame_number = frame_number + 1;
 				}
-				
-				// Calculate spectral features.
-				featureSet->calculateSpectralFeatures(&spectrum_array);
-				
-				frame_number = frame_number + 1;
 			}
-		}
 		
-		// Cleanup.
-		delete [] hop_samples;
-		delete [] window;
+			// Cleanup.
+			delete [] hop_samples;
+			delete [] window;
+		}
 	}
 }
