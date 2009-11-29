@@ -67,6 +67,8 @@ namespace Sirens {
 	
 	void Sound::saveSegment(string path_out, int start_frame, int end_frame) {
 		if (soundFile != NULL) {
+			cout << "Saving " << start_frame << ", " << end_frame << endl;
+			
 			// Sample buffer is the size of one hop * #channels.
 			int samples_per_hop = getSamplesPerHop() * getChannels();
 			int samples_per_frame = getSamplesPerFrame() * getChannels();
@@ -76,18 +78,25 @@ namespace Sirens {
 			SNDFILE* segment = sf_open(path_out.c_str(), SFM_WRITE, &soundInfo);
 			
 			if (segment) {
+				cout << "Segment loaded." << endl;
+				
 				// Get the last frame in its entirety.
 				int first_sample = samples_per_hop * start_frame;
 				int last_sample = samples_per_hop * end_frame + samples_per_frame;
-			
+				
+				cout << "First sample: " << first_sample << endl;
+				cout << "Last sample: " << last_sample << endl;
+				
 				int samples_read = 0;
 				int readcount = 0;
 			
 				// Reset the file pointer.
-				//sf_seek(soundFile, 0, SEEK_SET);
+				sf_seek(soundFile, 0, SEEK_SET);
 			
 				// Begin reading data from the sound, one hop at a time.
 				while (readcount = sf_read_double(soundFile, hop_samples, samples_per_hop)) {
+					cout << "Read a frame: " << samples_read << endl;
+					
 					if (samples_read >= first_sample && samples_read < last_sample) {
 						int samples_to_write = samples_per_hop;
 						int samples_left = last_sample - samples_read;
