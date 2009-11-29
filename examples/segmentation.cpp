@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 		spectral_sparsity->getSegmentationParameters()->setCTurnOn(0.85);
 		spectral_sparsity->getSegmentationParameters()->setCTurnOff(0.85);
 		spectral_sparsity->getSegmentationParameters()->setCNewSegment(0.85);
-		spectral_sparsity->getSegmentationParameters()->setCStayOn(.009296018);
+		spectral_sparsity->getSegmentationParameters()->setCStayOn(0.009296018);
 		spectral_sparsity->getSegmentationParameters()->setPLagPlus(0.75);
 		spectral_sparsity->getSegmentationParameters()->setPLagMinus(0.75);
 	
@@ -105,7 +105,6 @@ int main(int argc, char** argv) {
 		
 		sound->setFeatureSet(feature_set);
 		sound->extractFeatures();	
-		sound->close();
 		
 		/*--------------------------------*
 		 * 4. Get the segment boundaries. *
@@ -117,6 +116,7 @@ int main(int argc, char** argv) {
 		segmenter->segment();
 		
 		vector<vector<int> > segments = segmenter->getSegments();
+		vector<int> modes = segmenter->getModes();
 		
 		if (segments.size() > 0) {
 			cout << "\tSegments ([start frame]-[end frame]): " << endl;
@@ -131,58 +131,14 @@ int main(int argc, char** argv) {
 		 *-----------------------------------------------------------------*/
 		cout << "5. Saving segments to disk." << endl;
 		
-		// Sound information.
-		SF_INFO sound_info;
-		SNDFILE* sound_file = sf_open(argv[1], SFM_READ, &sound_info);
-		SNDFILE* segment_file = NULL;
-		int samples_per_hop = sound->getSamplesPerHop() * sound_info.channels;
-		double* sound_data = new double[samples_per_hop];
-		
-		// Counters.
-		int segment = 0;		
-		int sound_frames = 0;
-		int readcount = 0;
-		bool new_segment = true;
-		
 		if (segments.size() < 1)
 			cout << "\tNo segments to save." << endl;
 		else {
-			cout << "\tSaving " << segments.size() << " segments ([start sample]-[end sample]): " << endl;
+			cout << "\tSaving " << segments.size() << " segments." << endl;
 			
-			// Begin reading samples in from the file, one hop at a time.
-			while((readcount = sf_read_double(sound_file, sound_data, samples_per_hop))) {
-				// Increment the segment if we are past the previous segment's endpoint.
-				if (sound_frames >= segments[segment][1] * samples_per_hop) {
-					// Make sure there are segments left. If there aren't, we're done.
-					if (segments.size() > (segment + 1)) {
-						segment ++;
-
-						if (segment_file != NULL) {
-							sf_close(segment_file);
-							segment_file = NULL;
-							new_segment = true;
-						}
-					} else
-						break;
-				}
-				
-				// Open the segment file if we need to open a new one (either we just started, or we are on a segment boundary.)
-				if (new_segment) {
-					string filename = "segment" + double_to_string(segment) + ".wav";
-					
-					cout << "\tOpening " << filename << " (" << segments[segment][0] * samples_per_hop << "-" <<
-						segments[segment][1] * samples_per_hop << ")." << endl;
-					
-					segment_file = sf_open(filename.c_str(), SFM_WRITE, &sound_info);
-					new_segment = false;
-				}
-				
-				// Only write to the file if we are past the segment's beginning point.
-				if (sound_frames >= segments[segment][0] * samples_per_hop)
-					sf_write_double(segment_file, sound_data, readcount);
-				
-				// Keep track of how many frames we've read total.
-				sound_frames += readcount;
+			for (int i = 0; i < segments.size(); i++) {
+				cout << "\t\tSaving segment " << i << "." << endl;
+				sound->saveSegment("segment" + double_to_string(i) + ".wav", segments[i][0], segments[i][1]);
 			}
 		}
 		
@@ -190,10 +146,7 @@ int main(int argc, char** argv) {
 		 * 6. Clean up. *
 		 *--------------*/
 		
-		if (segment_file != NULL)
-			sf_close(segment_file);
-		
-		delete [] sound_data;
+		sound->close();
 		
 		delete sound;
 		delete segmenter;
