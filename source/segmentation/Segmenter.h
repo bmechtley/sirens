@@ -32,9 +32,14 @@ namespace Sirens {
 		double cost;
 		
 		ViterbiDistribution() {
-			mean[0] = mean[1] = 0.0;
-			covariance[0][0] = covariance[0][1] = covariance[1][0] = covariance[1][1] = 0.0;
-			cost = 0.0;
+			mean[0] = 0;
+			mean[1] = 0;
+			cost = 0;
+			
+			covariance[0][0] = 1;
+			covariance[0][1] = 0;
+			covariance[1][0] = 0;
+			covariance[1][1] = 1;
 		}
 	};
 	

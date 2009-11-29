@@ -17,6 +17,7 @@
 #include "Segmenter.h"
 
 #include <cmath>
+#include <iostream>
 using namespace std;
 
 namespace Sirens {
@@ -58,30 +59,38 @@ namespace Sirens {
 	}
 	
 	double Segmenter::KalmanLPF(double y, double p[2][2], double x[2], double r, double q, double alpha) {
-		double k[2];
-		double err;
-		double s;
+		double k[2];	// Kalman gain.
+		double err;		// Error from the lowpass filter.
+		double s;		// Residual variance from the Kalman filter.
 		
+		// Prediction.
 		x[1] = (1 - alpha) * x[0] + alpha * x[1];
+		
+		// Prediction covariance.
 		p[1][1] = p[0][0] * (1 - alpha) * (1 - alpha) + 2 * p[0][1] * alpha * (1 - alpha) + p[1][1] * alpha * alpha + q * (1 - alpha) * (1 - alpha);
 		p[1][0] = p[0][0] * (1 - alpha) + p[1][0] * alpha + q * (1 - alpha);
 		p[0][1] = p[1][0];
 		p[0][0] = p[0][0] + q;
 		
+		// Calculate lowpass filter error and Kalman filter residual variance.
 		err = y - x[1];
 		s = p[1][1] + r;
 		
+		// Calculate Kalman gain.
 		k[0] = p[0][1] / s;
 		k[1] = p[1][1] / s;
 		
+		// Update posterior estimate covariance.
 		p[0][0] -= k[0] * p[0][1];
 		p[1][0] -= k[0] * p[1][1];
 		p[0][1] = p[1][0];
 		p[1][1] -= k[1] * p[1][1];
 		
+		// Update estimate.
 		x[0] += k[0] * err;
 		x[1] += k[1] * err;
 		
+		// Total cost.
 		return 0.5 * (log(s) + (err * err / s));
 	}
 	
@@ -124,7 +133,7 @@ namespace Sirens {
 			oldCosts[i] = *minimum_iterator;
 		}
 		
-		// Copy best filtered states and covariances.
+		// Copy best filtered distributions.
 		for (int i = 0; i < edges; i++) {
 			for (int feature_index = 0; feature_index < features.size(); feature_index++) {
 				for (int row = 0; row < 2; row++) {
@@ -132,6 +141,20 @@ namespace Sirens {
 					
 					for (int column = 0; column < 2; column++)
 						maxDistributions[feature_index][i].covariance[row][column] = newDistributions[feature_index][i][psi[frame][i]].covariance[row][column];
+				}
+			}
+		}
+		
+		// Copy best filtered distributions as input distributions to next frame.
+		for (int i = 0; i < edges; i++) {
+			for (int j = 0; j < edges; j++) {
+				for (int f = 0; f < features.size(); f++) {
+					for (int row = 0; row < 2; row ++) {
+						newDistributions[f][i][j].mean[row] = maxDistributions[f][i].mean[row];
+						
+						for (int column = 0; column < 2; column++)
+							newDistributions[f][i][j].covariance[row][column] = newDistributions[f][i][j].covariance[row][column];
+					}
 				}
 			}
 		}
@@ -224,15 +247,10 @@ namespace Sirens {
 					
 					gate_probability *= features[k]->getSegmentationParameters()->fusionLogic[mode_old - 1][mode_new - 1][feature_mode_old - 1][feature_mode_new - 1];
 				}
-					
-				probabilityMatrix[j][i] = modeTransitions[mode_old - 1][mode_new - 1] * gate_probability;
 				
-				if (probabilityMatrix[j][i] == 0)
-					probabilityMatrix[j][i] = -46.0517;
-				else
-					probabilityMatrix[j][i] = log(probabilityMatrix[j][i]);
+				probabilityMatrix[j][i] = log(modeTransitions[mode_old - 1][mode_new - 1] * gate_probability);
 			}
-		} 
+		}
 	}
 	
 	void Segmenter::initialize() {
