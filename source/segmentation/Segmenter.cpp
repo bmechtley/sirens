@@ -342,25 +342,24 @@ namespace Sirens {
 	
 	vector<vector<int> > Segmenter::getSegments() {
 		vector<vector<int> > segments;
-		vector<int> starts;
-		vector<int> stops;
 		
-		if (modes.size() > 1 && (modes[modes.size() - 1] == 2))
-			modes[modes.size() - 1] = modes[modes.size() - 2];
-		
-		for (int i = 0; i < modes.size(); i++) {	
-			if ((i == 0 && modes[i] == 3) || (modes[i] == 2))
-				starts.push_back(i);
-			else if ((i > 0) && (modes[i - 1] == 3) && (modes[i] != 3))
-				stops.push_back(i);
-		}
-		
-		for (int i = 0; i < starts.size(); i++) {
-			vector<int> segment(2);
-			segment[0] = starts[i];
-			segment[1] = (i >= stops.size()) ? frames - 1 : stops[i];
-			
-			segments.push_back(segment);
+		// If the last frame is an onset, ignore it and just make it whatever the previous frame was.
+		for (int i = 0; i < modes.size(); i++) {
+			if (i < modes.size() - 1) {
+				if ((i == 0 && modes[i] == 3) || (modes[i] == 2)) {
+					vector<int> segment(2, 0);
+					segment[0] = i;
+					
+					for (int j = i; j < modes.size(); j++) {
+						if ((modes[j] == 1) || (j == modes.size() - 1)) {
+							segment[1] = j;
+							break;
+						}
+					}
+					
+					segments.push_back(segment);
+				}
+			}
 		}
 		
 		return segments;
