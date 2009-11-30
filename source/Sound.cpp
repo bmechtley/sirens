@@ -75,7 +75,7 @@ namespace Sirens {
 			if (segment) {
 				// Get the last frame in its entirety.
 				int first_sample = samples_per_hop * start_frame;
-				int last_sample = samples_per_hop * end_frame + samples_per_frame;
+				int last_sample = samples_per_hop * (end_frame - 1) + samples_per_frame;
 				
 				int samples_read = 0;
 				int readcount = 0;
