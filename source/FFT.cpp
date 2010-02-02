@@ -1,5 +1,5 @@
 /*
-	Copyright 2008, 2009 Brandon Mechtley
+	Copyright 2008, 2009 Arizona State University
 	
 	This file is part of Sirens.
 	

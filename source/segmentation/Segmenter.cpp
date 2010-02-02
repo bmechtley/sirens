@@ -1,5 +1,5 @@
 /*
-	Copyright 2007, 2008, 2009 Brandon Mechtley, Gordon Wichern, and Harvey Thornburg
+	Copyright 2007, 2008, 2009 Arizona State University
 	
 	This file is part of Sirens.
 	
@@ -14,6 +14,7 @@
 	You should have received a copy of the GNU Lesser General Public License along
 	with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
+
 #include "Segmenter.h"
 
 #include <cmath>
