@@ -123,12 +123,6 @@ namespace Sirens {
 		vector<vector<ViterbiDistribution> > maxDistributions;				// Distributions that correspond to minimum cost transitions.
 		vector<vector<vector<ViterbiDistribution> > > newDistributions;		// Distributions for every possible transition and every feature.
 		
-		// Histories to return.
-		vector<vector<double> > costHistory;
-		vector<double> costSequence;
-		vector<vector<vector<double> > > estimateHistory;
-		vector<vector<double> > estimates;
-		
 		// Helpers for indexing large matrices.
 		vector<int> getFeatureModes(int state);		// Return mode of every feature (plus global mode) for a particular state.
 		int getStateCount();						// How many possible states are in the system (3 ^ (features + 1))
@@ -166,8 +160,6 @@ namespace Sirens {
 		
 		// Retrieve results after segmentation.
 		vector<vector<int> > getSegments();
-		vector<double> getCosts();
-		vector<vector<double> > getEstimates();
 		vector<int> getModes();
 	};
 }

@@ -132,7 +132,6 @@ namespace Sirens {
 		for (int i = 0; i < edges; i++) {
 			vector<double>::iterator minimum_iterator = min_element(costs[i].begin(), costs[i].end());
 			psi[frame][i] = distance(costs[i].begin(), minimum_iterator);
-			costHistory[frame][i] = maxDistributions[0][i].mean[0];//*minimum_iterator - oldCosts[i];
 			oldCosts[i] = *minimum_iterator;
 		}
 		
@@ -143,12 +142,8 @@ namespace Sirens {
 					maxDistributions[f][i].mean[row] = newDistributions[f][i][psi[frame][i]].mean[row];
 					
 					for (int column = 0; column < 2; column++)
-						maxDistributions[f][i].covariance[row][column] = newDistributions[f][i][psi[frame][i]].covariance[row][column];
-					
-					// Record the state of the best distribution for each feature.
+						maxDistributions[f][i].covariance[row][column] = newDistributions[f][i][psi[frame][i]].covariance[row][column];					
 				}
-				
-				estimateHistory[frame][f][i] = maxDistributions[f][i].mean[0];
 			}
 		}
 		
@@ -283,18 +278,6 @@ namespace Sirens {
 			vector<double> cost_vector = vector<double>(edges, 0);
 			costs = vector<vector<double> >(edges, cost_vector);
 			oldCosts = vector<double>(edges, 0);
-			
-			// Initialize cost history for state traversals in Viterbi.
-			costHistory = vector<vector<double> >(frames, cost_vector);
-			costSequence = vector<double>(frames, 0);
-			
-			// Initialize estimation history for each feature.
-			vector<double> estimate_history_row1 = vector<double>(edges, 0);
-			vector<vector<double> > estimate_history_row2 = vector<vector<double> >(features.size(), estimate_history_row1);
-			estimateHistory = vector<vector<vector<double> > >(frames, estimate_history_row2);
-			
-			vector<double> estimate_row = vector<double>(frames, 0);
-			estimates = vector<vector<double> >(features.size(), estimate_row);
 				
 			// Best state transitions for each state in each frame.
 			vector<int> psi_row = vector<int>(edges, 0);
@@ -350,17 +333,10 @@ namespace Sirens {
 			
 			// Find the "off" states and "on"/"onset" states that have minimum cost. 
 			int start = (getStateCount() / 3);
-
-			for (int i = frames - 2; i > -1; i--) {
-				// Traverse the state transitions backward from the last frame's optimal mode to get the state sequence.
+			
+			// Traverse the state transitions backward from the last frame's optimal mode to get the state sequence.
+			for (int i = frames - 2; i > -1; i--)
 				state_sequence[i] = psi[i][state_sequence[i + 1]];
-				
-				// Other results.
-				costSequence[i] = costHistory[i][state_sequence[i]];
-								
-				for (int f = 0; f < features.size(); f++)
-					estimates[f][i] = estimateHistory[i][f][state_sequence[i]];
-			}
 			
 			// Find the mode sequence.
 			for (int i = 0; i < frames; i++)
@@ -396,14 +372,6 @@ namespace Sirens {
 		}
 		
 		return segments;
-	}
-	
-	vector<double> Segmenter::getCosts() {
-		return costSequence;
-	}
-	
-	vector<vector<double> > Segmenter::getEstimates() {
-		return estimates;
 	}
 	
 	vector<int> Segmenter::getModes() {
