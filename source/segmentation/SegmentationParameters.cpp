@@ -68,8 +68,13 @@ namespace Sirens {
 	void SegmentationParameters::setCStayOn(double value) {
 		cStayOn = value;
 	}
+	
 	void SegmentationParameters::setCTurnOn(double value) {
 		cTurnOn = value;
+	}
+	
+	void SegmentationParameters::setCTurningOn(double value) {
+		cTurningOn = value;
 	}
 	
 	void SegmentationParameters::setCTurnOff(double value) {
@@ -98,6 +103,10 @@ namespace Sirens {
 	
 	double SegmentationParameters::getCTurnOff() {
 		return cTurnOff;
+	}
+	
+	double SegmentationParameters::getCTurningOn() {
+		return cTurningOn;
 	}
 	
 	double SegmentationParameters::getCNewSegment() {
@@ -183,7 +192,7 @@ namespace Sirens {
 		q[0][2] = 0;			// off -> on is impossible (irrelevant)
 		q[1][0] = 0;			// onset -> off is impossible (irrelevant)
 		q[1][1] = 0;			// onset -> onset is impossible (irrelevant)
-		q[1][2] = 0;			// onset -> on always happens. (irrelevant)
+		q[1][2] = cTurningOn;	// onset -> on always happens.
 		q[2][0] = cTurnOff;		// on -> off
 		q[2][1] = cNewSegment;	// on -> onset (overlapping segments)
 		q[2][2] = cStayOn;		// on -> on

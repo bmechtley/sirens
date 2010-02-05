@@ -130,12 +130,14 @@ namespace Sirens {
 		void setCStayOn(double value);
 		void setCTurnOn(double value);
 		void setCTurnOff(double value);
+		void setCTurningOn(double value);
 		void setCNewSegment(double value);
 		double getR();
 		double getCStayOff();
 		double getCStayOn();
 		double getCTurnOn();
 		double getCTurnOff();
+		double getCTurningOn();
 		double getCNewSegment();
 		
 		double xInit[2];
