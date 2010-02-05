@@ -22,6 +22,21 @@
 #include "support/math_support.h"
 #include "support/string_support.h"
 
+#include "Exceptions.h"
+
+void throw_io_error(SNDFILE* file) throw (IOException) {
+	int error = sf_error(file);
+	
+	if (error == 1)
+		throw UnrecognizedFormatException();
+	else if (error == 2)
+		throw SystemException();
+	else if (error == 3)
+		throw MalformedFileException();
+	else if (error == 4)
+		throw UnsupportedEncodingException();
+}
+
 namespace Sirens {
 	Sound::Sound() {
 		frameLength = 0.04;
@@ -49,20 +64,16 @@ namespace Sirens {
 	 * IO. *
 	 *-----*/
 	
-	bool Sound::open(string path_in) {
+	void Sound::open(string path_in) throw (IOException) {
 		path = path_in;
 		
 		soundFile = sf_open(path.c_str(), SFM_READ, &soundInfo);
 		
-		if (soundFile)
-			return true;
-		else {
-			cerr << sf_strerror(soundFile);
-			return false;
-		}
+		if (!soundFile)
+			throw_io_error(soundFile);
 	}
 	
-	void Sound::saveSegment(string path_out, int start_frame, int end_frame) {
+	void Sound::saveSegment(string path_out, int start_frame, int end_frame) throw (IOException) {
 		if (soundFile != NULL) {			
 			// Sample buffer is the size of one hop * #channels.
 			int samples_per_hop = getSamplesPerHop() * getChannels();
@@ -101,12 +112,15 @@ namespace Sirens {
 			
 				sf_close(segment);
 			}
-		}
+		} else
+			throw SoundNotLoadedException();
 	}
 	
-	void Sound::close() {
+	void Sound::close() throw (IOException) {
 		if (soundFile != NULL) {
-			sf_close(soundFile);
+			if (sf_close(soundFile) != 0)
+				throw_io_error(soundFile);
+			
 			soundFile = NULL;
 		}
 	}
@@ -199,7 +213,7 @@ namespace Sirens {
 		featureSet = feature_set;
 	}
 	
-	void Sound::extractFeatures() {
+	void Sound::extractFeatures() throw (AnalysisException) {
 		if (soundFile != NULL) {
 			CircularArray sample_array(getSamplesPerFrame());					// Samples of the current frame.
 			CircularArray windowed_array(getSamplesPerFrame(), getFFTSize());	// Windowed samples of the current frame, pad with 0s for STFT.
@@ -280,6 +294,7 @@ namespace Sirens {
 			// Cleanup.
 			delete [] hop_samples;
 			delete [] window;
-		}
+		} else
+			throw SoundNotLoadedException();
 	}
 }
