@@ -26,6 +26,7 @@ using namespace std;
 #include <sndfile.h>
 
 #include "FeatureSet.h"
+#include "Exceptions.h"
 
 namespace Sirens {
 	class Sound {
@@ -45,9 +46,9 @@ namespace Sirens {
 		~Sound();
 		
 		// I/O.
-		bool open(string path_in);
-		void saveSegment(string path_out, int start_frame, int end_frame);
-		void close();
+		void open(string path_in) throw (IOException);
+		void saveSegment(string path_out, int start_frame, int end_frame) throw (IOException);
+		void close() throw (IOException);
 		
 		// Basic sound information.
 		int getSampleCount();
@@ -71,7 +72,7 @@ namespace Sirens {
 		// Features.
 		FeatureSet* getFeatureSet();
 		void setFeatureSet(FeatureSet* feature_set);
-		void extractFeatures();
+		void extractFeatures() throw (AnalysisException);
 	};
 }
 
