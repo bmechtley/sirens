@@ -39,7 +39,8 @@ install_headers = append_source_prefix([
 	'Feature.h',
 	'Sound.h',
 	'Thread.h',
-	'Sirens.h'
+	'Sirens.h',
+	'Exceptions.h'
 ])
 
 # Source.
