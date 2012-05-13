@@ -130,8 +130,11 @@ int main(int argc, char** argv) {
 			if (segments.size() > 0) {
 				cout << "5. CSV output (index, start frame, end frame):" << endl;
 				
-				for (int i = 0; i < segments.size(); i++)
-					cout << "\t" << i << "," << segments[i][0] << "," << segments[i][1] << endl;
+				for (int i = 0; i < segments.size(); i++) {
+					cout << "\t" << i << "," << segments[i][0] << "," << segments[i][1] << ","
+						<< segments[i][0] * sound.getSamplesPerFrame() << "," 
+						<< segments[i][1] << "," << sound.getSamplesPerFrame() << endl;
+				}
 			} else
 				cout << "5. No segments." << endl;
 			
