@@ -1,5 +1,5 @@
 /*
-	Copyright 2009 Brandon Mechtley
+	Copyright 2009 Brandon Hawley
 	
 	This file is part of Sirens.
 	

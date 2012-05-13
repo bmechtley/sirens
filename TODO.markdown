@@ -4,7 +4,10 @@ There are a number of tasks that can help improve Sirens and make it more useful
 ## Modularity
 Features need to be hard-coded within Sirens right now. A more appropriate model would be to use a common plugin format such as [LADSPA](http://www.ladspa.org/) or [Vamp](http://www.vamp-plugins.org/) and allow users of Sirens to select their own features. Feature currently in Sirens can be written as plugins of these formats. One potential downside to this (I believe) is that it is more difficult to reuse a global FFT in these cases, but keeping the sample vs. spectral features distinction is still a possibility, though a bit confusing for Vamp plugins that already compute their own spectra.
 
-Additionally, the segmentation algorithm could be implemented as a plugin of one of these formats, with a simple wrapper function to interpret the modes the plugin would output. 
+Additionally, the segmentation algorithm could be implemented as a plugin of one of these formats, with a simple wrapper function to interpret the modes the plugin would output.
+
+## Streaming
+Segmentation input files ought to be streamed from disk. The threading in feature extraction doesn't do much good if you need to store long recordings in virtual memory.
 
 ## Exceptions
 None of this code throws exceptions. More error-checking needs to be done.

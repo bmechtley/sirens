@@ -1,10 +1,10 @@
 /*
-	Copyright 2009 Brandon Mechtley
+	Copyright 2009 Brandon Hawley
 	
 	This file is part of Sirens.
 	
-	Sirens is free software: you can redistribute it and/or modify it under the terms 
-	of the GNU Lesser General Public License as  published by the Free Software 
+	Sirens is free software: you can redistribute it and/or modify it under the terms
+	of the GNU Lesser General Public License as published by the Free Software
 	Foundation, either version 3 of the License, or (at your option) any later version.
 	
 	Sirens is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
@@ -27,13 +27,20 @@ using namespace Sirens;
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
-		cerr << "Usage: segmentation file" << endl;
+		cerr << "Usage: segmentation [--save] file" << endl;
 		return 1;
 	} else {
+		int save = 0;
+		
+		for (int i = 1; i < argc; i++) {
+			if (argv[i] == "--save")
+				save = i;
+		}
+		
 		/*----------------*
 		 * 1. Open sound. *
 		 *----------------*/
-		cout << "1: Loading sound: " << argv[1] << endl;
+		cout << "1: Loading sound: " << argv[save + 1] << endl;
 		
 		Sound sound;
 		sound.setFrameLength(0.04);
@@ -121,26 +128,29 @@ int main(int argc, char** argv) {
 			vector<int> modes = segmenter.getModes();
 			
 			if (segments.size() > 0) {
-				cout << "\tSegments ([start frame]-[end frame]): " << endl;
+				cout << "5. CSV output (index, start frame, end frame):" << endl;
 				
 				for (int i = 0; i < segments.size(); i++)
-					cout << "\t\t" << i << ": " << segments[i][0] << "-" << segments[i][1] << endl;
+					cout << "\t" << i << "," << segments[i][0] << "," << segments[i][1] << endl;
 			} else
-				cout << "\tNo segments." << endl;
+				cout << "5. No segments." << endl;
 			
 			/*-----------------------------------------------------------------*
 			 * 5. Reload the sound and cut it up, saving the segments to disk. *
 			 *-----------------------------------------------------------------*/
-			cout << "5. Saving segments to disk." << endl;
 			
-			if (segments.size() < 1)
-				cout << "\tNo segments to save." << endl;
-			else {
-				cout << "\tSaving " << segments.size() << " segments." << endl;
+			if (save) {
+				cout << "6. Saving segments to disk." << endl;
+			
+				if (segments.size() < 1)
+					cout << "\tNo segments to save." << endl;
+				else {
+					cout << "\tSaving " << segments.size() << " segments." << endl;
 				
-				for (int i = 0; i < segments.size(); i++) {
-					cout << "\t\tSaving segment " << i << "." << endl;
-					sound.saveSegment("segment" + double_to_string(i) + ".wav", segments[i][0], segments[i][1]);
+					for (int i = 0; i < segments.size(); i++) {
+						cout << "\t\tSaving segment " << i << "." << endl;
+						sound.saveSegment("segment" + double_to_string(i) + ".wav", segments[i][0], segments[i][1]);
+					}
 				}
 			}
 			
