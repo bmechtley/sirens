@@ -1,7 +1,7 @@
 # Sirens
 Sirens is a library for segmentation, indexing, and retrieval of environmental and natural sounds. Sirens is currently under development and at the moment is only ready to use for feature extraction, segmentation, and comparison as per [1] and [2] below. Check back later for updates.
 
-Sirens is being developed simultaneously with [sirens-ruby](http://github.com/plant/sirens-ruby), a Ruby gem that implements the features within Sirens.
+Sirens is being developed simultaneously with [sirens-ruby](http://github.com/plant/sirens-ruby), a Ruby gem that implements the features within Sirens, and [sirens-vamp](http://github.com/plant/sirens-vamp), an implementation of the feature extraction routines as [Vamp](http://vamp-plugins.org) plugins. I strongly encourage the use of sirens-vamp, as Vamp is quickly becoming a great standard for audio feature extraction, similar to VST/RTAS/LADSPA/AU for realtime audio effects and instruments.
 
 # Requirements
 Any application using Sirens also needs to link against [FFTW](http://www.fftw.org), [libsndfile](http://www.mega-nerd.com/libsndfile/), and pthread.  It is also necessary to have the [uBLAS](http://www.boost.org/doc/libs/1_40_0/libs/numeric/ublas/doc/index.htm) headers installed. In the future, a sirens-config binary will assist with this process, but for now, something like the following should work:
@@ -33,7 +33,7 @@ Additionally, if you need to point the Sirens install to a specific directory to
 	scons install --prefix=$HOME
 
 # Tutorial
-Coming soon. See the examples/ directory for some ideas.
+Coming sometime. See the examples/ directory for some ideas.
 
 # Upcoming changes / Helping out
 There are a number of tasks we are planning for improving Sirens. If you are interested in working on or making any fixes to Sirens, thanks! Just fork this project. If you're looking for some inspiration, check out TODO.markdown.
