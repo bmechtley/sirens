@@ -1,5 +1,5 @@
 /*
-	Copyright 2009 Brandon Hawley and Gordon Wichern
+	Copyright 2009 Arizona State University
 	
 	This file is part of Sirens.
 	

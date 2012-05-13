@@ -48,4 +48,4 @@ Sirens is based off research within the [Arts, Media and Engineering](http://ame
 Additionally, work on Sirens is supported by the [National Science Foundation](http://www.nsf.gov/) under Grants NSF IGERT DGE-05-04647 and NSF CISE Research Infrastructure 04-03428.
 
 # Copyright
-Parts Copyright 2007-20012 Brandon Hawley, Gordon Wichern, and Harvey Thornburg. Sirens is licensed under the [GNU LGPL](http://creativecommons.org/licenses/LGPL/2.1/). See COPYING.LESSER for details. If you would like to use Sirens for a commercial application or have other difficulties with its licensing restrictions, please contact [Brandon Hawley on Github](http://www.github.com/plant/).
+Copyright 2009-2012 Arizona State University. Sirens is licensed under the [GNU LGPL](http://creativecommons.org/licenses/LGPL/2.1/). See COPYING.LESSER for details. If you would like to use Sirens for a commercial application or have other difficulties with its licensing restrictions, please contact [Brandon Hawley on Github](http://www.github.com/plant/).
