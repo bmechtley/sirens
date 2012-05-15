@@ -17,10 +17,6 @@ To build the applications in the examples/ directory, do
 
 	scons
 
-To get rid of intermediate build files, type:
-
-	scons -c
-
 ## Parameters
 If you do not have root access, you may have troubles installing Sirens. In this case, you can put the library in a custom directory. For example, to put the library in ~/lib and the includes in ~/include/sirens:
 
