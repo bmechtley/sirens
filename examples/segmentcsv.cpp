@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 			samples_per_hop = string_to_double(argv[3]);
 		
 		// Load feature values. One line per frame.
-	 	cout << "1: Loading features." << argv[1] << endl;
+	 	cout << "1: Loading features from " << argv[1] << "." << endl;
 		
 		vector<Feature*> features;
 		vector<vector<double> > values;
@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 		csvfile.close();
 			
 		// Load segmentation parameters. One line per feature.
-		cout << "2: Loading parameters." << argv[2] << endl;
+		cout << "2: Loading parameters from " << argv[2] << "." << endl;
 		
 		ifstream paramsfile;
 		paramsfile.open(argv[2]);
