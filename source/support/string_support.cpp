@@ -39,7 +39,17 @@ namespace Sirens {
 		ss << data;
 		return ss.str();
 	}
- 
+ 	
+    double string_to_double(const std::string& s) {
+		std::istringstream i(s);
+		double x;
+		
+		if (!(i >> x))
+			return 0;
+	  	else
+			return x;
+    }
+	
 	string int_to_string(int data) {
 		stringstream ss;
 		ss << data;

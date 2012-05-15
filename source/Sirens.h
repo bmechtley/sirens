@@ -22,7 +22,6 @@
 #include "Feature.h"
 #include "FeatureSet.h"
 #include "Sound.h"
-#include "Exceptions.h"
 #include "retrieval/SoundComparator.h"
 #include "retrieval/FeatureComparator.h"
 #include "retrieval/SimpleSoundComparator.h"

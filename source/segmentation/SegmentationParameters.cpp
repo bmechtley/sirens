@@ -192,7 +192,7 @@ namespace Sirens {
 		q[0][2] = 0;			// off -> on is impossible (irrelevant)
 		q[1][0] = 0;			// onset -> off is impossible (irrelevant)
 		q[1][1] = 0;			// onset -> onset is impossible (irrelevant)
-		q[1][2] = cTurningOn;	// onset -> on always happens.
+		q[1][2] = 99999999999;	// onset -> on always happens.
 		q[2][0] = cTurnOff;		// on -> off
 		q[2][1] = cNewSegment;	// on -> onset (overlapping segments)
 		q[2][2] = cStayOn;		// on -> on

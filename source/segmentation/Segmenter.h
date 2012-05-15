@@ -125,13 +125,13 @@ namespace Sirens {
 		
 		// Helpers for indexing large matrices.
 		vector<int> getFeatureModes(int state);		// Return mode of every feature (plus global mode) for a particular state.
-		int getStateCount();						// How many possible states are in the system (3 ^ (features + 1))
-		
+				
 		// Algorithms.
 		double KalmanLPF(double y, double p[2][2], double x[2], double r, double q, double alpha);
 		void viterbi(int frame);
 		
 		vector<int> modes;
+		int states;
 		
 	public:	
 		Segmenter(double p_new = 0, double p_old = 0);

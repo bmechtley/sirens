@@ -29,6 +29,7 @@ using namespace boost::numeric;
 namespace Sirens {
 	void tokenise(const string& str, vector<string>& tokens, const string& delimiters);
 	string double_to_string(double data);
+    double string_to_double(const std::string& s);
 	string int_to_string(int data);
 	
 	// Vectors.

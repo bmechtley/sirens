@@ -132,8 +132,8 @@ int main(int argc, char** argv) {
 				
 				for (int i = 0; i < segments.size(); i++) {
 					cout << "\t" << i << "," << segments[i][0] << "," << segments[i][1] << ","
-						<< segments[i][0] * sound.getSamplesPerFrame() << "," 
-						<< segments[i][1] << "," << sound.getSamplesPerFrame() << endl;
+						<< segments[i][0] * sound.getSamplesPerHop() << "," 
+						<< segments[i][1] * sound.getSamplesPerHop() << endl;
 				}
 			} else
 				cout << "5. No segments." << endl;

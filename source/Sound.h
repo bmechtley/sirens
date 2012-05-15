@@ -23,10 +23,11 @@
 #include <string>
 using namespace std;
 
-#include <sndfile.h>
+#include "stk/Stk.h"
+#include "stk/FileRead.h"
+using namespace stk;
 
 #include "FeatureSet.h"
-#include "Exceptions.h"
 
 namespace Sirens {
 	class Sound {
@@ -35,8 +36,7 @@ namespace Sirens {
 		int channelOption;				 //index of channel in .wav file to be examined (zero takes average between all channels)
 		
 		string path;
-		SNDFILE* soundFile;
-		SF_INFO soundInfo;
+		FileRead* soundFile;
 		
 		FeatureSet* featureSet;
 		
@@ -46,9 +46,9 @@ namespace Sirens {
 		~Sound();
 		
 		// I/O.
-		void open(string path_in) throw (IOException);
-		void saveSegment(string path_out, int start_frame, int end_frame) throw (IOException);
-		void close() throw (IOException);
+		void open(string path_in);
+		void saveSegment(string path_out, int start_frame, int end_frame);
+		void close();
 		
 		// Basic sound information.
 		int getSampleCount();
@@ -72,7 +72,7 @@ namespace Sirens {
 		// Features.
 		FeatureSet* getFeatureSet();
 		void setFeatureSet(FeatureSet* feature_set);
-		void extractFeatures() throw (AnalysisException);
+		void extractFeatures();
 	};
 }
 

@@ -22,28 +22,12 @@
 #include "support/math_support.h"
 #include "support/string_support.h"
 
-#include "Exceptions.h"
-
-void throw_io_error(SNDFILE* file) throw (IOException) {
-	int error = sf_error(file);
-	
-	if (error == 1)
-		throw UnrecognizedFormatException();
-	else if (error == 2)
-		throw SystemException();
-	else if (error == 3)
-		throw MalformedFileException();
-	else if (error == 4)
-		throw UnsupportedEncodingException();
-}
-
 namespace Sirens {
 	Sound::Sound() {
 		frameLength = 0.04;
 		hopLength = 0.02;
 		channelOption = 0;
 		
-		soundFile = NULL;
 		path = "";
 	}
 	
@@ -51,7 +35,6 @@ namespace Sirens {
 		frameLength = 0.04;
 		hopLength = 0.02;
 		channelOption = 0;
-		soundFile = NULL;
 		
 		open(path_in);
 	}
@@ -64,17 +47,14 @@ namespace Sirens {
 	 * IO. *
 	 *-----*/
 	
-	void Sound::open(string path_in) throw (IOException) {
+	void Sound::open(string path_in) {
 		path = path_in;
-		
-		soundFile = sf_open(path.c_str(), SFM_READ, &soundInfo);
-		
-		if (!soundFile)
-			throw_io_error(soundFile);
+		soundFile = new FileRead(path.c_str());
 	}
 	
-	void Sound::saveSegment(string path_out, int start_frame, int end_frame) throw (IOException) {
-		if (soundFile != NULL) {			
+	void Sound::saveSegment(string path_out, int start_frame, int end_frame) {
+	/*
+		if (soundFile.isOpen()) {			
 			// Sample buffer is the size of one hop * #channels.
 			int samples_per_hop = getSamplesPerHop() * getChannels();
 			int samples_per_frame = getSamplesPerFrame() * getChannels();
@@ -114,13 +94,15 @@ namespace Sirens {
 			}
 		} else
 			throw SoundNotLoadedException();
+	*/
 	}
 	
-	void Sound::close() throw (IOException) {
-		if (soundFile != NULL) {
-			if (sf_close(soundFile) != 0)
-				throw_io_error(soundFile);
+	void Sound::close() {
+		if (soundFile) {
+			if (soundFile->isOpen())
+				soundFile->close();
 			
+			delete soundFile;
 			soundFile = NULL;
 		}
 	}
@@ -130,15 +112,15 @@ namespace Sirens {
 	 *--------------------------*/
 	
 	int Sound::getSampleCount() {
-		return soundInfo.frames;
+		return soundFile->fileSize();
 	}
 
 	int Sound::getSampleRate() {
-		return soundInfo.samplerate;
+		return soundFile->fileRate();
 	}
 
 	int Sound::getChannels() {
-		return soundInfo.channels;
+		return soundFile->channels();
 	}
 	
 	double Sound::getHopLength() {
@@ -158,7 +140,7 @@ namespace Sirens {
 	}
 	
 	void Sound::setChannelOption(int channel_option) {
-		if (channel_option > soundInfo.channels || channel_option < 0)
+		if (channel_option > soundFile->channels() || channel_option < 0)
 			channelOption = 0;
 		else
 			channelOption = channel_option;
@@ -213,8 +195,8 @@ namespace Sirens {
 		featureSet = feature_set;
 	}
 	
-	void Sound::extractFeatures() throw (AnalysisException) {
-		if (soundFile != NULL) {
+	void Sound::extractFeatures()  {
+		if (soundFile->isOpen()) {
 			CircularArray sample_array(getSamplesPerFrame());					// Samples of the current frame.
 			CircularArray windowed_array(getSamplesPerFrame(), getFFTSize());	// Windowed samples of the current frame, pad with 0s for STFT.
 			CircularArray spectrum_array(getSpectrumSize());					// STFT spectrum magnitudes of the current frame.
@@ -228,52 +210,46 @@ namespace Sirens {
 			int readcount = 0;
 	 		long frame_number = 0;
 			int samples_per_hop = getSamplesPerHop() * getChannels();
-			double* hop_samples = new double[samples_per_hop];
-		
-			for (int i = 0; i < samples_per_hop; i++)
-				hop_samples[i] = 0;
-		
-			// Reset the file pointer.
-			sf_seek(soundFile, 0, SEEK_SET);
-		
-			while (readcount = sf_read_double(soundFile, hop_samples, samples_per_hop)) {
-				// Similar to the FFT, it's necessary to copy read values element-by-element to allow CircularArray to be thead-safe.
-				double* sample_value = hop_samples;
-				double average_sample = 0;
 			
+			for (int f = 0; f < getFrameCount(); f++) {
+				StkFrames samples(getSamplesPerHop(), soundFile->channels());
+				soundFile->read(samples, getSamplesPerHop() * f);
+				StkFloat* sample_value = &samples[0];
+				double average_sample = 0;
+				
 				// if channelOption == 0, samples will be averaged. Otherwise, the channelOption'th sample will be used.
 				if (channelOption) {
 					for (int i = 0; i < (channelOption - 1); i++)
 						sample_value ++; 
-					for (int i = (channelOption - 1); i < readcount; i += soundInfo.channels) {
+					for (int i = (channelOption - 1); i < readcount; i += soundFile->channels()) {
 						sample_array.addValue(*sample_value);
 					
-						for (int j = 0; j < soundInfo.channels; j++)
+						for (int j = 0; j < soundFile->channels(); j++)
 							sample_value ++;
 					}
 				} else {
-					for (int i = 0; i < readcount; i += soundInfo.channels) {
+					for (int i = 0; i < getSamplesPerHop(); i += soundFile->channels()) {
 						average_sample = 0;
-					
-						for (int j = 0; j < soundInfo.channels; j++) {
+						
+						for (int j = 0; j < soundFile->channels(); j++) {
 							average_sample += *sample_value;
 							sample_value ++;
 						}
-					
-						average_sample /= double(soundInfo.channels);
+						
+						average_sample /= double(soundFile->channels());
 						sample_array.addValue(average_sample);
 					}
 				}
 			
 				// The first hop or two will not necessarily be a full frame's worth of data.
-				if (sample_array.getSize() == sample_array.getMaxSize() && readcount == samples_per_hop) {
+				if (sample_array.getSize() == sample_array.getMaxSize()) {
 					// Calculate sample features.
 					featureSet->calculateSampleFeatures(&sample_array);
-				
+					
 					// Window the time-domain signal for STFT.
 					for (int i = 0; i < getSamplesPerFrame(); i++)
 						windowed_array.addValue(sample_array.getValue(i) * window[i]);
-				
+					
 					// Perform STFT.
 					fft.calculate();
 				
@@ -286,15 +262,12 @@ namespace Sirens {
 				
 					// Calculate spectral features.
 					featureSet->calculateSpectralFeatures(&spectrum_array);
-				
 					frame_number = frame_number + 1;
 				}
 			}
-		
+			
 			// Cleanup.
-			delete [] hop_samples;
 			delete [] window;
-		} else
-			throw SoundNotLoadedException();
+		} 
 	}
 }
