@@ -9,7 +9,7 @@ Any application using Sirens also needs to link against [FFTW](http://www.fftw.o
 	g++ myproject.cpp -lsirens -lfftw3 -lpthread
 
 # Installation
-First make sure you have the [FFTW](http://www.fftw.org) library installed. Sirens uses the [SCons](http://www.scons.org) build system. To install, perform the following command in the project's directory:
+Sirens relies on [FFTW](http://www.fftw.org) and [SCons](http://www.scons.org). To install, perform the following command in the project's directory:
 
 	sudo scons install
 
