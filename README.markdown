@@ -22,14 +22,14 @@ If you do not have root access, you may have troubles installing Sirens. In this
 
 	scons install --prefix=$HOME
 
-Additionally, if you need to point the Sirens install to a specific directory to find the FFTW or libsndfile headers, you can specify any additional parameters to the compiler using $CFLAGS and $LDFLAGS. For example, to use ~/include/fftw3.h, ~/lib/fftw3.a, and so on:
+Additionally, if you need to point the Sirens install to a specific directory to find FFTW headers, you can specify any additional parameters to the compiler using $CFLAGS and $LDFLAGS. For example, to use ~/include/fftw3.h, ~/lib/fftw3.a, and so on:
 
 	export CFLAGS=-I$HOME/include
 	export LDFLAGS=-L$HOME/lib
 	scons install --prefix=$HOME
 
 # Tutorial
-Coming sometime. See the examples/ directory for some ideas.
+Eventually. See the examples/ directory for some ideas.
 
 # Upcoming changes
 There are a number of tasks planned for improving Sirens. See TODO.markdown. 
