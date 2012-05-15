@@ -55,7 +55,7 @@ library = environment.Library('sirens', compile_source)
 
 # Examples.
 for example in ['segmentcsv', 'segmentation', 'retrieval', 'simple_retrieval', 'features']:
-	environment.Program('examples/' + example + '.cpp', LIBS=['sirens', 'fftw3'], LIBPATH='.')
+	environment.Program('examples/' + example + '.cpp', LIBS=['sirens', 'fftw3', 'pthread'], LIBPATH='.')
 
 # Install library.
 environment.Install('$PREFIX/lib', library)

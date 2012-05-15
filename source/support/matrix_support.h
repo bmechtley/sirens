@@ -18,13 +18,13 @@
 #ifndef __MATRIX_SUPPORT_H__
 #define __MATRIX_SUPPORT_H__
 
-#include "boost/numeric/ublas/vector.hpp"
-#include "boost/numeric/ublas/vector_proxy.hpp"
-#include "boost/numeric/ublas/matrix.hpp"
-#include "boost/numeric/ublas/matrix_proxy.hpp"
-#include "boost/numeric/ublas/triangular.hpp"
-#include "boost/numeric/ublas/operation.hpp"
-#include "boost/numeric/ublas/lu.hpp"
+#include "../boost/vector.hpp"
+#include "../boost/vector_proxy.hpp"
+#include "../boost/matrix.hpp"
+#include "../boost/matrix_proxy.hpp"
+#include "../boost/triangular.hpp"
+#include "../boost/operation.hpp"
+#include "../boost/lu.hpp"
 using namespace boost::numeric;
 
 namespace Sirens {
