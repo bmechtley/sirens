@@ -124,7 +124,7 @@ namespace Sirens {
 	 * Segmentation. *
 	 *---------------*/
 	
-	SegmentationParameters* Feature::getSegmentationParameters() {
+	SegmentationParameters* Feature::parameters() {
 		return segmentationParameters;
 	}
 	

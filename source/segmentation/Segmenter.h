@@ -97,6 +97,21 @@ namespace Sirens {
 		}
 	};
 	
+	class CostIndex {
+	public:
+		double cost;
+		int index;
+		
+		CostIndex() {
+			cost = 0;
+			index = 0;
+		}
+		
+		inline bool operator<(const CostIndex& ci) const {
+			return cost < ci.cost;
+		}
+	};
+	
 	class Segmenter {
 	private:
 		FeatureSet* featureSet;
@@ -117,7 +132,7 @@ namespace Sirens {
 		// Viterbi.
 		vector<vector<double> > costs;					// Costs of every possible state transition.
 		vector<vector<int> > psi;						// Stored state sequences.
-		vector<double> oldCosts;						// Minimum cost list for previous frame.
+		vector<CostIndex> oldCosts;						// Minimum cost list for previous frame.
 		
 		// Distributions for Viterbi.
 		vector<vector<ViterbiDistribution> > maxDistributions;				// Distributions that correspond to minimum cost transitions.
@@ -132,9 +147,11 @@ namespace Sirens {
 		
 		vector<int> modes;
 		int states;
+		int beams;
+		void(* progressCallback)(int, int);
 		
 	public:	
-		Segmenter(double p_new = 0, double p_old = 0);
+		Segmenter(double p_new = 0, double p_old = 0, int beams = -1);
 		~Segmenter();
 		
 		// Features.
@@ -142,13 +159,14 @@ namespace Sirens {
 		FeatureSet* getFeatureSet();
 		
 		// Attributes.
-		void setPNew(double value);
-		void setPOff(double value);
-		void setDelay(int value);
+		void setProgressCallback(void(*callback)(int, int)) {progressCallback = callback;}
+		void setPNew(double value) {pNew = value;}
+		void setPOff(double value) {pOff = value;}
+		void setBeams(int value) {beams = value;}
 		
-		double getPNew();
-		double getPOff();
-		int getDelay();
+		double getPNew() {return pNew;}
+		double getPOff() {return pOff;}
+		int getBeams() {return beams;}
 		
 		// Initialization.
 		void createModeLogic();

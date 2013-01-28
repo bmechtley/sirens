@@ -64,43 +64,37 @@ int main(int argc, char** argv) {
 			cout << "2. Initializing feature parameters." << endl;
 			
 			Loudness loudness(sound.getFrameCount());
-			loudness.setMin(-60);
-			loudness.setMax(0);
-			loudness.getSegmentationParameters()->setAlpha(0.15);
-			loudness.getSegmentationParameters()->setR(0.0098);
-			loudness.getSegmentationParameters()->setCStayOff(0.0015);
-			loudness.getSegmentationParameters()->setCTurnOn(0.085);
-			loudness.getSegmentationParameters()->setCTurnOff(0.085);
-			loudness.getSegmentationParameters()->setCNewSegment(0.085);
-			loudness.getSegmentationParameters()->setCStayOn(0.05);
-			loudness.getSegmentationParameters()->setPLagPlus(0.75);
-			loudness.getSegmentationParameters()->setPLagMinus(0.75);
+			loudness.parameters()->alpha = 0.15;
+			loudness.parameters()->r = 0.0098;
+			loudness.parameters()->cStayOff = 0.0015;
+			loudness.parameters()->cTurnOn = 0.085;
+			loudness.parameters()->cTurnOff = 0.085;
+			loudness.parameters()->cNewSegment = 0.085;
+			loudness.parameters()->cStayOn = 0.05;
+			loudness.parameters()->pLagPlus = 0.75;
+			loudness.parameters()->pLagMinus = 0.75;
 			
 			SpectralCentroid spectral_centroid(sound.getFrameCount(), sound.getSpectrumSize(), sound.getSampleRate());
-			spectral_centroid.setMin(0.4994);
-			spectral_centroid.setMax(25.7848);
-			spectral_centroid.getSegmentationParameters()->setAlpha(0.05);
-			spectral_centroid.getSegmentationParameters()->setR(0.00000196);
-			spectral_centroid.getSegmentationParameters()->setCStayOff(0.0000933506);
-			spectral_centroid.getSegmentationParameters()->setCTurnOn(0.85);
-			spectral_centroid.getSegmentationParameters()->setCTurnOff(0.85);
-			spectral_centroid.getSegmentationParameters()->setCNewSegment(0.85);
-			spectral_centroid.getSegmentationParameters()->setCStayOn(0.0025296018);
-			spectral_centroid.getSegmentationParameters()->setPLagPlus(0.75);
-			spectral_centroid.getSegmentationParameters()->setPLagMinus(0.075);
+			spectral_centroid.parameters()->alpha = 0.05;
+			spectral_centroid.parameters()->r = 0.00000196;
+			spectral_centroid.parameters()->cStayOff = 0.0000933506;
+			spectral_centroid.parameters()->cTurnOn = 0.85;
+			spectral_centroid.parameters()->cTurnOff = 0.85;
+			spectral_centroid.parameters()->cNewSegment = 0.85;
+			spectral_centroid.parameters()->cStayOn = 0.0025296018;
+			spectral_centroid.parameters()->pLagPlus = 0.75;
+			spectral_centroid.parameters()->pLagMinus = 0.075;
 			
 			SpectralSparsity spectral_sparsity(sound.getFrameCount());
-			spectral_sparsity.setMin(0);
-			spectral_sparsity.setMax(0.6509);
-			spectral_sparsity.getSegmentationParameters()->setAlpha(0.05);
-			spectral_sparsity.getSegmentationParameters()->setR(0.0196);
-			spectral_sparsity.getSegmentationParameters()->setCStayOff(0.001833506);
-			spectral_sparsity.getSegmentationParameters()->setCTurnOn(0.85);
-			spectral_sparsity.getSegmentationParameters()->setCTurnOff(0.85);
-			spectral_sparsity.getSegmentationParameters()->setCNewSegment(0.85);
-			spectral_sparsity.getSegmentationParameters()->setCStayOn(0.009296018);
-			spectral_sparsity.getSegmentationParameters()->setPLagPlus(0.75);
-			spectral_sparsity.getSegmentationParameters()->setPLagMinus(0.75);
+			spectral_sparsity.parameters()->alpha = 0.05;
+			spectral_sparsity.parameters()->r = 0.0196;
+			spectral_sparsity.parameters()->cStayOff = 0.001833506;
+			spectral_sparsity.parameters()->cTurnOn = 0.85;
+			spectral_sparsity.parameters()->cTurnOff = 0.85;
+			spectral_sparsity.parameters()->cNewSegment = 0.85;
+			spectral_sparsity.parameters()->cStayOn = 0.009296018;
+			spectral_sparsity.parameters()->pLagPlus = 0.75;
+			spectral_sparsity.parameters()->pLagMinus = 0.75;
 			
 			FeatureSet feature_set;
 			feature_set.addSampleFeature(&loudness);
@@ -120,7 +114,7 @@ int main(int argc, char** argv) {
 			 *--------------------------------*/
 			cout << "4. Segmenting sound." << endl;
 			
-			Segmenter segmenter(0.00000000001, 0.00000000001);
+			Segmenter segmenter(0.00000000001, 0.00000000001, 5);
 			segmenter.setFeatureSet(&feature_set);
 			segmenter.segment();
 			

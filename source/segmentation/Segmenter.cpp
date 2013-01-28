@@ -17,14 +17,17 @@
 
 #include "Segmenter.h"
 
+#include <algorithm>
 #include <cmath>
 using namespace std;
 
 namespace Sirens {
-	Segmenter::Segmenter(double p_new, double p_off) {
+	Segmenter::Segmenter(double p_new, double p_off, int beams) {
 		setPNew(p_new);
 		setPOff(p_off);
+		setBeams(beams);
 		
+		progressCallback = NULL;
 		featureSet = NULL;
 		initialized = false;
 	}
@@ -101,27 +104,31 @@ namespace Sirens {
 	 *-------------*/
 	
 	void Segmenter::viterbi(int frame) {
+		partial_sort(oldCosts.begin(), oldCosts.begin() + beams, oldCosts.end());
+		
 		// Compute costs for all possible next states.
-		for (int new_index = 0; new_index < states; new_index++) {
-			for (int old_index = 0; old_index < states; old_index++) {
-				double cost_temp = 0;
+		for (int ni = 0; ni < states; ni++) {
+			for (int beam = 0; beam < beams; beam++) {
+				int oi = oldCosts[beam].index;
 				
-				for (int feature_index = 0; feature_index < features.size(); feature_index++) {
-					SegmentationParameters* parameters = features[feature_index]->getSegmentationParameters();
+				double cost = 0;
+				
+				for (int fi = 0; fi < features.size(); fi++) {
+					SegmentationParameters* parameters = features[fi]->parameters();
 					
-					newDistributions[feature_index][new_index][old_index].cost = KalmanLPF(
-						y[feature_index],
-						newDistributions[feature_index][new_index][old_index].covariance,
-						newDistributions[feature_index][new_index][old_index].mean,
-						parameters->getR(),
-						parameters->q[modeMatrix[feature_index + 1][old_index] - 1][modeMatrix[feature_index + 1][new_index] - 1],
-						parameters->getAlpha()
+					newDistributions[fi][ni][oi].cost = KalmanLPF(
+						y[fi],
+						newDistributions[fi][ni][oi].covariance,
+						newDistributions[fi][ni][oi].mean,
+						parameters->r,
+						parameters->q[modeMatrix[fi + 1][oi] - 1][modeMatrix[fi + 1][ni] - 1],
+						parameters->alpha
 					);
 					
-					cost_temp += newDistributions[feature_index][new_index][old_index].cost;
+					cost += newDistributions[fi][ni][oi].cost;
 				}
 				
-				costs[new_index][old_index] = oldCosts[old_index] + cost_temp - probabilityMatrix[new_index][old_index];
+				costs[ni][oi] = oldCosts[beam].cost + cost - probabilityMatrix[ni][oi];
 			}
 		}
 		
@@ -129,7 +136,8 @@ namespace Sirens {
 		for (int i = 0; i < states; i++) {
 			vector<double>::iterator minimum_iterator = min_element(costs[i].begin(), costs[i].end());
 			psi[frame][i] = distance(costs[i].begin(), minimum_iterator);
-			oldCosts[i] = *minimum_iterator;
+			oldCosts[i].cost = *minimum_iterator;
+			oldCosts[i].index = i;
 		}
 		
 		// Copy best filtered distributions.
@@ -172,26 +180,6 @@ namespace Sirens {
 		return featureSet;
 	}
 	
-	/*-------------*
-	 * Attributes. *
-	 *-------------*/
-	
-	void Segmenter::setPNew(double value) {
-		pNew = value;
-	}
-	
-	void Segmenter::setPOff(double value) {
-		pOff = value;
-	}
-	
-	double Segmenter::getPNew() {
-		return pNew;
-	}
-	
-	double Segmenter::getPOff() {
-		return pOff;
-	}
-	
 	/*-----------------*
 	 * Initialization. *
 	 *-----------------*/
@@ -219,8 +207,8 @@ namespace Sirens {
 		
 	// Create prior probability table for switching between all pairs of states.
 	void Segmenter::createProbabilityTable() {
-		int mode_old, mode_new, feature_mode_old, feature_mode_new;
-		double gate_probability;
+		int mold, mnew, fmold, fmnew;
+		double gate;
 		
 		// Create the matrix that defines feature modes (plus global mode) for each possible state index.
 		vector<int> int_row(states);
@@ -239,18 +227,18 @@ namespace Sirens {
 		
 		for (int i = 0; i < states; i++) {
 			for (int j = 0; j < states; j++) {
-				mode_old = modeMatrix[0][i];
-				mode_new = modeMatrix[0][j];
-				gate_probability = 1.0;
+				mold = modeMatrix[0][i];
+				mnew = modeMatrix[0][j];
+				gate = 1.0;
 				
 				for (int k = 0; k < features.size(); k++) {
-					feature_mode_old = modeMatrix[k + 1][i];
-					feature_mode_new = modeMatrix[k + 1][j];
+					fmold = modeMatrix[k + 1][i];
+					fmnew = modeMatrix[k + 1][j];
 					
-					gate_probability *= features[k]->getSegmentationParameters()->fusionLogic[mode_old - 1][mode_new - 1][feature_mode_old - 1][feature_mode_new - 1];
+					gate *= features[k]->parameters()->fusion[mold - 1][mnew - 1][fmold - 1][fmnew - 1];
 				}
 				
-				probabilityMatrix[j][i] = log(modeTransitions[mode_old - 1][mode_new - 1] * gate_probability);
+				probabilityMatrix[j][i] = log(modeTransitions[mold - 1][mnew - 1] * gate);
 			}
 		}
 	}
@@ -260,9 +248,12 @@ namespace Sirens {
 		if (!initialized) {
 			// Initialize prior distributions.
 			for (int i = 0; i < features.size(); i++)
-				features[i]->getSegmentationParameters()->initialize();
+				features[i]->parameters()->initialize();
 			
 			states = pow(3.0, double(features.size() + 1));
+			
+			if (beams == -1)
+				beams = states;
 			
 			createModeLogic();
 			createProbabilityTable();
@@ -273,7 +264,7 @@ namespace Sirens {
 			// Initialize cost vectors used by Viterbi.
 			vector<double> cost_vector = vector<double>(states, 0);
 			costs = vector<vector<double> >(states, cost_vector);
-			oldCosts = vector<double>(states, 0);
+			oldCosts = vector<CostIndex>(states);
 				
 			// Best state transitions for each state in each frame.
 			vector<int> psi_row = vector<int>(states, 0);
@@ -288,10 +279,10 @@ namespace Sirens {
 			
 			for (int i = 0; i < features.size(); i++) {
 				for (int a = 0; a < 2; a++) {
-					maxDistributions[i][0].mean[a] = features[i]->getSegmentationParameters()->xInit[a];
+					maxDistributions[i][0].mean[a] = features[i]->parameters()->xInit[a];
 					
 					for (int b = 0; b < 2; b++)
-						maxDistributions[i][0].covariance[a][b] = features[i]->getSegmentationParameters()->pInit[a][b];
+						maxDistributions[i][0].covariance[a][b] = features[i]->parameters()->pInit[a][b];
 				}
 			}
 			
@@ -315,6 +306,9 @@ namespace Sirens {
 			
 			// For each frame, perform Viterbi and get the optimal state sequence.
 			for (int i = 0; i < frames; i++) {
+				if (progressCallback != NULL)
+					progressCallback(i, frames);
+				
 				for (int j = 0; j < features.size(); j++)
 					y[j] = features[j]->getHistoryFrame(i);
 				
@@ -324,7 +318,7 @@ namespace Sirens {
 			vector<int> state_sequence(frames, 0);
 			
 			// Find the next state with the least cost and choose it to assign to the state of the last frame.
-			vector<double>::iterator minimum_cost = min_element(oldCosts.begin(), oldCosts.end());
+			vector<CostIndex>::iterator minimum_cost = min_element(oldCosts.begin(), oldCosts.end());
 			state_sequence[frames - 1] = distance(oldCosts.begin(), minimum_cost);
 			
 			// Find the "off" states and "on"/"onset" states that have minimum cost. 

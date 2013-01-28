@@ -41,6 +41,11 @@ using namespace std;
 #include "../source/support/string_support.h"
 using namespace Sirens;
 
+void progress_callback(int frame, int frames) {
+	if (frame % (frames / 50) == 0)
+		cout << "\t" << int(double(frame) / double(frames) * 100) << "\%" << endl;
+}
+
 int main(int argc, char** argv) {
 	if (argc < 3) {
 		cerr << "Usage: segmentcsv features parameters [samples_per_hop=882]" << endl;
@@ -94,6 +99,7 @@ int main(int argc, char** argv) {
 		ifstream paramsfile;
 		paramsfile.open(argv[2]);
 		int i = 0;
+		int beams = 0;
 		double pon = 0;
 		double poff = 0;
 		
@@ -104,20 +110,21 @@ int main(int argc, char** argv) {
 				getline(paramsfile, line);
 				tokenise(line, tokens, ", ");
 				
-				if (i == 0 && tokens.size() >= 2) {
+				if (i == 0 && tokens.size() >= 3) {
 					pon = string_to_double(tokens[0]);
 					poff = string_to_double(tokens[1]);
+					beams = int(string_to_double(tokens[2]));
 				} else if (tokens.size() >= 9) {
-					SegmentationParameters* params = features[i - 1]->getSegmentationParameters();
-					params->setAlpha(string_to_double(tokens[0]));
-					params->setR(string_to_double(tokens[1]));
-					params->setCStayOff(string_to_double(tokens[2]));
-					params->setCTurnOn(string_to_double(tokens[3]));
-					params->setCTurnOff(string_to_double(tokens[4]));
-					params->setCNewSegment(string_to_double(tokens[5]));
-					params->setCStayOn(string_to_double(tokens[6]));
-					params->setPLagPlus(string_to_double(tokens[7]));
-					params->setPLagMinus(string_to_double(tokens[8]));
+					SegmentationParameters* params = features[i - 1]->parameters();
+					params->alpha = string_to_double(tokens[0]);
+					params->r = string_to_double(tokens[1]);
+					params->cStayOff = string_to_double(tokens[2]);
+					params->cTurnOn = string_to_double(tokens[3]);
+					params->cTurnOff = string_to_double(tokens[4]);
+					params->cNewSegment = string_to_double(tokens[5]);
+					params->cStayOn = string_to_double(tokens[6]);
+					params->pLagPlus = string_to_double(tokens[7]);
+					params->pLagMinus = string_to_double(tokens[8]);
 				}
 				
 				i++;
@@ -127,21 +134,22 @@ int main(int argc, char** argv) {
 		paramsfile.close();
 		
 		cout << "3. Summary." << endl;
-			
+		cout << "\ton: " << pon << endl << "\toff: " << poff << endl << "\tbeams: " << beams << endl << endl;
+		
 		for (int i = 0; i < features.size(); i++) {
-			SegmentationParameters* params = features[i]->getSegmentationParameters();
+			SegmentationParameters* params = features[i]->parameters();
 			
 			cout << "\tFeature " << i << endl <<
 				"\t\t" << features[i]->getHistorySize() << " frames." << endl <<
-				"\t\talpha: " << params->getAlpha() << endl <<
-				"\t\tr: " << params->getR() << endl <<
-				"\t\tstay off: " << params->getCStayOff() << endl <<
-				"\t\tturn on: " << params->getCTurnOn() << endl <<
-				"\t\tturn off: " << params->getCTurnOff() << endl <<
-				"\t\tnew segment: " << params->getCNewSegment() << endl <<
-				"\t\tstay on: " << params->getCStayOn() << endl <<
-				"\t\tlag+: " << params->getPLagPlus() << endl <<
-				"\t\tlag-: " << params->getPLagMinus() << endl << endl;
+				"\t\talpha: " << params->alpha << endl <<
+				"\t\tr: " << params->r << endl <<
+				"\t\tstay off: " << params->cStayOff << endl <<
+				"\t\tturn on: " << params->cTurnOn << endl <<
+				"\t\tturn off: " << params->cTurnOff << endl <<
+				"\t\tnew segment: " << params->cNewSegment << endl <<
+				"\t\tstay on: " << params->cStayOn << endl <<
+				"\t\tlag+: " << params->pLagPlus << endl <<
+				"\t\tlag-: " << params->pLagMinus << endl << endl;
 		}
 		
 		// Segment.
@@ -152,8 +160,9 @@ int main(int argc, char** argv) {
 		for (int i = 0; i < features.size(); i++)
 			feature_set.addSampleFeature(features[i]);
 		
-		Segmenter segmenter(pon, poff);
+		Segmenter segmenter(pon, poff, beams);
 		segmenter.setFeatureSet(&feature_set);
+		segmenter.setProgressCallback(*progress_callback);
 		segmenter.segment();
 			
 		vector<vector<int> > segments = segmenter.getSegments();

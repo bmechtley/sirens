@@ -81,7 +81,8 @@ namespace Sirens {
 	class SegmentationParameters {
 	protected:
 		bool initialized;
-		
+	
+	public:
 		// Feature normalization.
 		double minFeatureValue;
 		double maxFeatureValue;
@@ -100,53 +101,20 @@ namespace Sirens {
 		double cStayOff;
 		double cStayOn;
 		double cTurnOn;
-		double cTurningOn;
 		double cTurnOff;
 		double cNewSegment;
-				
-		void createQTable();		
-		void createFusionLogic();
-		
-	public:
-		SegmentationParameters();
-		~SegmentationParameters();
-		
-		// Attributes.
-		void setMinFeatureValue(double value);
-		void setMaxFeatureValue(double value);
-		double getMinFeatureValue();
-		double getMaxFeatureValue();
-	
-		void setPLagPlus(double value);
-		void setPLagMinus(double value);
-		double getPLagPlus();
-		double getPLagMinus();
-	
-		void setAlpha(double value);
-		double getAlpha();
-		
-		void setR(double value);
-		void setCStayOff(double value);
-		void setCStayOn(double value);
-		void setCTurnOn(double value);
-		void setCTurnOff(double value);
-		void setCTurningOn(double value);
-		void setCNewSegment(double value);
-		double getR();
-		double getCStayOff();
-		double getCStayOn();
-		double getCTurnOn();
-		double getCTurnOff();
-		double getCTurningOn();
-		double getCNewSegment();
 		
 		double xInit[2];
 		double pInit[2][2];
 		double q[3][3];
-		double fusionLogic[3][3][3][3];
+		double fusion[3][3][3][3];
 		
-		// Operations.
-		void initialize();
+		SegmentationParameters();
+		~SegmentationParameters();
+		
+		void initialize();				
+		void createQTable();		
+		void createFusionLogic();
 	};
 }
 

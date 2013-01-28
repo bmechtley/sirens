@@ -74,7 +74,7 @@ namespace Sirens {
 		double getMin();
 		
 		// Segmentation.
-		SegmentationParameters* getSegmentationParameters();
+		SegmentationParameters* parameters();
 		
 		// String representation.
 		virtual string toString();
