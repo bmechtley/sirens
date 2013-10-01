@@ -79,7 +79,7 @@ install_headers = {
         'Sound.h', 
         'Thread.h', 
         'Sirens.h'
-    ]
+    ]]
 }
 
 # Source.
