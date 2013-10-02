@@ -31,6 +31,8 @@ int main(int argc, char** argv) {
 		cerr << "Usage: similarity_first_csv primaryfile file1 . . . fileN" << endl;
 		return 1;
 	} else {
+		int status = 0;
+
 		// Open sound.
 		vector<string> files;
 		
@@ -122,29 +124,30 @@ int main(int argc, char** argv) {
 		// Compare each sound to itself and the other sound.
 		cout << "Comparing sounds . . . ";
 		
-		ublas::vector<double> likelihood(files.size());
+		ublas::vector<double> likelihood(files.size() - 1);
 		
 		for (int i = 1; i < files.size(); i++)
 			likelihood(i - 1) = comparators[0]->compare(comparators[i]);
 		
-		cout << "done." << endl << endl;
+		cout << "done." << endl;
 		
 		// Save to CSV.
-		cout << "Saving likelihood vector to " << csvfn << " . . . ";
 		ofstream csvfile(csvfn.c_str());
 
-		ublas::vector<double>::iterator likit;
-
 		if (csvfile.is_open()) {
-			for (likit = likelihood.begin(); likit != likelihood.end(); likit++) {
-				csvfile << *likit << "\n";
+			cout << "Saving likelihood vector to " << csvfn << " . . . ";
+
+			for (int i = 1; i < files.size(); i++) {
+				csvfile << files[i] << "," << likelihood(i - 1) << endl;
 			}
 
 			csvfile.close();
+			cout << "done." << endl;
+		} else {
+			cerr << "Error: Could not open " << csvfn << " for writing." << endl;
+			status = 1;
 		}
 		
-		cout << "done." << endl;
-
 		// Clean up.
 		delete sound;
 		
@@ -158,6 +161,6 @@ int main(int argc, char** argv) {
 			delete harmonicity[i];
 		}
 		
-		return 0;
+		return status;
 	}
 }
