@@ -3,16 +3,18 @@
     
     This file is part of Sirens.
     
-    Sirens is free software: you can redistribute it and/or modify it under the terms 
-    of the GNU Lesser General Public License as  published by the Free Software 
-    Foundation, either version 3 of the License, or (at your option) any later version.
+    Sirens is free software: you can redistribute it and/or modify it under the 
+    terms of the GNU Lesser General Public License as  published by the Free 
+    Software Foundation, either version 3 of the License, or (at your option)
+    any later version.
     
-    Sirens is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-    PURPOSE.  See the GNU General Public License for more details.
+    Sirens is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+    FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+    details.
     
-    You should have received a copy of the GNU Lesser General Public License along
-    with Sirens. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU Lesser General Public License
+    along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <iostream>
@@ -28,7 +30,9 @@ using namespace Sirens;
 
 int main(int argc, char** argv) {
     if (argc < 2) {
-        cerr << "Usage: similarity_first_csv csvfile primaryfile file1 . . . fileN" << endl;
+        cerr << "Usage: similarity_first_csv csvfile "
+            << "primaryfile file1 . . . fileN" << endl;
+
         return 1;
     } else {
         int status = 0;
@@ -42,8 +46,8 @@ int main(int argc, char** argv) {
             files.push_back(argv[i]);
         
         /* 
-            We have three of everything, because we have two files and 
-            (unfortunately) features can't be shared.
+            We have three of everything, because we have two files
+            and (unfortunately) features can't be shared.
         */
 
         vector<Sound*> sounds(files.size());
@@ -66,8 +70,8 @@ int main(int argc, char** argv) {
             sound->open(files[i]);
             
             /* 
-                The first frame of TransientIndex is junk, so record everything 
-                except the first frame.
+                The first frame of TransientIndex is junk, so 
+                record everything except the first frame.
             */
 
             int frames = sound->getFrameCount() - 1;
@@ -126,12 +130,14 @@ int main(int argc, char** argv) {
 
         if (csvfile.is_open()) {
             for (int i = 1; i < files.size(); i++) {
-                csvfile << files[0] << "," << files[i] << "," << likelihood(i - 1) << endl;
+                csvfile << files[0] << "," << files[i] << "," 
+                    << likelihood(i - 1) << endl;
             }
 
             csvfile.close();
         } else {
-            cerr << "Error: Could not open " << csvfn << " for writing." << endl;
+            cerr << "Error: Could not open " << csvfn 
+                << " for writing." << endl;
             status = 1;
         }
 

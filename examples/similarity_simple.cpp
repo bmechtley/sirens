@@ -3,16 +3,18 @@
 	
 	This file is part of Sirens.
 	
-	Sirens is free software: you can redistribute it and/or modify it under the terms 
-	of the GNU Lesser General Public License as  published by the Free Software 
-	Foundation, either version 3 of the License, or (at your option) any later version.
+	Sirens is free software: you can redistribute it and/or modify it under the
+	terms of the GNU Lesser General Public License as  published by the Free
+	Software Foundation, either version 3 of the License, or (at your option)
+	any later version.
 	
-	Sirens is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-	PURPOSE.  See the GNU General Public License for more details.
+	Sirens is distributed in the hope that it will be useful, but WITHOUT ANY
+	WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+	FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+	details.
 	
-	You should have received a copy of the GNU Lesser General Public License along
-	with Sirens. If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU Lesser General Public License
+	along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <iostream>
@@ -36,7 +38,11 @@ int main(int argc, char** argv) {
 		for (int i = 1; i < argc; i++)
 			files.push_back(argv[i]);
 		
-		// We have three of everything, because we have two files and (unfortunately) features can't be shared.
+		/* 
+			We have three of everything, because we have two files 
+			and (unfortunately) features can't be shared.
+		*/
+
 		vector<Sound*> sounds(files.size());
 		vector<Loudness*> loudness(files.size());
 		vector<TemporalSparsity*> temporal_sparsity(files.size());
@@ -58,18 +64,37 @@ int main(int argc, char** argv) {
 			// Initialize the sound file.
 			sound->open(files[i]);
 		
-			// The first frame of TransientIndex is junk, so record everything except the first frame.
+			/* 
+				The first frame of TransientIndex is junk, so 
+				record everything except the first frame.
+			*/
+
 			int frames = sound->getFrameCount() - 1;
 			int spectrum_size = sound->getSpectrumSize();
 			int sample_rate = sound->getSampleRate();
 		
 			// Initialize the features.
 			loudness[i] = new Loudness(frames);
-			transient_index[i] = new TransientIndex(frames, spectrum_size, sample_rate);
 			temporal_sparsity[i] = new TemporalSparsity(frames);
 			spectral_sparsity[i] = new SpectralSparsity(frames);
-			spectral_centroid[i] = new SpectralCentroid(frames, spectrum_size, sample_rate);
-			harmonicity[i] = new Harmonicity(frames, spectrum_size, sample_rate);
+
+			transient_index[i] = new TransientIndex(
+				frames, 
+				spectrum_size, 
+				sample_rate
+			);
+
+			spectral_centroid[i] = new SpectralCentroid(
+				frames, 
+				spectrum_size, 
+				sample_rate
+			);
+
+			harmonicity[i] = new Harmonicity(
+				frames, 
+				spectrum_size, 
+				sample_rate
+			);
 		
 			// Initialize the feature set.
 			feature_sets[i] = new FeatureSet();
@@ -91,7 +116,7 @@ int main(int argc, char** argv) {
 		}
 		
 		cout << "Comparing sounds . . . ";
-	
+		
 		ublas::matrix<double> likelihood(files.size(), files.size());
 	
 		// Compare each sound to itself and the other sound.
