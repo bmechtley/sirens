@@ -27,7 +27,7 @@ using namespace Sirens;
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
-		cerr << "Usage: retrieval file1 file2 . . . fileN" << endl;
+		cerr << "Usage: similarity file1 file2 . . . fileN" << endl;
 		return 1;
 	} else {
 		// Open sound.

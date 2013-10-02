@@ -28,7 +28,7 @@ using namespace Sirens;
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
-		cerr << "Usage: retrieval file1 file2 . . . fileN" << endl;
+		cerr << "Usage: similarity_first_csv primaryfile file1 . . . fileN" << endl;
 		return 1;
 	} else {
 		// Open sound.
@@ -144,7 +144,7 @@ int main(int argc, char** argv) {
 		}
 		
 		cout << "done." << endl;
-		
+
 		// Clean up.
 		delete sound;
 		

@@ -27,7 +27,7 @@ using namespace Sirens;
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
-		cerr << "Usage: segmentation [--save] file" << endl;
+		cerr << "Usage: segment [--save] file" << endl;
 		return 1;
 	} else {
 		int save = 0;

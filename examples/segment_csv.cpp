@@ -48,7 +48,7 @@ void progress_callback(int frame, int frames) {
 
 int main(int argc, char** argv) {
 	if (argc < 3) {
-		cerr << "Usage: segmentcsv features parameters [samples_per_hop=882]" << endl;
+		cerr << "Usage: segment_csv features parameters [samples_per_hop=882]" << endl;
 		return 1;
 	} else {
 		double samples_per_hop = 882;
