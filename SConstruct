@@ -120,12 +120,34 @@ if GetOption('debug_symbols'):
 library = environment.Library('sirens', compile_source)
 
 # Examples.
-for example in ['segmentcsv', 'segmentation', 'retrieval', 'simple_retrieval', 'features']:
-    environment.Program('examples/' + example + '.cpp', LIBS=['sirens', 'fftw3', 'pthread'], LIBPATH='.')
+for example in [
+    'segment',
+    'segment_csv', 
+    'similarity', 
+    'similarity_simple',
+    'similarity_first_csv',
+    'features'
+]:
+    environment.Program(
+        'examples/' + example + '.cpp', 
+        LIBS=['sirens', 'fftw3', 'pthread'], 
+        LIBPATH='.'
+    )
 
 # Install library.
 environment.Install('$PREFIX/lib', library)
 for header_path in install_headers:
-    environment.Install('$PREFIX/include/sirens' + header_path, install_headers[header_path])
+    environment.Install(
+        '$PREFIX/include/sirens' + header_path, 
+        install_headers[header_path]
+    )
 
-environment.Alias('install', ['$PREFIX/lib', '$PREFIX/include/sirens', '$PREFIX/include/sirens/features', '$PREFIX/include/sirens/retrieval', '$PREFIX/include/sirens/segmentation', '$PREFIX/include/sirens/stk'])
+environment.Alias('install', [
+    '$PREFIX/lib', 
+    '$PREFIX/include/sirens', 
+    '$PREFIX/include/sirens/features', 
+    '$PREFIX/include/sirens/retrieval', 
+    '$PREFIX/include/sirens/segmentation', 
+    '$PREFIX/include/sirens/stk']
+)
+
