@@ -95,10 +95,10 @@ environment = Environment(CC='gcc')
 environment.Append(PREFIX = GetOption('prefix'))
 
 # STK defines.
-environment.append(CCFLAGS="-D__MACOSX_CORE__")
+environment.Append(CCFLAGS="-D__MACOSX_CORE__")
 
 if sys.byteorder == 'little':
-    environment.append(CCFLAGS="-D__LITTLE_ENDIAN__")
+    environment.Append(CCFLAGS="-D__LITTLE_ENDIAN__")
 
 # Compile with debug symbols.
 if GetOption('debug_symbols'):
