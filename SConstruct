@@ -91,9 +91,16 @@ compile_source.extend(Glob(os.path.join(source_prefix, 'segmentation/*.cpp')))
 compile_source.extend(Glob(os.path.join(source_prefix, 'stk/*.cpp')))
 
 # Environment.
-environment = Environment(CC='gcc', CCFLAGS='-D__MACOSX_CORE__')
+environment = Environment(CC='gcc')
 environment.Append(PREFIX = GetOption('prefix'))
 
+# STK defines.
+environment.append(CCFLAGS="-D__MACOSX_CORE__")
+
+if sys.byteorder == 'little':
+    environment.append(CCFLAGS="-D__LITTLE_ENDIAN__")
+
+# Compile with debug symbols.
 if GetOption('debug_symbols'):
     environment.Append(CCFLAGS='-g')
 
