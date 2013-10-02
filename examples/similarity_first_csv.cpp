@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
 			cout << "Saving likelihood vector to " << csvfn << " . . . ";
 
 			for (int i = 1; i < files.size(); i++) {
-				csvfile << files[i] << "," << likelihood(i - 1) << endl;
+				csvfile << files[0] << "," << files[i] << "," << likelihood(i - 1) << endl;
 			}
 
 			csvfile.close();
