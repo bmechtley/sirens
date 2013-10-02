@@ -64,7 +64,10 @@ int main(int argc, char** argv) {
 		sound->setHopLength(0.02);
 		
 		for (int i = 0; i < files.size(); i++) {
-			cout << files[i] << " . . . ";
+			cout << files[0] 
+				<< ": " << files[i] 
+				<< " (" << (i + 1) << " / " << files.size() << ")"
+				<< " . . . ";
 			
 			// Initialize the sound file.
 			sound->open(files[i]);
@@ -147,7 +150,7 @@ int main(int argc, char** argv) {
 			cerr << "Error: Could not open " << csvfn << " for writing." << endl;
 			status = 1;
 		}
-		
+
 		// Clean up.
 		delete sound;
 		
