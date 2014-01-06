@@ -1,5 +1,5 @@
 ## Sirens Vamp features
-Sirens is a collection of tools for segmentation, indexing, and retrieval of environmental sounds. For a working version of Sirens, see [sirens](http://github.com/plant/sirens). This folder contains code to create [Vamp](http://vamp-plugins.com) plugins for its base set of features (in case you want to use them apart from Sirens for your own purposes). You can do analyses with these features using audio packages such as [Audacity](http://audacity.sf.net), [Sonic Visualizer](http://www.sonicvisualiser.org/), [Sonic Annotator](http://omras2.org/SonicAnnotator), etc.
+Sirens is a collection of tools for segmentation, indexing, and retrieval of environmental sounds. This folder contains code to create [Vamp](http://vamp-plugins.com) plugins for its base set of features (in case you want to use them apart from Sirens for your own purposes). You can do analyses with these features using audio packages such as [Audacity](http://audacity.sf.net), [Sonic Visualizer](http://www.sonicvisualiser.org/), [Sonic Annotator](http://omras2.org/SonicAnnotator), etc.
 
 Eventually, I'd like to implement Sirens itself to use either Vamp features or CSV input rather than the default set of hard-coded features so that the segmentation/comparison routines can be run on any time-series data.
 
