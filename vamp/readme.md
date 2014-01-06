@@ -12,13 +12,12 @@ Copy the pre-compiled `sirens.dylib` in your Vamp plugins path (You may need to 
 ### Other platforms / from source
 1. Download and install the [Vamp plugin SDK](http://vamp-plugins.org/develop.html) and install it (see the [Developer Documentation](http://vamp-plugins.org/develop.html) for your platform.)
 1. Open up `Makefile` for editing.
-2. Make sure VAMP_SDK_DIR is pointing to the path where you installed the SDK by changing this line:
+2. Make sure VAMP_SDK_DIR is pointing to the path where you installed the SDK by changing this line: `VAMP_SDK_DIR := /usr/local/share/vamp-plugin-sdk`
+3. Comment out the following bits for OSX if that's not your platform and uncomment the bits relevant to your platform.
 
-    `VAMP_SDK_DIR := /usr/local/share/vamp-plugin-sdk`
+OSX configuration bits:
 
-3. Comment out the following bits for OSX if that's not your platform and uncomment the bits relevant to your platform:
-
-    `CXX := g++
+    CXX := g++
     CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -Wall -fPIC
     PLUGIN_EXT := .dylib
     LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list`
