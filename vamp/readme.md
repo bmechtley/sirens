@@ -10,7 +10,7 @@ Copy the pre-compiled `sirens.dylib` in your Vamp plugins path (You may need to 
     cp sirens.dylib ~/Library/Audio/Plug-Ins/Vamp/
 
 ### Other platforms / from source
-1. Download and install the [Vamp plugin SDK](http://vamp-plugins.org/develop.html) and install it (see the [Developer Documentation](http://vamp-plugins.org/develop.html) for your platform.)
+1. Download and install the [Vamp plugin SDK](http://vamp-plugins.org/develop.html) (see the Developer Documentation for your platform.)
 1. Open up `Makefile` for editing.
 2. Make sure VAMP_SDK_DIR is pointing to the path where you installed the SDK by changing this line: `VAMP_SDK_DIR := /usr/local/share/vamp-plugin-sdk`
 3. Comment out the following bits for OSX if that's not your platform and uncomment the bits relevant to your platform.
