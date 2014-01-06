@@ -26,7 +26,7 @@ Any application using Sirens also needs to link against [FFTW](http://www.fftw.o
 
 	g++ myproject.cpp -lsirens -lfftw3 -lpthread
 
-A tutorial will come eventually. See the examples/ directory for some ideas.
+A tutorial will come eventually. See the `examples/` directory for some ideas.
 
 ## Upcoming changes
 There are a number of tasks planned for improving Sirens. See `todo.md`.
