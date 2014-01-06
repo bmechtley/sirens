@@ -1,7 +1,7 @@
 ## Sirens
 Sirens is a library for segmentation, indexing, and retrieval of environmental and natural sounds. In other words, it allows you to break long field recordings into individual sonic "events" and then compare those events in terms of content-based similarity.
 
-In the `vamp` folder, you can also find implementations of the individual temporal/spectral features used in Sirens as [Vamp](http://vamp-plugins.org) plugins. 
+In the `vamp/` folder, you can also find implementations of the individual temporal/spectral features used in Sirens as [Vamp](http://vamp-plugins.org) plugins. 
 
 ## Installation
 Sirens relies on [FFTW](http://www.fftw.org) (for spectral analysis) and [SCons](http://www.scons.org) (for installation). To install, perform the following command in the project's directory:
