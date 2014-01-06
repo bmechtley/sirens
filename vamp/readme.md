@@ -1,21 +1,29 @@
 # Sirens-Vamp
-Sirens is a collection of tools for segmentation, indexing, and retrieval of environmental sounds. For a working version of Sirens, see [sirens](http://github.com/plant/sirens). Sirens-Vamp is a project aimed at implementing the feature extraction and segmentation routines as [Vamp](http://vamp-plugins.com) plugins. In this way, hopefully the code can be more modular. For example, segmentation or retrieval could be done using feature sets more commonly used for music rather than natural sounds. Additionally, one can do analyses with these features using audio packages such as [Audacity](http://audacity.sf.net), [Sonic Visualizer](http://www.sonicvisualiser.org/), [Sonic Annotator](http://omras2.org/SonicAnnotator), and [VamPy](http://www.vamp-plugins.org/vampy.html).
+Sirens is a collection of tools for segmentation, indexing, and retrieval of environmental sounds. For a working version of Sirens, see [sirens](http://github.com/plant/sirens). This folder contains code to create [Vamp](http://vamp-plugins.com) plugins for its base set of features (in case you want to use them apart from Sirens for your own purposes). You can do analyses with these features using audio packages such as [Audacity](http://audacity.sf.net), [Sonic Visualizer](http://www.sonicvisualiser.org/), [Sonic Annotator](http://omras2.org/SonicAnnotator), etc.
 
-Eventually, use of Sirens-Vamp will eclipse that of Sirens, as segmentation can be performed on feature extraction output from Sonic Annotator. Currently, however, the Sirens C++ library benefits from multithreaded feature extraction, which Sonic Annotator does not yet support.
+Eventually, I'd like to implement Sirens itself to use either Vamp features or CSV input rather than the default set of hard-coded features so that the segmentation/comparison routines can be run on any time-series data.
 
 # Installation
 ## OSX
-Grab the [OS X Universal Binary](http://cloud.github.com/downloads/plant/sirens/vamp/sirens-vamp.dylib) and place it in /Library/Audio/Plug-Ins/Vamp or $HOME/Library/Audio/Plug-Ins/Vamp. You can now use the Sirens features from any application that supports Vamp. I strongly suggest [Sonic Visualizer](http://www.sonicvisualiser.org/) for interactively visualizing feature trajectories and [Sonic Annotator](http://omras2.org/SonicAnnotator) for running batch feature extraction processes for input into statistical packages such as Matlab.
+Copy the pre-compiled `sirens.dylib` in your Vamp plugins path (You may need to create the Vamp directory if it does not exist.) e.g.:
+
+    cp sirens.dylib ~/Library/Audio/Plug-Ins/Vamp/
 
 ## Other platforms / from source
-A Makefile is included with the source that contains commented compilation commands for various platforms. Comment out the bits for OS X and uncomment the relevant commands for your platform.
+1. Download and install the [Vamp plugin SDK](http://vamp-plugins.org/develop.html) and install it (see the [Developer Documentation](http://vamp-plugins.org/develop.html) for your platform.)
+1. Open up `Makefile` for editing.
+2. Make sure VAMP_SDK_DIR is pointing to the path where you installed the SDK by changing the line that reads `VAMP_SDK_DIR := /usr/local/share/vamp-plugin-sdk`.
+3. Comment out the following bits for OSX if that's not your platform and uncomment the bits relevant to your platform:
+
+    CXX := g++
+    CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -Wall -fPIC
+    PLUGIN_EXT := .dylib
+    LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list
 
 # Acknowledgements
-Sirens-Vamp is based off research within the [Arts, Media and Engineering](http://ame.asu.edu/) program at [Arizona State University](http://asu.edu/). For more information, the following papers may be of interest:
+Sirens-Vamp is based off research within the [Arts, Media and Engineering](http://ame.asu.edu/) program at [Arizona State University](http://asu.edu/). For more information, the following paper may be of interest:
 
-1. Gordon Wichern, H. Thornburg, B. Mechtley, A. Fink, A Spanias, and K. Tu, “Robust multi-feature segmentation and indexing for natural sound environments,” in _Proc. of IEEE/EURASIP International Workshop on Content Based Multimedia Indexing (CBMI)_, Bordeaux France, July 2007. [(PDF)](http://www.public.asu.edu/~gwichern/CBMI07.pdf)
-2. Gordon Wichern, J. Xue, H. Thornburg, and A. Spanias, “Distortion-aware query-by-example of environmental sounds,” in _Proc. of IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA)_, New Paltz, NY, October 2007. [(PDF)](http://www.public.asu.edu/~gwichern/WASPAA07.pdf)
-3. J. Xue, Gordon Wichern, H. Thornburg, and A. Spanias, “Fast query-by-example of environmental sounds via robust and efficient cluster-based indexing,” in _Proc. of IEEE International Conference on Acoustics Speech and Signal Processing (ICASSP)_, Las Vegas, NV, April 2008. [(PDF)](http://www.public.asu.edu/~gwichern/cluster_ICASSP08.pdf)
+G. Wichern, J. Xue, H. Thornburg, B. Mechtley, and A. Spanias, Segmentation, indexing, and retrieval for environmental and natural sounds, in _IEEE Transactions on Audio, Speech, and Language Processing_, vol. 18, no. 3, pp. 688-707, 2010.
 
 Additionally, work on Sirens is supported by the [National Science Foundation](http://www.nsf.gov/) under Grants NSF IGERT DGE-05-04647 and NSF CISE Research Infrastructure 04-03428.
 
