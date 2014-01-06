@@ -32,7 +32,7 @@ A tutorial will come eventually. See the `examples/` directory for some ideas.
 There are a number of tasks planned for improving Sirens. See `todo.md`.
  
 ## Copyright / Acknowledgements
-Copyright 2009-2012 Arizona State University. Sirens is licensed under the [GNU LGPL](http://creativecommons.org/licenses/LGPL/2.1/). See COPYING.LESSER for details. If you would like to use Sirens for a commercial application or have other difficulties with its licensing restrictions, please contact [Brandon Hawley on Github](http://www.github.com/plant/).
+Copyright 2009-2012 Arizona State University. Sirens is licensed under the [GNU LGPL](http://creativecommons.org/licenses/LGPL/2.1/). See COPYING.LESSER for details. If you would like to use Sirens for a commercial application or have other difficulties with its licensing restrictions, please contact [Brandon Mechtley on Github](http://www.github.com/plant/).
 
 Sirens is based off research within the [Arts, Media and Engineering](http://ame.asu.edu/) program at [Arizona State University](http://asu.edu/). Additionally, work on Sirens is supported by the [National Science Foundation](http://www.nsf.gov/) under Grants NSF IGERT DGE-05-04647 and NSF CISE Research Infrastructure 04-03428. For more information, the following paper may be of interest: 
 
