@@ -36,5 +36,5 @@ Copyright 2009-2012 Arizona State University. Sirens is licensed under the [GNU 
 
 Sirens is based off research within the [Arts, Media and Engineering](http://ame.asu.edu/) program at [Arizona State University](http://asu.edu/). Additionally, work on Sirens is supported by the [National Science Foundation](http://www.nsf.gov/) under Grants NSF IGERT DGE-05-04647 and NSF CISE Research Infrastructure 04-03428. For more information, the following paper may be of interest: 
 
-G. Wichern, J. Xue, H. Thornburg, B. Mechtley, and A. Spanias, Segmentation, indexing, and retrieval for environmental and natural sounds, IEEE Transactions on Audio, Speech, and Language Processing, vol. 18, no. 3, pp. 688-707, 2010.
+G. Wichern, J. Xue, H. Thornburg, B. Mechtley, and A. Spanias, Segmentation, indexing, and retrieval for environmental and natural sounds, _IEEE Transactions on Audio, Speech, and Language Processing_, vol. 18, no. 3, pp. 688-707, 2010.
 
