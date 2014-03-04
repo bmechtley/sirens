@@ -74,7 +74,8 @@ install_headers = {
     ]],
     '/support': [os.path.join('source/support/', s) for s in [
         'matrix_support.h',
-        'string_support.h'
+        'string_support.h',
+        'math_support.h'
     ]],
     '/boost': [os.path.join('source/boost/', s) for s in [
         'matrix.hpp',
@@ -91,7 +92,8 @@ install_headers = {
         'Feature.h',
         'Sound.h',
         'Thread.h',
-        'Sirens.h'
+        'Sirens.h',
+        'FFT.h'
     ]]
 }
 
@@ -122,15 +124,15 @@ library = environment.Library('sirens', compile_source)
 # Examples.
 for example in [
     'segment',
-    'segment_csv', 
-    'similarity', 
+    'segment_csv',
+    'similarity',
     'similarity_simple',
     'similarity_first_csv',
     'features'
 ]:
     environment.Program(
-        'examples/' + example + '.cpp', 
-        LIBS=['sirens', 'fftw3', 'pthread'], 
+        'examples/' + example + '.cpp',
+        LIBS=['sirens', 'fftw3', 'pthread'],
         LIBPATH='.'
     )
 
@@ -138,16 +140,16 @@ for example in [
 environment.Install('$PREFIX/lib', library)
 for header_path in install_headers:
     environment.Install(
-        '$PREFIX/include/sirens' + header_path, 
+        '$PREFIX/include/sirens' + header_path,
         install_headers[header_path]
     )
 
 environment.Alias('install', [
-    '$PREFIX/lib', 
-    '$PREFIX/include/sirens', 
-    '$PREFIX/include/sirens/features', 
-    '$PREFIX/include/sirens/retrieval', 
-    '$PREFIX/include/sirens/segmentation', 
+    '$PREFIX/lib',
+    '$PREFIX/include/sirens',
+    '$PREFIX/include/sirens/features',
+    '$PREFIX/include/sirens/retrieval',
+    '$PREFIX/include/sirens/segmentation',
     '$PREFIX/include/sirens/stk']
 )
 
