@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SPECTRALSPARSITY_H
-#define SPECTRALSPARSITY_H
+#ifndef SIRENS_SPECTRALSPARSITY_H
+#define SIRENS_SPECTRALSPARSITY_H
 
 #include "../Feature.h"
 

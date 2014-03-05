@@ -17,16 +17,16 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __STRING_SUPPORT_H__
-#define __STRING_SUPPORT_H__
-
-#include <vector>
-#include <string>
-using namespace std;
+#ifndef SIRENS_STRING_SUPPORT_H
+#define SIRENS_STRING_SUPPORT_H
 
 #include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 using namespace boost::numeric;
+
+#include <vector>
+#include <string>
+using namespace std;
 
 namespace Sirens {
     void tokenise(

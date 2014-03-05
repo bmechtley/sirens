@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SEGMENTATIONPARAMETERS_H__
-#define __SEGMENTATIONPARAMETERS_H__
+#ifndef SIRENS_SEGMENTATIONPARAMETERS_H
+#define SIRENS_SEGMENTATIONPARAMETERS_H
 
 #include <vector>
 using namespace std;

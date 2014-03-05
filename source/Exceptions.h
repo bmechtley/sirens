@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef EXCEPTIONS_H
-#define EXCEPTIONS_H
+#ifndef SIRENS_EXCEPTIONS_H
+#define SIRENS_EXCEPTIONS_H
 
 #include <exception>
 #include <string>

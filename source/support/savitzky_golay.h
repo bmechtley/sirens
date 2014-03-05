@@ -18,10 +18,10 @@
 */
 
 
-#ifndef __SAVITZKYGOLAY_H__
-#define __SAVITZKYGOLAY_H__
+#ifndef SIRENS_SAVITZKYGOLAY_H
+#define SIRENS_SAVITZKYGOLAY_H
 
-#include "boost/numeric/ublas/vector.hpp"
+#include <boost/numeric/ublas/vector.hpp>
 using namespace boost::numeric;
 
 // First two differentiation filters for a 4th order Sazitzky-Golay filter for

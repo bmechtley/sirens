@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TEMPORALSPARSITY_H
-#define TEMPORALSPARSITY_H
+#ifndef SIRENS_TEMPORALSPARSITY_H
+#define SIRENS_TEMPORALSPARSITY_H
 
 #include "../Feature.h"
 

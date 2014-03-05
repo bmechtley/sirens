@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SPECTRALCENTROID_H
-#define SPECTRALCENTROID_H
+#ifndef SIRENS_SPECTRALCENTROID_H
+#define SIRENS_SPECTRALCENTROID_H
 
 #include "../Feature.h"
 

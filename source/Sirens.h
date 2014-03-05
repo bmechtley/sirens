@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SIRENS_H__
-#define __SIRENS_H__
+#ifndef SIRENS_H
+#define SIRENS_H
 
 #include "Feature.h"
 #include "FeatureSet.h"

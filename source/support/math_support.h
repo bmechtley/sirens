@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MATH_SUPPORT_H__
-#define __MATH_SUPPORT_H__
+#ifndef SIRENS_MATH_SUPPORT_H
+#define SIRENS_MATH_SUPPORT_H
 
 #include <cmath>
 using namespace std;

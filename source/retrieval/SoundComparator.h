@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SOUND_COMPARATOR__
-#define __SOUND_COMPARATOR__
+#ifndef SIRENS_SOUNDCOMPARATOR_H
+#define SIRENS_SOUNDCOMPARATOR_H
 
 #include "FeatureComparator.h"
 

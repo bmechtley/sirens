@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LOUDNESS_H
-#define LOUDNESS_H
+#ifndef SIRENS_LOUDNESS_H
+#define SIRENS_LOUDNESS_H
 
 #include "../Feature.h"
 

@@ -17,6 +17,10 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <boost/numeric/ublas/triangular.hpp>
+#include <boost/numeric/ublas/lu.hpp>
+using namespace boost::numeric;
+
 #include "matrix_support.h"
 
 namespace Sirens {

@@ -77,15 +77,6 @@ install_headers = {
         'string_support.h',
         'math_support.h'
     ]],
-    '/boost': [os.path.join('source/boost/', s) for s in [
-        'matrix.hpp',
-        'operation.hpp',
-        'vector.hpp',
-        'lu.hpp',
-        'matrix_proxy.hpp',
-        'triangular.hpp',
-        'vector_proxy.hpp'
-    ]],
     '': [os.path.join('source/', s) for s in [
         'CircularArray.h',
         'FeatureSet.h',

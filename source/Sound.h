@@ -18,8 +18,8 @@
 */
 
 
-#ifndef SOUND_H
-#define SOUND_H
+#ifndef SIRENS_SOUND_H
+#define SIRENS_SOUND_H
 
 #include <vector>
 #include <string>

@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __FEATURESET_H__
-#define __FEATURESET_H__
+#ifndef SIRENS_FEATURESET_H
+#define SIRENS_FEATURESET_H
 
 #include "Feature.h"
 #include "CircularArray.h"

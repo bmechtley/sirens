@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SIMPLEFEATURECOMPARATOR_H__
-#define __SIMPLEFEATURECOMPARATOR_H__
+#ifndef SIRENS_SIMPLEFEATURECOMPARATOR_H
+#define SIRENS_SIMPLEFEATURECOMPARATOR_H
 
 #include "../Feature.h"
 

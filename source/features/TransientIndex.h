@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TRANSIENTINDEX_H
-#define TRANSIENTINDEX_H
+#ifndef SIRENS_TRANSIENTINDEX_H
+#define SIRENS_TRANSIENTINDEX_H
 
 #include "../Feature.h"
 

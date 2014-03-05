@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CIRCULARARRAY_H
-#define CIRCULARARRAY_H
+#ifndef SIRENS_CIRCULARARRAY_H
+#define SIRENS_CIRCULARARRAY_H
 
 #include <string>
 using namespace std;

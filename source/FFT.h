@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef FFT_H
-#define FFT_H
+#ifndef SIRENS_FFT_H
+#define SIRENS_FFT_H
 
 #include <fftw3.h>
 

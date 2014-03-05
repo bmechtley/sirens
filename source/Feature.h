@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef FEATURE_H
-#define FEATURE_H
+#ifndef SIRENS_FEATURE_H
+#define SIRENS_FEATURE_H
 
 #include <pthread.h>
 #include <string>

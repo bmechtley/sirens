@@ -17,11 +17,11 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __FEATURECOMPARATOR_H__
-#define __FEATURECOMPARATOR_H__
+#ifndef SIRENS_FEATURECOMPARATOR_H
+#define SIRENS_FEATURECOMPARATOR_H
 
-#include "boost/numeric/ublas/vector.hpp"
-#include "boost/numeric/ublas/matrix.hpp"
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
 using namespace boost::numeric;
 
 #include "../Feature.h"

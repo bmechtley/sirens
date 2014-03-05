@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SEGMENTER_H__
-#define __SEGMENTER_H__
+#ifndef SIRENS_SEGMENTER_H
+#define SIRENS_SEGMENTER_H
 
 #include "../Feature.h"
 #include "../FeatureSet.h"

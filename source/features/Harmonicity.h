@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef HARMONICITY_H
-#define HARMONICITY_H
+#ifndef SIRENS_HARMONICITY_H
+#define SIRENS_HARMONICITY_H
 
 #include "../Feature.h"
 

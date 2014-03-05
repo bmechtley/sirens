@@ -17,16 +17,10 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MATRIX_SUPPORT_H__
-#define __MATRIX_SUPPORT_H__
+#ifndef SIRENS_MATRIX_SUPPORT_H
+#define SIRENS_MATRIX_SUPPORT_H
 
-#include "../boost/vector.hpp"
-#include "../boost/vector_proxy.hpp"
-#include "../boost/matrix.hpp"
-#include "../boost/matrix_proxy.hpp"
-#include "../boost/triangular.hpp"
-#include "../boost/operation.hpp"
-#include "../boost/lu.hpp"
+#include <boost/numeric/ublas/matrix.hpp>
 using namespace boost::numeric;
 
 namespace Sirens {

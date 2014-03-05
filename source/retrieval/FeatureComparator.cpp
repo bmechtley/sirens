@@ -17,14 +17,16 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <boost/numeric/ublas/vector_proxy.hpp>
+#include <boost/numeric/ublas/matrix_proxy.hpp>
+#include <boost/numeric/ublas/io.hpp>
+using namespace boost::numeric;
+
 #include "FeatureComparator.h"
 
 #include "../support/matrix_support.h"
 #include "../support/math_support.h"
 #include "../support/savitzky_golay.h"
-
-#include <boost/numeric/ublas/vector_proxy.hpp>
-#include <boost/numeric/ublas/io.hpp>
 
 namespace Sirens {
     FeatureComparator::FeatureComparator(Feature* feature_in) {

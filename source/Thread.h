@@ -17,8 +17,8 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __THREAD_H__
-#define __THREAD_H__
+#ifndef SIRENS_THREAD_H
+#define SIRENS_THREAD_H
 
 #include <pthread.h>
 
