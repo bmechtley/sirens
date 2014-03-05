@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA2E68CD18C6A30100421CB1 /* CircularArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E687D18C6A2D200421CB1 /* CircularArray.cpp */; };
+		CA2E68CE18C6A30400421CB1 /* Feature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688118C6A2D200421CB1 /* Feature.cpp */; };
+		CA2E68CF18C6A30700421CB1 /* FeatureSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689718C6A2D200421CB1 /* FeatureSet.cpp */; };
+		CA2E68D018C6A30A00421CB1 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689A18C6A2D200421CB1 /* FFT.cpp */; };
+		CA2E68D118C6A30F00421CB1 /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68B218C6A2D200421CB1 /* Sound.cpp */; };
+		CA2E68D218C6A31200421CB1 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68CA18C6A2D300421CB1 /* Thread.cpp */; };
+		CA2E68D318C6A31600421CB1 /* math_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68BE18C6A2D200421CB1 /* math_support.cpp */; };
+		CA2E68D418C6A31900421CB1 /* matrix_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68C118C6A2D200421CB1 /* matrix_support.cpp */; };
+		CA2E68D518C6A31C00421CB1 /* savitzky_golay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68C418C6A2D200421CB1 /* savitzky_golay.cpp */; };
+		CA2E68D618C6A31F00421CB1 /* string_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68C718C6A2D200421CB1 /* string_support.cpp */; };
+		CA2E68D718C6A32B00421CB1 /* FileRead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68B618C6A2D200421CB1 /* FileRead.cpp */; };
+		CA2E68D818C6A32E00421CB1 /* Stk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68BA18C6A2D200421CB1 /* Stk.cpp */; };
+		CA2E68D918C6A33300421CB1 /* SegmentationParameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68AB18C6A2D200421CB1 /* SegmentationParameters.cpp */; };
+		CA2E68DA18C6A33600421CB1 /* Segmenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68AE18C6A2D200421CB1 /* Segmenter.cpp */; };
+		CA2E68DB18C6A33A00421CB1 /* SoundComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68A718C6A2D200421CB1 /* SoundComparator.cpp */; };
+		CA2E68DC18C6A33D00421CB1 /* SimpleSoundComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68A418C6A2D200421CB1 /* SimpleSoundComparator.cpp */; };
+		CA2E68DD18C6A34000421CB1 /* SimpleFeatureComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68A118C6A2D200421CB1 /* SimpleFeatureComparator.cpp */; };
+		CA2E68DE18C6A34300421CB1 /* FeatureComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689E18C6A2D200421CB1 /* FeatureComparator.cpp */; };
+		CA2E68DF18C6A34800421CB1 /* TransientIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689418C6A2D200421CB1 /* TransientIndex.cpp */; };
+		CA2E68E018C6A34B00421CB1 /* TemporalSparsity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689118C6A2D200421CB1 /* TemporalSparsity.cpp */; };
+		CA2E68E118C6A34E00421CB1 /* SpectralSparsity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688E18C6A2D200421CB1 /* SpectralSparsity.cpp */; };
+		CA2E68E218C6A35000421CB1 /* SpectralCentroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688B18C6A2D200421CB1 /* SpectralCentroid.cpp */; };
+		CA2E68E318C6A35300421CB1 /* Loudness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688818C6A2D200421CB1 /* Loudness.cpp */; };
+		CA2E68E418C6A35500421CB1 /* Harmonicity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688518C6A2D200421CB1 /* Harmonicity.cpp */; };
+		CA2E68E618C6A59F00421CB1 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2E68E518C6A59F00421CB1 /* libfftw3.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CA2E686318C6A29400421CB1 /* sirens.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sirens.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA2E686818C6A29400421CB1 /* sirensProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = sirensProj.xcconfig; sourceTree = "<group>"; };
+		CA2E686918C6A29400421CB1 /* sirensTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = sirensTarget.xcconfig; sourceTree = "<group>"; };
+		CA2E687518C6A2D200421CB1 /* LICENSE_1_0.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0.txt; sourceTree = "<group>"; };
+		CA2E687618C6A2D200421CB1 /* lu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lu.hpp; sourceTree = "<group>"; };
+		CA2E687718C6A2D200421CB1 /* matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
+		CA2E687818C6A2D200421CB1 /* matrix_proxy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = matrix_proxy.hpp; sourceTree = "<group>"; };
+		CA2E687918C6A2D200421CB1 /* operation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = operation.hpp; sourceTree = "<group>"; };
+		CA2E687A18C6A2D200421CB1 /* triangular.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = triangular.hpp; sourceTree = "<group>"; };
+		CA2E687B18C6A2D200421CB1 /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
+		CA2E687C18C6A2D200421CB1 /* vector_proxy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector_proxy.hpp; sourceTree = "<group>"; };
+		CA2E687D18C6A2D200421CB1 /* CircularArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CircularArray.cpp; sourceTree = "<group>"; };
+		CA2E687E18C6A2D200421CB1 /* CircularArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularArray.h; sourceTree = "<group>"; };
+		CA2E687F18C6A2D200421CB1 /* CircularArray.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = CircularArray.o; sourceTree = "<group>"; };
+		CA2E688018C6A2D200421CB1 /* Exceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = "<group>"; };
+		CA2E688118C6A2D200421CB1 /* Feature.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Feature.cpp; sourceTree = "<group>"; };
+		CA2E688218C6A2D200421CB1 /* Feature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Feature.h; sourceTree = "<group>"; };
+		CA2E688318C6A2D200421CB1 /* Feature.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Feature.o; sourceTree = "<group>"; };
+		CA2E688518C6A2D200421CB1 /* Harmonicity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Harmonicity.cpp; sourceTree = "<group>"; };
+		CA2E688618C6A2D200421CB1 /* Harmonicity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Harmonicity.h; sourceTree = "<group>"; };
+		CA2E688718C6A2D200421CB1 /* Harmonicity.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Harmonicity.o; sourceTree = "<group>"; };
+		CA2E688818C6A2D200421CB1 /* Loudness.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Loudness.cpp; sourceTree = "<group>"; };
+		CA2E688918C6A2D200421CB1 /* Loudness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Loudness.h; sourceTree = "<group>"; };
+		CA2E688A18C6A2D200421CB1 /* Loudness.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Loudness.o; sourceTree = "<group>"; };
+		CA2E688B18C6A2D200421CB1 /* SpectralCentroid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpectralCentroid.cpp; sourceTree = "<group>"; };
+		CA2E688C18C6A2D200421CB1 /* SpectralCentroid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectralCentroid.h; sourceTree = "<group>"; };
+		CA2E688D18C6A2D200421CB1 /* SpectralCentroid.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = SpectralCentroid.o; sourceTree = "<group>"; };
+		CA2E688E18C6A2D200421CB1 /* SpectralSparsity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpectralSparsity.cpp; sourceTree = "<group>"; };
+		CA2E688F18C6A2D200421CB1 /* SpectralSparsity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectralSparsity.h; sourceTree = "<group>"; };
+		CA2E689018C6A2D200421CB1 /* SpectralSparsity.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = SpectralSparsity.o; sourceTree = "<group>"; };
+		CA2E689118C6A2D200421CB1 /* TemporalSparsity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TemporalSparsity.cpp; sourceTree = "<group>"; };
+		CA2E689218C6A2D200421CB1 /* TemporalSparsity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporalSparsity.h; sourceTree = "<group>"; };
+		CA2E689318C6A2D200421CB1 /* TemporalSparsity.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = TemporalSparsity.o; sourceTree = "<group>"; };
+		CA2E689418C6A2D200421CB1 /* TransientIndex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TransientIndex.cpp; sourceTree = "<group>"; };
+		CA2E689518C6A2D200421CB1 /* TransientIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransientIndex.h; sourceTree = "<group>"; };
+		CA2E689618C6A2D200421CB1 /* TransientIndex.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = TransientIndex.o; sourceTree = "<group>"; };
+		CA2E689718C6A2D200421CB1 /* FeatureSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FeatureSet.cpp; sourceTree = "<group>"; };
+		CA2E689818C6A2D200421CB1 /* FeatureSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureSet.h; sourceTree = "<group>"; };
+		CA2E689918C6A2D200421CB1 /* FeatureSet.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = FeatureSet.o; sourceTree = "<group>"; };
+		CA2E689A18C6A2D200421CB1 /* FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFT.cpp; sourceTree = "<group>"; };
+		CA2E689B18C6A2D200421CB1 /* FFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFT.h; sourceTree = "<group>"; };
+		CA2E689C18C6A2D200421CB1 /* FFT.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = FFT.o; sourceTree = "<group>"; };
+		CA2E689E18C6A2D200421CB1 /* FeatureComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FeatureComparator.cpp; sourceTree = "<group>"; };
+		CA2E689F18C6A2D200421CB1 /* FeatureComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureComparator.h; sourceTree = "<group>"; };
+		CA2E68A018C6A2D200421CB1 /* FeatureComparator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = FeatureComparator.o; sourceTree = "<group>"; };
+		CA2E68A118C6A2D200421CB1 /* SimpleFeatureComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleFeatureComparator.cpp; sourceTree = "<group>"; };
+		CA2E68A218C6A2D200421CB1 /* SimpleFeatureComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleFeatureComparator.h; sourceTree = "<group>"; };
+		CA2E68A318C6A2D200421CB1 /* SimpleFeatureComparator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = SimpleFeatureComparator.o; sourceTree = "<group>"; };
+		CA2E68A418C6A2D200421CB1 /* SimpleSoundComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleSoundComparator.cpp; sourceTree = "<group>"; };
+		CA2E68A518C6A2D200421CB1 /* SimpleSoundComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleSoundComparator.h; sourceTree = "<group>"; };
+		CA2E68A618C6A2D200421CB1 /* SimpleSoundComparator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = SimpleSoundComparator.o; sourceTree = "<group>"; };
+		CA2E68A718C6A2D200421CB1 /* SoundComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComparator.cpp; sourceTree = "<group>"; };
+		CA2E68A818C6A2D200421CB1 /* SoundComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundComparator.h; sourceTree = "<group>"; };
+		CA2E68A918C6A2D200421CB1 /* SoundComparator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = SoundComparator.o; sourceTree = "<group>"; };
+		CA2E68AB18C6A2D200421CB1 /* SegmentationParameters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentationParameters.cpp; sourceTree = "<group>"; };
+		CA2E68AC18C6A2D200421CB1 /* SegmentationParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentationParameters.h; sourceTree = "<group>"; };
+		CA2E68AD18C6A2D200421CB1 /* SegmentationParameters.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = SegmentationParameters.o; sourceTree = "<group>"; };
+		CA2E68AE18C6A2D200421CB1 /* Segmenter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Segmenter.cpp; sourceTree = "<group>"; };
+		CA2E68AF18C6A2D200421CB1 /* Segmenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Segmenter.h; sourceTree = "<group>"; };
+		CA2E68B018C6A2D200421CB1 /* Segmenter.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Segmenter.o; sourceTree = "<group>"; };
+		CA2E68B118C6A2D200421CB1 /* Sirens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sirens.h; sourceTree = "<group>"; };
+		CA2E68B218C6A2D200421CB1 /* Sound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
+		CA2E68B318C6A2D200421CB1 /* Sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		CA2E68B418C6A2D200421CB1 /* Sound.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Sound.o; sourceTree = "<group>"; };
+		CA2E68B618C6A2D200421CB1 /* FileRead.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileRead.cpp; sourceTree = "<group>"; };
+		CA2E68B718C6A2D200421CB1 /* FileRead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileRead.h; sourceTree = "<group>"; };
+		CA2E68B818C6A2D200421CB1 /* FileRead.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = FileRead.o; sourceTree = "<group>"; };
+		CA2E68B918C6A2D200421CB1 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		CA2E68BA18C6A2D200421CB1 /* Stk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stk.cpp; sourceTree = "<group>"; };
+		CA2E68BB18C6A2D200421CB1 /* Stk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stk.h; sourceTree = "<group>"; };
+		CA2E68BC18C6A2D200421CB1 /* Stk.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Stk.o; sourceTree = "<group>"; };
+		CA2E68BE18C6A2D200421CB1 /* math_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = math_support.cpp; sourceTree = "<group>"; };
+		CA2E68BF18C6A2D200421CB1 /* math_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = math_support.h; sourceTree = "<group>"; };
+		CA2E68C018C6A2D200421CB1 /* math_support.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = math_support.o; sourceTree = "<group>"; };
+		CA2E68C118C6A2D200421CB1 /* matrix_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix_support.cpp; sourceTree = "<group>"; };
+		CA2E68C218C6A2D200421CB1 /* matrix_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = matrix_support.h; sourceTree = "<group>"; };
+		CA2E68C318C6A2D200421CB1 /* matrix_support.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = matrix_support.o; sourceTree = "<group>"; };
+		CA2E68C418C6A2D200421CB1 /* savitzky_golay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = savitzky_golay.cpp; sourceTree = "<group>"; };
+		CA2E68C518C6A2D200421CB1 /* savitzky_golay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = savitzky_golay.h; sourceTree = "<group>"; };
+		CA2E68C618C6A2D200421CB1 /* savitzky_golay.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = savitzky_golay.o; sourceTree = "<group>"; };
+		CA2E68C718C6A2D200421CB1 /* string_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_support.cpp; sourceTree = "<group>"; };
+		CA2E68C818C6A2D200421CB1 /* string_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_support.h; sourceTree = "<group>"; };
+		CA2E68C918C6A2D300421CB1 /* string_support.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = string_support.o; sourceTree = "<group>"; };
+		CA2E68CA18C6A2D300421CB1 /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		CA2E68CB18C6A2D300421CB1 /* Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		CA2E68CC18C6A2D300421CB1 /* Thread.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Thread.o; sourceTree = "<group>"; };
+		CA2E68E518C6A59F00421CB1 /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../usr/local/lib/libfftw3.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA2E686018C6A29400421CB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA2E68E618C6A59F00421CB1 /* libfftw3.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA2E685A18C6A29400421CB1 = {
+			isa = PBXGroup;
+			children = (
+				CA2E68E518C6A59F00421CB1 /* libfftw3.a */,
+				CA2E687318C6A2D200421CB1 /* source */,
+				CA2E686518C6A29400421CB1 /* sirens */,
+				CA2E686418C6A29400421CB1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CA2E686418C6A29400421CB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E686318C6A29400421CB1 /* sirens.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA2E686518C6A29400421CB1 /* sirens */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E686818C6A29400421CB1 /* sirensProj.xcconfig */,
+				CA2E686918C6A29400421CB1 /* sirensTarget.xcconfig */,
+			);
+			path = sirens;
+			sourceTree = "<group>";
+		};
+		CA2E687318C6A2D200421CB1 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E687418C6A2D200421CB1 /* boost */,
+				CA2E687D18C6A2D200421CB1 /* CircularArray.cpp */,
+				CA2E687E18C6A2D200421CB1 /* CircularArray.h */,
+				CA2E687F18C6A2D200421CB1 /* CircularArray.o */,
+				CA2E688018C6A2D200421CB1 /* Exceptions.h */,
+				CA2E688118C6A2D200421CB1 /* Feature.cpp */,
+				CA2E688218C6A2D200421CB1 /* Feature.h */,
+				CA2E688318C6A2D200421CB1 /* Feature.o */,
+				CA2E688418C6A2D200421CB1 /* features */,
+				CA2E689718C6A2D200421CB1 /* FeatureSet.cpp */,
+				CA2E689818C6A2D200421CB1 /* FeatureSet.h */,
+				CA2E689918C6A2D200421CB1 /* FeatureSet.o */,
+				CA2E689A18C6A2D200421CB1 /* FFT.cpp */,
+				CA2E689B18C6A2D200421CB1 /* FFT.h */,
+				CA2E689C18C6A2D200421CB1 /* FFT.o */,
+				CA2E689D18C6A2D200421CB1 /* retrieval */,
+				CA2E68AA18C6A2D200421CB1 /* segmentation */,
+				CA2E68B118C6A2D200421CB1 /* Sirens.h */,
+				CA2E68B218C6A2D200421CB1 /* Sound.cpp */,
+				CA2E68B318C6A2D200421CB1 /* Sound.h */,
+				CA2E68B418C6A2D200421CB1 /* Sound.o */,
+				CA2E68B518C6A2D200421CB1 /* stk */,
+				CA2E68BD18C6A2D200421CB1 /* support */,
+				CA2E68CA18C6A2D300421CB1 /* Thread.cpp */,
+				CA2E68CB18C6A2D300421CB1 /* Thread.h */,
+				CA2E68CC18C6A2D300421CB1 /* Thread.o */,
+			);
+			name = source;
+			path = ../source;
+			sourceTree = "<group>";
+		};
+		CA2E687418C6A2D200421CB1 /* boost */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E687518C6A2D200421CB1 /* LICENSE_1_0.txt */,
+				CA2E687618C6A2D200421CB1 /* lu.hpp */,
+				CA2E687718C6A2D200421CB1 /* matrix.hpp */,
+				CA2E687818C6A2D200421CB1 /* matrix_proxy.hpp */,
+				CA2E687918C6A2D200421CB1 /* operation.hpp */,
+				CA2E687A18C6A2D200421CB1 /* triangular.hpp */,
+				CA2E687B18C6A2D200421CB1 /* vector.hpp */,
+				CA2E687C18C6A2D200421CB1 /* vector_proxy.hpp */,
+			);
+			path = boost;
+			sourceTree = "<group>";
+		};
+		CA2E688418C6A2D200421CB1 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E688518C6A2D200421CB1 /* Harmonicity.cpp */,
+				CA2E688618C6A2D200421CB1 /* Harmonicity.h */,
+				CA2E688718C6A2D200421CB1 /* Harmonicity.o */,
+				CA2E688818C6A2D200421CB1 /* Loudness.cpp */,
+				CA2E688918C6A2D200421CB1 /* Loudness.h */,
+				CA2E688A18C6A2D200421CB1 /* Loudness.o */,
+				CA2E688B18C6A2D200421CB1 /* SpectralCentroid.cpp */,
+				CA2E688C18C6A2D200421CB1 /* SpectralCentroid.h */,
+				CA2E688D18C6A2D200421CB1 /* SpectralCentroid.o */,
+				CA2E688E18C6A2D200421CB1 /* SpectralSparsity.cpp */,
+				CA2E688F18C6A2D200421CB1 /* SpectralSparsity.h */,
+				CA2E689018C6A2D200421CB1 /* SpectralSparsity.o */,
+				CA2E689118C6A2D200421CB1 /* TemporalSparsity.cpp */,
+				CA2E689218C6A2D200421CB1 /* TemporalSparsity.h */,
+				CA2E689318C6A2D200421CB1 /* TemporalSparsity.o */,
+				CA2E689418C6A2D200421CB1 /* TransientIndex.cpp */,
+				CA2E689518C6A2D200421CB1 /* TransientIndex.h */,
+				CA2E689618C6A2D200421CB1 /* TransientIndex.o */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		CA2E689D18C6A2D200421CB1 /* retrieval */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E689E18C6A2D200421CB1 /* FeatureComparator.cpp */,
+				CA2E689F18C6A2D200421CB1 /* FeatureComparator.h */,
+				CA2E68A018C6A2D200421CB1 /* FeatureComparator.o */,
+				CA2E68A118C6A2D200421CB1 /* SimpleFeatureComparator.cpp */,
+				CA2E68A218C6A2D200421CB1 /* SimpleFeatureComparator.h */,
+				CA2E68A318C6A2D200421CB1 /* SimpleFeatureComparator.o */,
+				CA2E68A418C6A2D200421CB1 /* SimpleSoundComparator.cpp */,
+				CA2E68A518C6A2D200421CB1 /* SimpleSoundComparator.h */,
+				CA2E68A618C6A2D200421CB1 /* SimpleSoundComparator.o */,
+				CA2E68A718C6A2D200421CB1 /* SoundComparator.cpp */,
+				CA2E68A818C6A2D200421CB1 /* SoundComparator.h */,
+				CA2E68A918C6A2D200421CB1 /* SoundComparator.o */,
+			);
+			path = retrieval;
+			sourceTree = "<group>";
+		};
+		CA2E68AA18C6A2D200421CB1 /* segmentation */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E68AB18C6A2D200421CB1 /* SegmentationParameters.cpp */,
+				CA2E68AC18C6A2D200421CB1 /* SegmentationParameters.h */,
+				CA2E68AD18C6A2D200421CB1 /* SegmentationParameters.o */,
+				CA2E68AE18C6A2D200421CB1 /* Segmenter.cpp */,
+				CA2E68AF18C6A2D200421CB1 /* Segmenter.h */,
+				CA2E68B018C6A2D200421CB1 /* Segmenter.o */,
+			);
+			path = segmentation;
+			sourceTree = "<group>";
+		};
+		CA2E68B518C6A2D200421CB1 /* stk */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E68B618C6A2D200421CB1 /* FileRead.cpp */,
+				CA2E68B718C6A2D200421CB1 /* FileRead.h */,
+				CA2E68B818C6A2D200421CB1 /* FileRead.o */,
+				CA2E68B918C6A2D200421CB1 /* README */,
+				CA2E68BA18C6A2D200421CB1 /* Stk.cpp */,
+				CA2E68BB18C6A2D200421CB1 /* Stk.h */,
+				CA2E68BC18C6A2D200421CB1 /* Stk.o */,
+			);
+			path = stk;
+			sourceTree = "<group>";
+		};
+		CA2E68BD18C6A2D200421CB1 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				CA2E68BE18C6A2D200421CB1 /* math_support.cpp */,
+				CA2E68BF18C6A2D200421CB1 /* math_support.h */,
+				CA2E68C018C6A2D200421CB1 /* math_support.o */,
+				CA2E68C118C6A2D200421CB1 /* matrix_support.cpp */,
+				CA2E68C218C6A2D200421CB1 /* matrix_support.h */,
+				CA2E68C318C6A2D200421CB1 /* matrix_support.o */,
+				CA2E68C418C6A2D200421CB1 /* savitzky_golay.cpp */,
+				CA2E68C518C6A2D200421CB1 /* savitzky_golay.h */,
+				CA2E68C618C6A2D200421CB1 /* savitzky_golay.o */,
+				CA2E68C718C6A2D200421CB1 /* string_support.cpp */,
+				CA2E68C818C6A2D200421CB1 /* string_support.h */,
+				CA2E68C918C6A2D300421CB1 /* string_support.o */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CA2E686118C6A29400421CB1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CA2E686218C6A29400421CB1 /* sirens */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA2E687018C6A29400421CB1 /* Build configuration list for PBXNativeTarget "sirens" */;
+			buildPhases = (
+				CA2E685F18C6A29400421CB1 /* Sources */,
+				CA2E686018C6A29400421CB1 /* Frameworks */,
+				CA2E686118C6A29400421CB1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sirens;
+			productName = sirens;
+			productReference = CA2E686318C6A29400421CB1 /* sirens.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA2E685B18C6A29400421CB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Brandon Mechtley";
+			};
+			buildConfigurationList = CA2E685E18C6A29400421CB1 /* Build configuration list for PBXProject "sirens" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CA2E685A18C6A29400421CB1;
+			productRefGroup = CA2E686418C6A29400421CB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA2E686218C6A29400421CB1 /* sirens */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA2E685F18C6A29400421CB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA2E68CD18C6A30100421CB1 /* CircularArray.cpp in Sources */,
+				CA2E68CE18C6A30400421CB1 /* Feature.cpp in Sources */,
+				CA2E68CF18C6A30700421CB1 /* FeatureSet.cpp in Sources */,
+				CA2E68D018C6A30A00421CB1 /* FFT.cpp in Sources */,
+				CA2E68D118C6A30F00421CB1 /* Sound.cpp in Sources */,
+				CA2E68D218C6A31200421CB1 /* Thread.cpp in Sources */,
+				CA2E68D418C6A31900421CB1 /* matrix_support.cpp in Sources */,
+				CA2E68D318C6A31600421CB1 /* math_support.cpp in Sources */,
+				CA2E68D518C6A31C00421CB1 /* savitzky_golay.cpp in Sources */,
+				CA2E68D618C6A31F00421CB1 /* string_support.cpp in Sources */,
+				CA2E68D718C6A32B00421CB1 /* FileRead.cpp in Sources */,
+				CA2E68D818C6A32E00421CB1 /* Stk.cpp in Sources */,
+				CA2E68D918C6A33300421CB1 /* SegmentationParameters.cpp in Sources */,
+				CA2E68DA18C6A33600421CB1 /* Segmenter.cpp in Sources */,
+				CA2E68DB18C6A33A00421CB1 /* SoundComparator.cpp in Sources */,
+				CA2E68DC18C6A33D00421CB1 /* SimpleSoundComparator.cpp in Sources */,
+				CA2E68DE18C6A34300421CB1 /* FeatureComparator.cpp in Sources */,
+				CA2E68DD18C6A34000421CB1 /* SimpleFeatureComparator.cpp in Sources */,
+				CA2E68DF18C6A34800421CB1 /* TransientIndex.cpp in Sources */,
+				CA2E68E018C6A34B00421CB1 /* TemporalSparsity.cpp in Sources */,
+				CA2E68E118C6A34E00421CB1 /* SpectralSparsity.cpp in Sources */,
+				CA2E68E218C6A35000421CB1 /* SpectralCentroid.cpp in Sources */,
+				CA2E68E318C6A35300421CB1 /* Loudness.cpp in Sources */,
+				CA2E68E418C6A35500421CB1 /* Harmonicity.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CA2E686E18C6A29400421CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CA2E686F18C6A29400421CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CA2E687118C6A29400421CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/local/include/;
+			};
+			name = Debug;
+		};
+		CA2E687218C6A29400421CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/local/include/;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA2E685E18C6A29400421CB1 /* Build configuration list for PBXProject "sirens" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA2E686E18C6A29400421CB1 /* Debug */,
+				CA2E686F18C6A29400421CB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA2E687018C6A29400421CB1 /* Build configuration list for PBXNativeTarget "sirens" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA2E687118C6A29400421CB1 /* Debug */,
+				CA2E687218C6A29400421CB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA2E685B18C6A29400421CB1 /* Project object */;
+}

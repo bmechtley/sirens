@@ -107,7 +107,7 @@ compile_source.extend(Glob(os.path.join(source_prefix, 'stk/*.cpp')))
 
 # Environment.
 environment = Environment(CC='gcc')
-environment.Append(PREFIX = GetOption('prefix'))
+environment.Append(PREFIX=GetOption('prefix'))
 
 # STK defines.
 environment.Append(CCFLAGS="-D__MACOSX_CORE__")
@@ -118,6 +118,9 @@ if sys.byteorder == 'little':
 # Compile with debug symbols.
 if GetOption('debug_symbols'):
     environment.Append(CCFLAGS='-g')
+
+if os.uname()[0] == 'Darwin':
+    environment.Append(CCFLAGS='-arch i386 -arch x86_64')
 
 library = environment.Library('sirens', compile_source)
 
