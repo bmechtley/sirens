@@ -229,7 +229,7 @@ namespace Sirens {
                 if (channelOption) {
                     for (int i = 0; i < (channelOption - 1); i++)
                         sample_value ++;
-                    for (int i = (channelOption - 1); i < readcount; i += soundFile->channels()) {
+                    for (int i = (channelOption - 1); i < getSamplesPerHop(); i += soundFile->channels()) {
                         sample_array.addValue(*sample_value);
 
                         for (int j = 0; j < soundFile->channels(); j++)
