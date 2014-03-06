@@ -50,33 +50,6 @@ AddOption(
 
 # Headers.
 install_headers = {
-    '/segmentation': [os.path.join('source/segmentation/', s) for s in [
-        'SegmentationParameters.h',
-        'Segmenter.h'
-    ]],
-    '/retrieval': [os.path.join('source/retrieval/', s) for s in [
-        'FeatureComparator.h',
-        'SoundComparator.h',
-        'SimpleFeatureComparator.h',
-        'SimpleSoundComparator.h'
-    ]],
-    '/features': [os.path.join('source/features/', s) for s in [
-        'SpectralCentroid.h',
-        'SpectralSparsity.h',
-        'TemporalSparsity.h',
-        'TransientIndex.h',
-        'Harmonicity.h',
-        'Loudness.h'
-    ]],
-    '/stk': [os.path.join('source/stk/',  s) for s in [
-        'Stk.h',
-        'FileRead.h'
-    ]],
-    '/support': [os.path.join('source/support/', s) for s in [
-        'matrix_support.h',
-        'string_support.h',
-        'math_support.h'
-    ]],
     '': [os.path.join('source/', s) for s in [
         'CircularArray.h',
         'FeatureSet.h',
@@ -84,7 +57,24 @@ install_headers = {
         'Sound.h',
         'Thread.h',
         'Sirens.h',
-        'FFT.h'
+        'FFT.h',
+        'matrix_support.h',
+        'string_support.h',
+        'math_support.h',
+        'Stk.h',
+        'FileRead.h',
+        'SpectralCentroid.h',
+        'SpectralSparsity.h',
+        'TemporalSparsity.h',
+        'TransientIndex.h',
+        'Harmonicity.h',
+        'Loudness.h',
+        'FeatureComparator.h',
+        'SoundComparator.h',
+        'SimpleFeatureComparator.h',
+        'SimpleSoundComparator.h',
+        'SegmentationParameters.h',
+        'Segmenter.h'
     ]]
 }
 
@@ -140,10 +130,6 @@ for header_path in install_headers:
 
 environment.Alias('install', [
     '$PREFIX/lib',
-    '$PREFIX/include/sirens',
-    '$PREFIX/include/sirens/features',
-    '$PREFIX/include/sirens/retrieval',
-    '$PREFIX/include/sirens/segmentation',
-    '$PREFIX/include/sirens/stk']
-)
+    '$PREFIX/include/sirens'
+])
 

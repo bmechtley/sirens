@@ -19,7 +19,7 @@
 
 #include "TemporalSparsity.h"
 
-#include "../support/math_support.h"
+#include "math_support.h"
 
 namespace Sirens {
     TemporalSparsity::TemporalSparsity(

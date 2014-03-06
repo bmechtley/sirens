@@ -24,9 +24,9 @@ using namespace boost::numeric;
 
 #include "FeatureComparator.h"
 
-#include "../support/matrix_support.h"
-#include "../support/math_support.h"
-#include "../support/savitzky_golay.h"
+#include "matrix_support.h"
+#include "math_support.h"
+#include "savitzky_golay.h"
 
 namespace Sirens {
     FeatureComparator::FeatureComparator(Feature* feature_in) {

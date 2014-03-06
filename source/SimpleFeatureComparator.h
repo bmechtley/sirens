@@ -20,7 +20,7 @@
 #ifndef SIRENS_SIMPLEFEATURECOMPARATOR_H
 #define SIRENS_SIMPLEFEATURECOMPARATOR_H
 
-#include "../Feature.h"
+#include "Feature.h"
 
 namespace Sirens {
     

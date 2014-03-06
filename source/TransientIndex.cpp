@@ -19,7 +19,7 @@
 
 #include "TransientIndex.h"
 
-#include "../support/math_support.h"
+#include "math_support.h"
 
 #include <cmath>
 using namespace std;

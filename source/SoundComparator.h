@@ -17,36 +17,36 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SIRENS_SIMPLESOUNDCOMPARATOR_H
-#define SIRENS_SIMPLESOUNDCOMPARATOR_H
+#ifndef SIRENS_SOUNDCOMPARATOR_H
+#define SIRENS_SOUNDCOMPARATOR_H
 
-#include "SimpleFeatureComparator.h"
+#include "FeatureComparator.h"
 
-#include "../FeatureSet.h"
+#include "FeatureSet.h"
 
 #include <vector>
 using namespace std;
 
 // Class for query-by-example on sounds.
 namespace Sirens {
-    class SimpleSoundComparator {
+    class SoundComparator {
     private:
         FeatureSet* featureSet;
 
         // The sound's features' comparators.
-        vector<SimpleFeatureComparator*> featureComparators;
+        vector<FeatureComparator*> featureComparators;
         
         void freeMemory();
     public:
-        SimpleSoundComparator(FeatureSet* feature_set = NULL);
-        ~SimpleSoundComparator();
+        SoundComparator(FeatureSet* feature_set = NULL);
+        ~SoundComparator();
         
         void setFeatureSet(FeatureSet* feature_set);
         FeatureSet* getFeatureSet();
         
-        vector<SimpleFeatureComparator*> getFeatureComparators();
+        vector<FeatureComparator*> getFeatureComparators();
         
-        double compare(SimpleSoundComparator* sound_comparator);
+        double compare(SoundComparator* sound_comparator);
         
         void initialize();
     };

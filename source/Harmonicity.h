@@ -20,7 +20,7 @@
 #ifndef SIRENS_HARMONICITY_H
 #define SIRENS_HARMONICITY_H
 
-#include "../Feature.h"
+#include "Feature.h"
 
 namespace Sirens {
     struct Peak {

@@ -17,18 +17,36 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SIRENS_LOUDNESS_H
-#define SIRENS_LOUDNESS_H
+#ifndef SIRENS_SPECTRALCENTROID_H
+#define SIRENS_SPECTRALCENTROID_H
 
-#include "../Feature.h"
-
-#include <string>
-using namespace std;
+#include "Feature.h"
 
 namespace Sirens {
-    class Loudness : public Feature {
-    public: 
-        Loudness(int history_size = 1) : Feature(history_size) {}
+    class SpectralCentroid : public Feature {
+    private:        
+        double* barkWeights;
+        double* barkUnits;
+        
+        int spectrumSize, sampleRate;
+        
+        void freeMemory();
+        void initialize();
+        
+    public:
+        SpectralCentroid(
+            int history_size = 1, 
+            int spectrum_size = 1024, 
+            int sample_rate = 44100
+        );
+        
+        ~SpectralCentroid();
+        
+        void setSpectrumSize(int spectrum_size);
+        void setSampleRate(int sample_rate);
+        
+        int getSpectrumSize();
+        int getSampleRate();
         
         virtual void performCalculation();
         virtual string toString();

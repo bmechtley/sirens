@@ -17,22 +17,23 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SIRENS_SPECTRALSPARSITY_H
-#define SIRENS_SPECTRALSPARSITY_H
-
-#include "../Feature.h"
+#include "Loudness.h"
 
 #include <string>
 using namespace std;
 
-namespace Sirens {
-    class SpectralSparsity : public Feature {
-    public: 
-        SpectralSparsity(int history_size = 1) : Feature(history_size) {}
-        
-        virtual void performCalculation();
-        virtual string toString();
-    };
-}
+#include "math_support.h"
 
-#endif
+namespace Sirens {
+    void Loudness::performCalculation() {
+        double rms_val=signal_rms(input);
+        if (rms_val)
+            value = 20 * log10(rms_val);
+        else
+            value = 20 * log10(10e-6);
+    }
+
+    string Loudness::toString() {
+        return string("Loudness");
+    }
+}

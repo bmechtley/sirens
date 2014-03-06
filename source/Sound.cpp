@@ -21,8 +21,8 @@
 
 #include "FFT.h"
 #include "CircularArray.h"
-#include "support/math_support.h"
-#include "support/string_support.h"
+#include "math_support.h"
+#include "string_support.h"
 
 namespace Sirens {
     Sound::Sound() {

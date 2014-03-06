@@ -23,7 +23,7 @@
 #include <cmath>
 using namespace std;
 
-#include "../support/math_support.h"
+#include "math_support.h"
 
 namespace Sirens {
     Harmonicity::Harmonicity(

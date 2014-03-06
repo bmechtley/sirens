@@ -19,7 +19,7 @@
 
 #include "Feature.h"
 
-#include "support/math_support.h"
+#include "math_support.h"
 
 namespace Sirens {
     Feature::Feature(int history_size) {

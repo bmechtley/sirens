@@ -1,45 +1,56 @@
 /*
     Copyright 2009 Arizona State University
-    
+
     This file is part of Sirens.
-    
+
     Sirens is free software: you can redistribute it and/or modify it under the
     terms of the GNU Lesser General Public License as  published by the Free
     Software Foundation, either version 3 of the License, or (at your option)
     any later version.
-    
+
     Sirens is distributed in the hope that it will be useful, but WITHOUT ANY
     WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
     FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
     details.
-    
+
     You should have received a copy of the GNU Lesser General Public License
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SIRENS_TEMPORALSPARSITY_H
-#define SIRENS_TEMPORALSPARSITY_H
+#ifndef SIRENS_MATH_SUPPORT_H
+#define SIRENS_MATH_SUPPORT_H
 
-#include "../Feature.h"
-
-#include <string>
+#include <cmath>
 using namespace std;
 
+#include "CircularArray.h"
+
 namespace Sirens {
-    class TemporalSparsity : public Feature {
-    private:
-        CircularArray* rmsWindow;
-        
-    public: 
-        TemporalSparsity(int history_size = 1, int window_size = 50);
-        ~TemporalSparsity();
-        
-        void setWindowSize(int window_size);
-        int getWindowSize();
-        
-        virtual void performCalculation();
-        virtual string toString();
-    };
+    const double PI = 2 * asin(1.0);
+
+    // General math functions.
+    int round(double a);
+
+    int minimum(int a, int b);
+    int maximum(int a, int b);
+    double minimum(double a, double b);
+    double maximum(double a, double b);
+
+    double akaike(int k, int n, double rss);
+
+    int next_pow(int n, int base);
+
+    double signal_rms(CircularArray* input);
+
+    double lerp(double value, double min, double max);
+
+    // Perceptual scale conversion.
+    double hz_to_bark(double hz);
+    double bark_to_hz(double bark);
+    double hz_to_mel(double hz);
+    double mel_to_hz(double mel);
+
+    double* create_hamming_window(int size);
 }
 
 #endif

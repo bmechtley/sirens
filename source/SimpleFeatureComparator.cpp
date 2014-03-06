@@ -18,7 +18,7 @@
 */
 
 #include "SimpleFeatureComparator.h"
-#include "../support/math_support.h"
+#include "math_support.h"
 #include <cmath>
 #include <limits>
 using namespace std;

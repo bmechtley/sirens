@@ -20,8 +20,8 @@
 #ifndef SIRENS_SEGMENTER_H
 #define SIRENS_SEGMENTER_H
 
-#include "../Feature.h"
-#include "../FeatureSet.h"
+#include "Feature.h"
+#include "FeatureSet.h"
 
 #include <vector>
 using namespace std;

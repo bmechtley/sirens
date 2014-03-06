@@ -17,23 +17,33 @@
     along with Sirens. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Loudness.h"
+#include "SpectralSparsity.h"
 
 #include <string>
 using namespace std;
 
-#include "../support/math_support.h"
+#include "math_support.h"
 
 namespace Sirens {
-    void Loudness::performCalculation() {
-        double rms_val=signal_rms(input);
-        if (rms_val)
-            value = 20 * log10(rms_val);
-        else
-            value = 20 * log10(10e-6);
+    void SpectralSparsity::performCalculation() {
+        double max = 0;
+        double sum = 0;
+        value=0;
+        
+        int input_size = input->getSize();
+        double* input_item = input->getData();
+        
+        for (int i = 0; i < input_size; i++) {
+            max = maximum((*input_item), max);
+            sum += (*input_item);
+            
+            input_item ++;
+        }
+        if (sum)
+            value = max / sum;
     }
 
-    string Loudness::toString() {
-        return string("Loudness");
+    string SpectralSparsity::toString() {
+        return string("Spectral Sparsity");
     }
 }

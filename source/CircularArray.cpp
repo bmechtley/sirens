@@ -19,8 +19,8 @@
 
 #include "CircularArray.h"
 
-#include "support/math_support.h"
-#include "support/string_support.h"
+#include "math_support.h"
+#include "string_support.h"
 
 namespace Sirens {
     CircularArray::CircularArray(int max_size, int allocated_size) {

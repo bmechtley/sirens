@@ -25,8 +25,8 @@
 #include <string>
 using namespace std;
 
-#include "stk/Stk.h"
-#include "stk/FileRead.h"
+#include "Stk.h"
+#include "FileRead.h"
 using namespace stk;
 
 #include "FeatureSet.h"

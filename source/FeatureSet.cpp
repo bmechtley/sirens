@@ -19,7 +19,7 @@
 
 #include "FeatureSet.h"
 
-#include "support/string_support.h"
+#include "string_support.h"
 
 namespace Sirens {
     void FeatureSet::addSampleFeature(Feature* feature) {

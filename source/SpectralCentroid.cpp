@@ -19,7 +19,7 @@
 
 #include "SpectralCentroid.h"
 
-#include "../support/math_support.h"
+#include "math_support.h"
 
 namespace Sirens {
     SpectralCentroid::SpectralCentroid(

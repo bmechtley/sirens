@@ -7,89 +7,114 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA2E68CD18C6A30100421CB1 /* CircularArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E687D18C6A2D200421CB1 /* CircularArray.cpp */; };
-		CA2E68CE18C6A30400421CB1 /* Feature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688118C6A2D200421CB1 /* Feature.cpp */; };
-		CA2E68CF18C6A30700421CB1 /* FeatureSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689718C6A2D200421CB1 /* FeatureSet.cpp */; };
-		CA2E68D018C6A30A00421CB1 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689A18C6A2D200421CB1 /* FFT.cpp */; };
-		CA2E68D118C6A30F00421CB1 /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68B218C6A2D200421CB1 /* Sound.cpp */; };
-		CA2E68D218C6A31200421CB1 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68CA18C6A2D300421CB1 /* Thread.cpp */; };
-		CA2E68D318C6A31600421CB1 /* math_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68BE18C6A2D200421CB1 /* math_support.cpp */; };
-		CA2E68D418C6A31900421CB1 /* matrix_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68C118C6A2D200421CB1 /* matrix_support.cpp */; };
-		CA2E68D518C6A31C00421CB1 /* savitzky_golay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68C418C6A2D200421CB1 /* savitzky_golay.cpp */; };
-		CA2E68D618C6A31F00421CB1 /* string_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68C718C6A2D200421CB1 /* string_support.cpp */; };
-		CA2E68D718C6A32B00421CB1 /* FileRead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68B618C6A2D200421CB1 /* FileRead.cpp */; };
-		CA2E68D818C6A32E00421CB1 /* Stk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68BA18C6A2D200421CB1 /* Stk.cpp */; };
-		CA2E68D918C6A33300421CB1 /* SegmentationParameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68AB18C6A2D200421CB1 /* SegmentationParameters.cpp */; };
-		CA2E68DA18C6A33600421CB1 /* Segmenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68AE18C6A2D200421CB1 /* Segmenter.cpp */; };
-		CA2E68DB18C6A33A00421CB1 /* SoundComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68A718C6A2D200421CB1 /* SoundComparator.cpp */; };
-		CA2E68DC18C6A33D00421CB1 /* SimpleSoundComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68A418C6A2D200421CB1 /* SimpleSoundComparator.cpp */; };
-		CA2E68DD18C6A34000421CB1 /* SimpleFeatureComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E68A118C6A2D200421CB1 /* SimpleFeatureComparator.cpp */; };
-		CA2E68DE18C6A34300421CB1 /* FeatureComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689E18C6A2D200421CB1 /* FeatureComparator.cpp */; };
-		CA2E68DF18C6A34800421CB1 /* TransientIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689418C6A2D200421CB1 /* TransientIndex.cpp */; };
-		CA2E68E018C6A34B00421CB1 /* TemporalSparsity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E689118C6A2D200421CB1 /* TemporalSparsity.cpp */; };
-		CA2E68E118C6A34E00421CB1 /* SpectralSparsity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688E18C6A2D200421CB1 /* SpectralSparsity.cpp */; };
-		CA2E68E218C6A35000421CB1 /* SpectralCentroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688B18C6A2D200421CB1 /* SpectralCentroid.cpp */; };
-		CA2E68E318C6A35300421CB1 /* Loudness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688818C6A2D200421CB1 /* Loudness.cpp */; };
-		CA2E68E418C6A35500421CB1 /* Harmonicity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2E688518C6A2D200421CB1 /* Harmonicity.cpp */; };
 		CA2E68E618C6A59F00421CB1 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2E68E518C6A59F00421CB1 /* libfftw3.a */; };
+		CA852F6118C7EFFB00987493 /* CircularArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F2F18C7EFFB00987493 /* CircularArray.cpp */; };
+		CA852F6218C7EFFB00987493 /* CircularArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3018C7EFFB00987493 /* CircularArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6318C7EFFB00987493 /* Exceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3118C7EFFB00987493 /* Exceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6418C7EFFB00987493 /* Feature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3218C7EFFB00987493 /* Feature.cpp */; };
+		CA852F6518C7EFFB00987493 /* Feature.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3318C7EFFB00987493 /* Feature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6618C7EFFB00987493 /* FeatureComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3418C7EFFB00987493 /* FeatureComparator.cpp */; };
+		CA852F6718C7EFFB00987493 /* FeatureComparator.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3518C7EFFB00987493 /* FeatureComparator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6818C7EFFB00987493 /* FeatureSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3618C7EFFB00987493 /* FeatureSet.cpp */; };
+		CA852F6918C7EFFB00987493 /* FeatureSet.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3718C7EFFB00987493 /* FeatureSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6A18C7EFFB00987493 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3818C7EFFB00987493 /* FFT.cpp */; };
+		CA852F6B18C7EFFB00987493 /* FFT.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3918C7EFFB00987493 /* FFT.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6C18C7EFFB00987493 /* FileRead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3A18C7EFFB00987493 /* FileRead.cpp */; };
+		CA852F6D18C7EFFB00987493 /* FileRead.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3B18C7EFFB00987493 /* FileRead.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F6E18C7EFFB00987493 /* Harmonicity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3C18C7EFFB00987493 /* Harmonicity.cpp */; };
+		CA852F6F18C7EFFB00987493 /* Harmonicity.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3D18C7EFFB00987493 /* Harmonicity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7018C7EFFB00987493 /* Loudness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F3E18C7EFFB00987493 /* Loudness.cpp */; };
+		CA852F7118C7EFFB00987493 /* Loudness.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F3F18C7EFFB00987493 /* Loudness.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7218C7EFFB00987493 /* math_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4018C7EFFB00987493 /* math_support.cpp */; };
+		CA852F7318C7EFFB00987493 /* math_support.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4118C7EFFB00987493 /* math_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7418C7EFFB00987493 /* matrix_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4218C7EFFB00987493 /* matrix_support.cpp */; };
+		CA852F7518C7EFFB00987493 /* matrix_support.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4318C7EFFB00987493 /* matrix_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7618C7EFFB00987493 /* savitzky_golay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4418C7EFFB00987493 /* savitzky_golay.cpp */; };
+		CA852F7718C7EFFB00987493 /* savitzky_golay.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4518C7EFFB00987493 /* savitzky_golay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7818C7EFFB00987493 /* SegmentationParameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4618C7EFFB00987493 /* SegmentationParameters.cpp */; };
+		CA852F7918C7EFFB00987493 /* SegmentationParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4718C7EFFB00987493 /* SegmentationParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7A18C7EFFB00987493 /* Segmenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4818C7EFFB00987493 /* Segmenter.cpp */; };
+		CA852F7B18C7EFFB00987493 /* Segmenter.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4918C7EFFB00987493 /* Segmenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7C18C7EFFB00987493 /* SimpleFeatureComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4A18C7EFFB00987493 /* SimpleFeatureComparator.cpp */; };
+		CA852F7D18C7EFFB00987493 /* SimpleFeatureComparator.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4B18C7EFFB00987493 /* SimpleFeatureComparator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F7E18C7EFFB00987493 /* SimpleSoundComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4C18C7EFFB00987493 /* SimpleSoundComparator.cpp */; };
+		CA852F7F18C7EFFB00987493 /* SimpleSoundComparator.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4D18C7EFFB00987493 /* SimpleSoundComparator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8018C7EFFB00987493 /* Sirens.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F4E18C7EFFB00987493 /* Sirens.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8118C7EFFB00987493 /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F4F18C7EFFB00987493 /* Sound.cpp */; };
+		CA852F8218C7EFFB00987493 /* Sound.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5018C7EFFB00987493 /* Sound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8318C7EFFB00987493 /* SoundComparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5118C7EFFB00987493 /* SoundComparator.cpp */; };
+		CA852F8418C7EFFB00987493 /* SoundComparator.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5218C7EFFB00987493 /* SoundComparator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8518C7EFFB00987493 /* SpectralCentroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5318C7EFFB00987493 /* SpectralCentroid.cpp */; };
+		CA852F8618C7EFFB00987493 /* SpectralCentroid.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5418C7EFFB00987493 /* SpectralCentroid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8718C7EFFB00987493 /* SpectralSparsity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5518C7EFFB00987493 /* SpectralSparsity.cpp */; };
+		CA852F8818C7EFFB00987493 /* SpectralSparsity.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5618C7EFFB00987493 /* SpectralSparsity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8918C7EFFB00987493 /* Stk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5718C7EFFB00987493 /* Stk.cpp */; };
+		CA852F8A18C7EFFB00987493 /* Stk.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5818C7EFFB00987493 /* Stk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8B18C7EFFB00987493 /* string_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5918C7EFFB00987493 /* string_support.cpp */; };
+		CA852F8C18C7EFFB00987493 /* string_support.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5A18C7EFFB00987493 /* string_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8D18C7EFFB00987493 /* TemporalSparsity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5B18C7EFFB00987493 /* TemporalSparsity.cpp */; };
+		CA852F8E18C7EFFB00987493 /* TemporalSparsity.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5C18C7EFFB00987493 /* TemporalSparsity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F8F18C7EFFB00987493 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5D18C7EFFB00987493 /* Thread.cpp */; };
+		CA852F9018C7EFFB00987493 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F5E18C7EFFB00987493 /* Thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA852F9118C7EFFB00987493 /* TransientIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA852F5F18C7EFFB00987493 /* TransientIndex.cpp */; };
+		CA852F9218C7EFFB00987493 /* TransientIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = CA852F6018C7EFFB00987493 /* TransientIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA2E686318C6A29400421CB1 /* sirens.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sirens.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2E686818C6A29400421CB1 /* sirensProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = sirensProj.xcconfig; sourceTree = "<group>"; };
 		CA2E686918C6A29400421CB1 /* sirensTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = sirensTarget.xcconfig; sourceTree = "<group>"; };
-		CA2E687D18C6A2D200421CB1 /* CircularArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CircularArray.cpp; sourceTree = "<group>"; };
-		CA2E687E18C6A2D200421CB1 /* CircularArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularArray.h; sourceTree = "<group>"; };
-		CA2E688018C6A2D200421CB1 /* Exceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = "<group>"; };
-		CA2E688118C6A2D200421CB1 /* Feature.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Feature.cpp; sourceTree = "<group>"; };
-		CA2E688218C6A2D200421CB1 /* Feature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Feature.h; sourceTree = "<group>"; };
-		CA2E688518C6A2D200421CB1 /* Harmonicity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Harmonicity.cpp; sourceTree = "<group>"; };
-		CA2E688618C6A2D200421CB1 /* Harmonicity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Harmonicity.h; sourceTree = "<group>"; };
-		CA2E688818C6A2D200421CB1 /* Loudness.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Loudness.cpp; sourceTree = "<group>"; };
-		CA2E688918C6A2D200421CB1 /* Loudness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Loudness.h; sourceTree = "<group>"; };
-		CA2E688B18C6A2D200421CB1 /* SpectralCentroid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpectralCentroid.cpp; sourceTree = "<group>"; };
-		CA2E688C18C6A2D200421CB1 /* SpectralCentroid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectralCentroid.h; sourceTree = "<group>"; };
-		CA2E688E18C6A2D200421CB1 /* SpectralSparsity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpectralSparsity.cpp; sourceTree = "<group>"; };
-		CA2E688F18C6A2D200421CB1 /* SpectralSparsity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectralSparsity.h; sourceTree = "<group>"; };
-		CA2E689118C6A2D200421CB1 /* TemporalSparsity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TemporalSparsity.cpp; sourceTree = "<group>"; };
-		CA2E689218C6A2D200421CB1 /* TemporalSparsity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporalSparsity.h; sourceTree = "<group>"; };
-		CA2E689418C6A2D200421CB1 /* TransientIndex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TransientIndex.cpp; sourceTree = "<group>"; };
-		CA2E689518C6A2D200421CB1 /* TransientIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransientIndex.h; sourceTree = "<group>"; };
-		CA2E689718C6A2D200421CB1 /* FeatureSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FeatureSet.cpp; sourceTree = "<group>"; };
-		CA2E689818C6A2D200421CB1 /* FeatureSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureSet.h; sourceTree = "<group>"; };
-		CA2E689A18C6A2D200421CB1 /* FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFT.cpp; sourceTree = "<group>"; };
-		CA2E689B18C6A2D200421CB1 /* FFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFT.h; sourceTree = "<group>"; };
-		CA2E689E18C6A2D200421CB1 /* FeatureComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FeatureComparator.cpp; sourceTree = "<group>"; };
-		CA2E689F18C6A2D200421CB1 /* FeatureComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureComparator.h; sourceTree = "<group>"; };
-		CA2E68A118C6A2D200421CB1 /* SimpleFeatureComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleFeatureComparator.cpp; sourceTree = "<group>"; };
-		CA2E68A218C6A2D200421CB1 /* SimpleFeatureComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleFeatureComparator.h; sourceTree = "<group>"; };
-		CA2E68A418C6A2D200421CB1 /* SimpleSoundComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleSoundComparator.cpp; sourceTree = "<group>"; };
-		CA2E68A518C6A2D200421CB1 /* SimpleSoundComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleSoundComparator.h; sourceTree = "<group>"; };
-		CA2E68A718C6A2D200421CB1 /* SoundComparator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComparator.cpp; sourceTree = "<group>"; };
-		CA2E68A818C6A2D200421CB1 /* SoundComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundComparator.h; sourceTree = "<group>"; };
-		CA2E68AB18C6A2D200421CB1 /* SegmentationParameters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentationParameters.cpp; sourceTree = "<group>"; };
-		CA2E68AC18C6A2D200421CB1 /* SegmentationParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentationParameters.h; sourceTree = "<group>"; };
-		CA2E68AE18C6A2D200421CB1 /* Segmenter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Segmenter.cpp; sourceTree = "<group>"; };
-		CA2E68AF18C6A2D200421CB1 /* Segmenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Segmenter.h; sourceTree = "<group>"; };
-		CA2E68B118C6A2D200421CB1 /* Sirens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sirens.h; sourceTree = "<group>"; };
-		CA2E68B218C6A2D200421CB1 /* Sound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
-		CA2E68B318C6A2D200421CB1 /* Sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
-		CA2E68B618C6A2D200421CB1 /* FileRead.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileRead.cpp; sourceTree = "<group>"; };
-		CA2E68B718C6A2D200421CB1 /* FileRead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileRead.h; sourceTree = "<group>"; };
-		CA2E68B918C6A2D200421CB1 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		CA2E68BA18C6A2D200421CB1 /* Stk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stk.cpp; sourceTree = "<group>"; };
-		CA2E68BB18C6A2D200421CB1 /* Stk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stk.h; sourceTree = "<group>"; };
-		CA2E68BE18C6A2D200421CB1 /* math_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = math_support.cpp; sourceTree = "<group>"; };
-		CA2E68BF18C6A2D200421CB1 /* math_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = math_support.h; sourceTree = "<group>"; };
-		CA2E68C118C6A2D200421CB1 /* matrix_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix_support.cpp; sourceTree = "<group>"; };
-		CA2E68C218C6A2D200421CB1 /* matrix_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = matrix_support.h; sourceTree = "<group>"; };
-		CA2E68C418C6A2D200421CB1 /* savitzky_golay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = savitzky_golay.cpp; sourceTree = "<group>"; };
-		CA2E68C518C6A2D200421CB1 /* savitzky_golay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = savitzky_golay.h; sourceTree = "<group>"; };
-		CA2E68C718C6A2D200421CB1 /* string_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_support.cpp; sourceTree = "<group>"; };
-		CA2E68C818C6A2D200421CB1 /* string_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_support.h; sourceTree = "<group>"; };
-		CA2E68CA18C6A2D300421CB1 /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
-		CA2E68CB18C6A2D300421CB1 /* Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
 		CA2E68E518C6A59F00421CB1 /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../usr/local/lib/libfftw3.a; sourceTree = "<group>"; };
+		CA852F2F18C7EFFB00987493 /* CircularArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircularArray.cpp; sourceTree = "<group>"; };
+		CA852F3018C7EFFB00987493 /* CircularArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularArray.h; sourceTree = "<group>"; };
+		CA852F3118C7EFFB00987493 /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = "<group>"; };
+		CA852F3218C7EFFB00987493 /* Feature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Feature.cpp; sourceTree = "<group>"; };
+		CA852F3318C7EFFB00987493 /* Feature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feature.h; sourceTree = "<group>"; };
+		CA852F3418C7EFFB00987493 /* FeatureComparator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FeatureComparator.cpp; sourceTree = "<group>"; };
+		CA852F3518C7EFFB00987493 /* FeatureComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureComparator.h; sourceTree = "<group>"; };
+		CA852F3618C7EFFB00987493 /* FeatureSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FeatureSet.cpp; sourceTree = "<group>"; };
+		CA852F3718C7EFFB00987493 /* FeatureSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureSet.h; sourceTree = "<group>"; };
+		CA852F3818C7EFFB00987493 /* FFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFT.cpp; sourceTree = "<group>"; };
+		CA852F3918C7EFFB00987493 /* FFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFT.h; sourceTree = "<group>"; };
+		CA852F3A18C7EFFB00987493 /* FileRead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileRead.cpp; sourceTree = "<group>"; };
+		CA852F3B18C7EFFB00987493 /* FileRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileRead.h; sourceTree = "<group>"; };
+		CA852F3C18C7EFFB00987493 /* Harmonicity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Harmonicity.cpp; sourceTree = "<group>"; };
+		CA852F3D18C7EFFB00987493 /* Harmonicity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harmonicity.h; sourceTree = "<group>"; };
+		CA852F3E18C7EFFB00987493 /* Loudness.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loudness.cpp; sourceTree = "<group>"; };
+		CA852F3F18C7EFFB00987493 /* Loudness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loudness.h; sourceTree = "<group>"; };
+		CA852F4018C7EFFB00987493 /* math_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_support.cpp; sourceTree = "<group>"; };
+		CA852F4118C7EFFB00987493 /* math_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_support.h; sourceTree = "<group>"; };
+		CA852F4218C7EFFB00987493 /* matrix_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix_support.cpp; sourceTree = "<group>"; };
+		CA852F4318C7EFFB00987493 /* matrix_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix_support.h; sourceTree = "<group>"; };
+		CA852F4418C7EFFB00987493 /* savitzky_golay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = savitzky_golay.cpp; sourceTree = "<group>"; };
+		CA852F4518C7EFFB00987493 /* savitzky_golay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = savitzky_golay.h; sourceTree = "<group>"; };
+		CA852F4618C7EFFB00987493 /* SegmentationParameters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentationParameters.cpp; sourceTree = "<group>"; };
+		CA852F4718C7EFFB00987493 /* SegmentationParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentationParameters.h; sourceTree = "<group>"; };
+		CA852F4818C7EFFB00987493 /* Segmenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Segmenter.cpp; sourceTree = "<group>"; };
+		CA852F4918C7EFFB00987493 /* Segmenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segmenter.h; sourceTree = "<group>"; };
+		CA852F4A18C7EFFB00987493 /* SimpleFeatureComparator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleFeatureComparator.cpp; sourceTree = "<group>"; };
+		CA852F4B18C7EFFB00987493 /* SimpleFeatureComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFeatureComparator.h; sourceTree = "<group>"; };
+		CA852F4C18C7EFFB00987493 /* SimpleSoundComparator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleSoundComparator.cpp; sourceTree = "<group>"; };
+		CA852F4D18C7EFFB00987493 /* SimpleSoundComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSoundComparator.h; sourceTree = "<group>"; };
+		CA852F4E18C7EFFB00987493 /* Sirens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sirens.h; sourceTree = "<group>"; };
+		CA852F4F18C7EFFB00987493 /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
+		CA852F5018C7EFFB00987493 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		CA852F5118C7EFFB00987493 /* SoundComparator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComparator.cpp; sourceTree = "<group>"; };
+		CA852F5218C7EFFB00987493 /* SoundComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundComparator.h; sourceTree = "<group>"; };
+		CA852F5318C7EFFB00987493 /* SpectralCentroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpectralCentroid.cpp; sourceTree = "<group>"; };
+		CA852F5418C7EFFB00987493 /* SpectralCentroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectralCentroid.h; sourceTree = "<group>"; };
+		CA852F5518C7EFFB00987493 /* SpectralSparsity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpectralSparsity.cpp; sourceTree = "<group>"; };
+		CA852F5618C7EFFB00987493 /* SpectralSparsity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectralSparsity.h; sourceTree = "<group>"; };
+		CA852F5718C7EFFB00987493 /* Stk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stk.cpp; sourceTree = "<group>"; };
+		CA852F5818C7EFFB00987493 /* Stk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stk.h; sourceTree = "<group>"; };
+		CA852F5918C7EFFB00987493 /* string_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_support.cpp; sourceTree = "<group>"; };
+		CA852F5A18C7EFFB00987493 /* string_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_support.h; sourceTree = "<group>"; };
+		CA852F5B18C7EFFB00987493 /* TemporalSparsity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TemporalSparsity.cpp; sourceTree = "<group>"; };
+		CA852F5C18C7EFFB00987493 /* TemporalSparsity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporalSparsity.h; sourceTree = "<group>"; };
+		CA852F5D18C7EFFB00987493 /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		CA852F5E18C7EFFB00987493 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		CA852F5F18C7EFFB00987493 /* TransientIndex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransientIndex.cpp; sourceTree = "<group>"; };
+		CA852F6018C7EFFB00987493 /* TransientIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransientIndex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,100 +159,59 @@
 		CA2E687318C6A2D200421CB1 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				CA2E687D18C6A2D200421CB1 /* CircularArray.cpp */,
-				CA2E687E18C6A2D200421CB1 /* CircularArray.h */,
-				CA2E688018C6A2D200421CB1 /* Exceptions.h */,
-				CA2E688118C6A2D200421CB1 /* Feature.cpp */,
-				CA2E688218C6A2D200421CB1 /* Feature.h */,
-				CA2E688418C6A2D200421CB1 /* features */,
-				CA2E689718C6A2D200421CB1 /* FeatureSet.cpp */,
-				CA2E689818C6A2D200421CB1 /* FeatureSet.h */,
-				CA2E689A18C6A2D200421CB1 /* FFT.cpp */,
-				CA2E689B18C6A2D200421CB1 /* FFT.h */,
-				CA2E689D18C6A2D200421CB1 /* retrieval */,
-				CA2E68AA18C6A2D200421CB1 /* segmentation */,
-				CA2E68B118C6A2D200421CB1 /* Sirens.h */,
-				CA2E68B218C6A2D200421CB1 /* Sound.cpp */,
-				CA2E68B318C6A2D200421CB1 /* Sound.h */,
-				CA2E68B518C6A2D200421CB1 /* stk */,
-				CA2E68BD18C6A2D200421CB1 /* support */,
-				CA2E68CA18C6A2D300421CB1 /* Thread.cpp */,
-				CA2E68CB18C6A2D300421CB1 /* Thread.h */,
+				CA852F2F18C7EFFB00987493 /* CircularArray.cpp */,
+				CA852F3018C7EFFB00987493 /* CircularArray.h */,
+				CA852F3118C7EFFB00987493 /* Exceptions.h */,
+				CA852F3218C7EFFB00987493 /* Feature.cpp */,
+				CA852F3318C7EFFB00987493 /* Feature.h */,
+				CA852F3418C7EFFB00987493 /* FeatureComparator.cpp */,
+				CA852F3518C7EFFB00987493 /* FeatureComparator.h */,
+				CA852F3618C7EFFB00987493 /* FeatureSet.cpp */,
+				CA852F3718C7EFFB00987493 /* FeatureSet.h */,
+				CA852F3818C7EFFB00987493 /* FFT.cpp */,
+				CA852F3918C7EFFB00987493 /* FFT.h */,
+				CA852F3A18C7EFFB00987493 /* FileRead.cpp */,
+				CA852F3B18C7EFFB00987493 /* FileRead.h */,
+				CA852F3C18C7EFFB00987493 /* Harmonicity.cpp */,
+				CA852F3D18C7EFFB00987493 /* Harmonicity.h */,
+				CA852F3E18C7EFFB00987493 /* Loudness.cpp */,
+				CA852F3F18C7EFFB00987493 /* Loudness.h */,
+				CA852F4018C7EFFB00987493 /* math_support.cpp */,
+				CA852F4118C7EFFB00987493 /* math_support.h */,
+				CA852F4218C7EFFB00987493 /* matrix_support.cpp */,
+				CA852F4318C7EFFB00987493 /* matrix_support.h */,
+				CA852F4418C7EFFB00987493 /* savitzky_golay.cpp */,
+				CA852F4518C7EFFB00987493 /* savitzky_golay.h */,
+				CA852F4618C7EFFB00987493 /* SegmentationParameters.cpp */,
+				CA852F4718C7EFFB00987493 /* SegmentationParameters.h */,
+				CA852F4818C7EFFB00987493 /* Segmenter.cpp */,
+				CA852F4918C7EFFB00987493 /* Segmenter.h */,
+				CA852F4A18C7EFFB00987493 /* SimpleFeatureComparator.cpp */,
+				CA852F4B18C7EFFB00987493 /* SimpleFeatureComparator.h */,
+				CA852F4C18C7EFFB00987493 /* SimpleSoundComparator.cpp */,
+				CA852F4D18C7EFFB00987493 /* SimpleSoundComparator.h */,
+				CA852F4E18C7EFFB00987493 /* Sirens.h */,
+				CA852F4F18C7EFFB00987493 /* Sound.cpp */,
+				CA852F5018C7EFFB00987493 /* Sound.h */,
+				CA852F5118C7EFFB00987493 /* SoundComparator.cpp */,
+				CA852F5218C7EFFB00987493 /* SoundComparator.h */,
+				CA852F5318C7EFFB00987493 /* SpectralCentroid.cpp */,
+				CA852F5418C7EFFB00987493 /* SpectralCentroid.h */,
+				CA852F5518C7EFFB00987493 /* SpectralSparsity.cpp */,
+				CA852F5618C7EFFB00987493 /* SpectralSparsity.h */,
+				CA852F5718C7EFFB00987493 /* Stk.cpp */,
+				CA852F5818C7EFFB00987493 /* Stk.h */,
+				CA852F5918C7EFFB00987493 /* string_support.cpp */,
+				CA852F5A18C7EFFB00987493 /* string_support.h */,
+				CA852F5B18C7EFFB00987493 /* TemporalSparsity.cpp */,
+				CA852F5C18C7EFFB00987493 /* TemporalSparsity.h */,
+				CA852F5D18C7EFFB00987493 /* Thread.cpp */,
+				CA852F5E18C7EFFB00987493 /* Thread.h */,
+				CA852F5F18C7EFFB00987493 /* TransientIndex.cpp */,
+				CA852F6018C7EFFB00987493 /* TransientIndex.h */,
 			);
 			name = source;
 			path = ../source;
-			sourceTree = "<group>";
-		};
-		CA2E688418C6A2D200421CB1 /* features */ = {
-			isa = PBXGroup;
-			children = (
-				CA2E688518C6A2D200421CB1 /* Harmonicity.cpp */,
-				CA2E688618C6A2D200421CB1 /* Harmonicity.h */,
-				CA2E688818C6A2D200421CB1 /* Loudness.cpp */,
-				CA2E688918C6A2D200421CB1 /* Loudness.h */,
-				CA2E688B18C6A2D200421CB1 /* SpectralCentroid.cpp */,
-				CA2E688C18C6A2D200421CB1 /* SpectralCentroid.h */,
-				CA2E688E18C6A2D200421CB1 /* SpectralSparsity.cpp */,
-				CA2E688F18C6A2D200421CB1 /* SpectralSparsity.h */,
-				CA2E689118C6A2D200421CB1 /* TemporalSparsity.cpp */,
-				CA2E689218C6A2D200421CB1 /* TemporalSparsity.h */,
-				CA2E689418C6A2D200421CB1 /* TransientIndex.cpp */,
-				CA2E689518C6A2D200421CB1 /* TransientIndex.h */,
-			);
-			path = features;
-			sourceTree = "<group>";
-		};
-		CA2E689D18C6A2D200421CB1 /* retrieval */ = {
-			isa = PBXGroup;
-			children = (
-				CA2E689E18C6A2D200421CB1 /* FeatureComparator.cpp */,
-				CA2E689F18C6A2D200421CB1 /* FeatureComparator.h */,
-				CA2E68A118C6A2D200421CB1 /* SimpleFeatureComparator.cpp */,
-				CA2E68A218C6A2D200421CB1 /* SimpleFeatureComparator.h */,
-				CA2E68A418C6A2D200421CB1 /* SimpleSoundComparator.cpp */,
-				CA2E68A518C6A2D200421CB1 /* SimpleSoundComparator.h */,
-				CA2E68A718C6A2D200421CB1 /* SoundComparator.cpp */,
-				CA2E68A818C6A2D200421CB1 /* SoundComparator.h */,
-			);
-			path = retrieval;
-			sourceTree = "<group>";
-		};
-		CA2E68AA18C6A2D200421CB1 /* segmentation */ = {
-			isa = PBXGroup;
-			children = (
-				CA2E68AB18C6A2D200421CB1 /* SegmentationParameters.cpp */,
-				CA2E68AC18C6A2D200421CB1 /* SegmentationParameters.h */,
-				CA2E68AE18C6A2D200421CB1 /* Segmenter.cpp */,
-				CA2E68AF18C6A2D200421CB1 /* Segmenter.h */,
-			);
-			path = segmentation;
-			sourceTree = "<group>";
-		};
-		CA2E68B518C6A2D200421CB1 /* stk */ = {
-			isa = PBXGroup;
-			children = (
-				CA2E68B618C6A2D200421CB1 /* FileRead.cpp */,
-				CA2E68B718C6A2D200421CB1 /* FileRead.h */,
-				CA2E68B918C6A2D200421CB1 /* README */,
-				CA2E68BA18C6A2D200421CB1 /* Stk.cpp */,
-				CA2E68BB18C6A2D200421CB1 /* Stk.h */,
-			);
-			path = stk;
-			sourceTree = "<group>";
-		};
-		CA2E68BD18C6A2D200421CB1 /* support */ = {
-			isa = PBXGroup;
-			children = (
-				CA2E68BE18C6A2D200421CB1 /* math_support.cpp */,
-				CA2E68BF18C6A2D200421CB1 /* math_support.h */,
-				CA2E68C118C6A2D200421CB1 /* matrix_support.cpp */,
-				CA2E68C218C6A2D200421CB1 /* matrix_support.h */,
-				CA2E68C418C6A2D200421CB1 /* savitzky_golay.cpp */,
-				CA2E68C518C6A2D200421CB1 /* savitzky_golay.h */,
-				CA2E68C718C6A2D200421CB1 /* string_support.cpp */,
-				CA2E68C818C6A2D200421CB1 /* string_support.h */,
-			);
-			path = support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +221,32 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA852F6918C7EFFB00987493 /* FeatureSet.h in Headers */,
+				CA852F7B18C7EFFB00987493 /* Segmenter.h in Headers */,
+				CA852F8618C7EFFB00987493 /* SpectralCentroid.h in Headers */,
+				CA852F6318C7EFFB00987493 /* Exceptions.h in Headers */,
+				CA852F6F18C7EFFB00987493 /* Harmonicity.h in Headers */,
+				CA852F8C18C7EFFB00987493 /* string_support.h in Headers */,
+				CA852F7D18C7EFFB00987493 /* SimpleFeatureComparator.h in Headers */,
+				CA852F6D18C7EFFB00987493 /* FileRead.h in Headers */,
+				CA852F9018C7EFFB00987493 /* Thread.h in Headers */,
+				CA852F8418C7EFFB00987493 /* SoundComparator.h in Headers */,
+				CA852F8218C7EFFB00987493 /* Sound.h in Headers */,
+				CA852F7318C7EFFB00987493 /* math_support.h in Headers */,
+				CA852F8E18C7EFFB00987493 /* TemporalSparsity.h in Headers */,
+				CA852F6718C7EFFB00987493 /* FeatureComparator.h in Headers */,
+				CA852F9218C7EFFB00987493 /* TransientIndex.h in Headers */,
+				CA852F8A18C7EFFB00987493 /* Stk.h in Headers */,
+				CA852F8818C7EFFB00987493 /* SpectralSparsity.h in Headers */,
+				CA852F7F18C7EFFB00987493 /* SimpleSoundComparator.h in Headers */,
+				CA852F6B18C7EFFB00987493 /* FFT.h in Headers */,
+				CA852F7918C7EFFB00987493 /* SegmentationParameters.h in Headers */,
+				CA852F6518C7EFFB00987493 /* Feature.h in Headers */,
+				CA852F7518C7EFFB00987493 /* matrix_support.h in Headers */,
+				CA852F6218C7EFFB00987493 /* CircularArray.h in Headers */,
+				CA852F7718C7EFFB00987493 /* savitzky_golay.h in Headers */,
+				CA852F7118C7EFFB00987493 /* Loudness.h in Headers */,
+				CA852F8018C7EFFB00987493 /* Sirens.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,30 +301,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA2E68CD18C6A30100421CB1 /* CircularArray.cpp in Sources */,
-				CA2E68CE18C6A30400421CB1 /* Feature.cpp in Sources */,
-				CA2E68CF18C6A30700421CB1 /* FeatureSet.cpp in Sources */,
-				CA2E68D018C6A30A00421CB1 /* FFT.cpp in Sources */,
-				CA2E68D118C6A30F00421CB1 /* Sound.cpp in Sources */,
-				CA2E68D218C6A31200421CB1 /* Thread.cpp in Sources */,
-				CA2E68D418C6A31900421CB1 /* matrix_support.cpp in Sources */,
-				CA2E68D318C6A31600421CB1 /* math_support.cpp in Sources */,
-				CA2E68D518C6A31C00421CB1 /* savitzky_golay.cpp in Sources */,
-				CA2E68D618C6A31F00421CB1 /* string_support.cpp in Sources */,
-				CA2E68D718C6A32B00421CB1 /* FileRead.cpp in Sources */,
-				CA2E68D818C6A32E00421CB1 /* Stk.cpp in Sources */,
-				CA2E68D918C6A33300421CB1 /* SegmentationParameters.cpp in Sources */,
-				CA2E68DA18C6A33600421CB1 /* Segmenter.cpp in Sources */,
-				CA2E68DB18C6A33A00421CB1 /* SoundComparator.cpp in Sources */,
-				CA2E68DC18C6A33D00421CB1 /* SimpleSoundComparator.cpp in Sources */,
-				CA2E68DE18C6A34300421CB1 /* FeatureComparator.cpp in Sources */,
-				CA2E68DD18C6A34000421CB1 /* SimpleFeatureComparator.cpp in Sources */,
-				CA2E68DF18C6A34800421CB1 /* TransientIndex.cpp in Sources */,
-				CA2E68E018C6A34B00421CB1 /* TemporalSparsity.cpp in Sources */,
-				CA2E68E118C6A34E00421CB1 /* SpectralSparsity.cpp in Sources */,
-				CA2E68E218C6A35000421CB1 /* SpectralCentroid.cpp in Sources */,
-				CA2E68E318C6A35300421CB1 /* Loudness.cpp in Sources */,
-				CA2E68E418C6A35500421CB1 /* Harmonicity.cpp in Sources */,
+				CA852F8318C7EFFB00987493 /* SoundComparator.cpp in Sources */,
+				CA852F8518C7EFFB00987493 /* SpectralCentroid.cpp in Sources */,
+				CA852F6418C7EFFB00987493 /* Feature.cpp in Sources */,
+				CA852F8718C7EFFB00987493 /* SpectralSparsity.cpp in Sources */,
+				CA852F8D18C7EFFB00987493 /* TemporalSparsity.cpp in Sources */,
+				CA852F7E18C7EFFB00987493 /* SimpleSoundComparator.cpp in Sources */,
+				CA852F6E18C7EFFB00987493 /* Harmonicity.cpp in Sources */,
+				CA852F8118C7EFFB00987493 /* Sound.cpp in Sources */,
+				CA852F7018C7EFFB00987493 /* Loudness.cpp in Sources */,
+				CA852F8F18C7EFFB00987493 /* Thread.cpp in Sources */,
+				CA852F8B18C7EFFB00987493 /* string_support.cpp in Sources */,
+				CA852F9118C7EFFB00987493 /* TransientIndex.cpp in Sources */,
+				CA852F6C18C7EFFB00987493 /* FileRead.cpp in Sources */,
+				CA852F7418C7EFFB00987493 /* matrix_support.cpp in Sources */,
+				CA852F7A18C7EFFB00987493 /* Segmenter.cpp in Sources */,
+				CA852F6A18C7EFFB00987493 /* FFT.cpp in Sources */,
+				CA852F7218C7EFFB00987493 /* math_support.cpp in Sources */,
+				CA852F6618C7EFFB00987493 /* FeatureComparator.cpp in Sources */,
+				CA852F8918C7EFFB00987493 /* Stk.cpp in Sources */,
+				CA852F6118C7EFFB00987493 /* CircularArray.cpp in Sources */,
+				CA852F7818C7EFFB00987493 /* SegmentationParameters.cpp in Sources */,
+				CA852F7618C7EFFB00987493 /* savitzky_golay.cpp in Sources */,
+				CA852F7C18C7EFFB00987493 /* SimpleFeatureComparator.cpp in Sources */,
+				CA852F6818C7EFFB00987493 /* FeatureSet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +413,9 @@
 					/usr/local/include/,
 				);
 				OTHER_LDFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
 				USER_HEADER_SEARCH_PATHS = /usr/local/include/;
 			};
 			name = Debug;
@@ -418,7 +430,9 @@
 					/usr/local/include/,
 				);
 				OTHER_LDFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
 				USER_HEADER_SEARCH_PATHS = /usr/local/include/;
 			};
 			name = Release;

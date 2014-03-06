@@ -24,7 +24,7 @@
 #include <boost/numeric/ublas/matrix.hpp>
 using namespace boost::numeric;
 
-#include "../Feature.h"
+#include "Feature.h"
 
 namespace Sirens {
     // Parameters for least-squares curve fitting.
