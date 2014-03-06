@@ -214,9 +214,7 @@ namespace Sirens {
             FFT fft(getFFTSize(), windowed_array.getData());
 
             // Start reading in frames.
-            int readcount = 0;
             long frame_number = 0;
-            int samples_per_hop = getSamplesPerHop() * getChannels();
 
             for (int f = 0; f < getFrameCount(); f++) {
                 StkFrames samples(getSamplesPerHop(), soundFile->channels());
