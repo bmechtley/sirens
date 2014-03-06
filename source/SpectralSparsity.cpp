@@ -43,7 +43,7 @@ namespace Sirens {
             value = max / sum;
     }
 
-    string SpectralSparsity::toString() {
-        return string("Spectral Sparsity");
+    const char* SpectralSparsity::toString() {
+        return "SpectralSparsity";
     }
 }

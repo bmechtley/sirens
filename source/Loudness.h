@@ -31,7 +31,7 @@ namespace Sirens {
         Loudness(int history_size = 1) : Feature(history_size) {}
         
         virtual void performCalculation();
-        virtual string toString();
+        virtual const char* toString();
     };
 }
 

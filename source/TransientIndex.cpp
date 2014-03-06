@@ -217,7 +217,7 @@ namespace Sirens {
         mfccNew = mfccTemp;
     }
     
-    string TransientIndex::toString() {
-        return "Transient Index";
+    const char* TransientIndex::toString() {
+        return "TransientIndex";
     }
 }

@@ -49,7 +49,7 @@ namespace Sirens {
         int getSampleRate();
         
         virtual void performCalculation();
-        virtual string toString();
+        virtual const char* toString();
     };
 }
 

@@ -355,7 +355,7 @@ namespace Sirens {
         peakList.size = 0;
     }
 
-    string Harmonicity::toString() {
+    const char* Harmonicity::toString() {
         return "Harmonicity";
     }
 

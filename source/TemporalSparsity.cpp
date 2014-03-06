@@ -83,7 +83,7 @@ namespace Sirens {
         }
     }   
 
-    string TemporalSparsity::toString() {
-        return string("Temporal Sparsity");
+    const char* TemporalSparsity::toString() {
+        return "TemporalSparsity";
     }
 }

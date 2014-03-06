@@ -134,11 +134,11 @@ namespace Sirens {
      * String representation. *
      *------------------------*/
 
-    string Feature::toString() {
+    const char* Feature::toString() {
         return "Feature";
     }
 
     string Feature::historyString() {
-        return toString() + "\n\t" + history->toString();
+        return toString() + string("\n\t") + history->toString();
     }
 }

@@ -33,7 +33,7 @@ namespace Sirens {
             value = 20 * log10(10e-6);
     }
 
-    string Loudness::toString() {
-        return string("Loudness");
+    const char* Loudness::toString() {
+        return "Loudness";
     }
 }

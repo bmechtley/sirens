@@ -114,7 +114,7 @@ namespace Sirens {
 
     }
 
-    string SpectralCentroid::toString() {
-        return "Spectral Centroid";
+    const char* SpectralCentroid::toString() {
+        return "SpectralCentroid";
     }
 }

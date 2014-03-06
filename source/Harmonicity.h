@@ -109,7 +109,7 @@ namespace Sirens {
         double getLPFCoefficient();
         
         virtual void performCalculation();
-        virtual string toString();
+        virtual const char* toString();
     };
     
     // Callbacks for sorting peaks.

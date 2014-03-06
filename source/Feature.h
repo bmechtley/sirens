@@ -94,7 +94,7 @@ namespace Sirens {
         SegmentationParameters* parameters();
 
         // String representation.
-        virtual string toString();
+        virtual const char* toString();
         string historyString();
     };
 

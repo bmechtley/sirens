@@ -38,7 +38,7 @@ namespace Sirens {
         int getWindowSize();
         
         virtual void performCalculation();
-        virtual string toString();
+        virtual const char* toString();
     };
 }
 
