@@ -80,11 +80,6 @@ install_headers = {
 
 # Source.
 compile_source = Glob(os.path.join(source_prefix, '*.cpp'))
-compile_source.extend(Glob(os.path.join(source_prefix, 'support/*.cpp')))
-compile_source.extend(Glob(os.path.join(source_prefix, 'features/*.cpp')))
-compile_source.extend(Glob(os.path.join(source_prefix, 'retrieval/*.cpp')))
-compile_source.extend(Glob(os.path.join(source_prefix, 'segmentation/*.cpp')))
-compile_source.extend(Glob(os.path.join(source_prefix, 'stk/*.cpp')))
 
 # Environment.
 environment = Environment(CC='gcc')
@@ -99,9 +94,6 @@ if sys.byteorder == 'little':
 # Compile with debug symbols.
 if GetOption('debug_symbols'):
     environment.Append(CCFLAGS='-g')
-
-if os.uname()[0] == 'Darwin':
-    environment.Append(CCFLAGS='-arch i386 -arch x86_64')
 
 library = environment.Library('sirens', compile_source)
 
