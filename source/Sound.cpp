@@ -254,11 +254,12 @@ namespace Sirens {
                     featureSet->calculateSampleFeatures(&sample_array);
 
                     // Window the time-domain signal for STFT.
-                    for (int i = 0; i < getSamplesPerFrame(); i++)
+                    for (int i = 0; i < getSamplesPerFrame(); i++) {
                         windowed_array.addValue(
                             sample_array.getValue(i) * window[i]
                         );
-
+                    }
+                    
                     // Perform STFT.
                     fft.calculate();
 
