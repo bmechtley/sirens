@@ -21,6 +21,8 @@
 
 #include "string_support.h"
 
+// TODO: Handling three separate feature vectors is ridiculous.
+
 namespace Sirens {
     void FeatureSet::addSampleFeature(Feature* feature) {
         sampleFeatures.push_back(feature);
@@ -43,7 +45,13 @@ namespace Sirens {
     vector<Feature*> FeatureSet::getSpectralFeatures() {
         return spectralFeatures;
     }
-
+    
+    void FeatureSet::clearFeatures() {
+        features.clear();
+        sampleFeatures.clear();
+        spectralFeatures.clear();
+    }
+    
     int FeatureSet::getMinHistorySize() {
         int min_history_size = -1;
 
