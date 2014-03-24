@@ -60,7 +60,8 @@ namespace Sirens {
 
         double getUnorderedValue(int offset);
         double getValue(int offset);
-
+        double getLatestValue();
+        
         double* getData() {
             return data;
         }

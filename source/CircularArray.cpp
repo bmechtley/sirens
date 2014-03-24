@@ -77,6 +77,10 @@ namespace Sirens {
         return data[offset % maxSize];
     }
     
+    double CircularArray::getLatestValue() {
+        return data[(index - 1) % maxSize];
+    }
+    
     string CircularArray::toString() {
         string history_string;
 
