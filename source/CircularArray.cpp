@@ -54,45 +54,29 @@ namespace Sirens {
     }
 
     int CircularArray::getSize() {
-        int return_value = -1;
-
-        return_value = size;
-
-        return return_value;
+        return size;
     }
 
     int CircularArray::getMaxSize() {
-        int return_value = -1;
-
-        return_value = maxSize;
-
-        return return_value;
+        return maxSize;
     }
 
     int CircularArray::getStart() {
-        int return_value = -1;
-
-        return_value = start;
-
-        return return_value;
+        return start;
     }
 
     int CircularArray::getIndex() {
-        int return_value = -1;
-
-        return_value = index;
-
-        return return_value;
+        return index;
     }
 
     double CircularArray::getValue(int offset) {
-        double return_value = -1;
-
-        return_value = data[(start + offset) % maxSize];
-
-        return return_value;
+        return data[(start + offset) % maxSize];
     }
-
+    
+    double CircularArray::getUnorderedValue(int offset) {
+        return data[offset % maxSize];
+    }
+    
     string CircularArray::toString() {
         string history_string;
 
