@@ -1,6 +1,6 @@
 
 ## Quick note
-This is mostly here for archival purposes / reproducibility. Much better bulk feature extraction tools exist onw, such as [Sonic Annotator](http://www.vamp-plugins.org/sonic-annotator/) and [ESSENTIA](http://essentia.upf.edu). The one ever-so-slight benefit this implementation may have had over using Sonic Annotator was multithreaded feature extraction (sharing spectra etc.) I may, in the future, extract the segmentation bits to extract arbitrary CSV / annotation data from one of the above. - Brandon
+This is mostly here for archival purposes / reproducibility. Much better bulk feature extraction tools exist now, such as [Sonic Annotator](http://www.vamp-plugins.org/sonic-annotator/) and [ESSENTIA](http://essentia.upf.edu). The one ever-so-slight benefit this implementation may have had over using Sonic Annotator was multithreaded feature extraction (sharing spectra etc.) I may, in the future, extract the segmentation bits to extract arbitrary CSV / annotation data from one of the above. - Brandon
 
 ## Sirenns
 Sirens is a library for segmentation, indexing, and retrieval of environmental and natural sounds. In other words, it allows you to break long field recordings into individual sonic "events" and then compare those events in terms of content-based similarity.
